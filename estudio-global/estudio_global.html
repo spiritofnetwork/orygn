@@ -1,0 +1,2214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORYGN | triGLP — BGM Corporation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dark: #8B6914;
+    --navy: #0A1628;
+    --navy-mid: #12243A;
+    --navy-light: #1C3554;
+    --cream: #F8F4EC;
+    --cream-dark: #EDE5D4;
+    --text-primary: #1A1A2E;
+    --text-secondary: #4A5568;
+    --text-muted: #718096;
+    --white: #FFFFFF;
+    --border: rgba(201,168,76,0.2);
+    --shadow: 0 4px 24px rgba(10,22,40,0.12);
+    --radius: 8px;
+    --radius-lg: 14px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(10,22,40,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding: 0 2rem;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .nav-brand {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 14px; font-weight: 700; color: var(--white);
+  }
+  .nav-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; color: var(--white); letter-spacing: 0.05em;
+  }
+  .nav-subtitle {
+    font-size: 10px; color: var(--gold-light);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    display: block; margin-top: -2px;
+  }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 0;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--gold-light);
+    background: rgba(201,168,76,0.12);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 120px 4rem 80px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse 80% 60% at 60% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image:
+      linear-gradient(var(--gold) 1px, transparent 1px),
+      linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content {
+    position: relative; z-index: 1;
+    max-width: 900px;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 6px 16px; border-radius: 20px;
+    font-size: 11px; color: var(--gold-light);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 72px);
+    color: var(--white); line-height: 1.1;
+    font-weight: 700; margin-bottom: 12px;
+  }
+  .hero h1 em { color: var(--gold-light); font-style: normal; }
+  .hero-tagline {
+    font-size: 15px; color: var(--gold);
+    letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 24px; font-weight: 500;
+  }
+  .hero-desc {
+    font-size: 18px; color: rgba(255,255,255,0.7);
+    line-height: 1.7; max-width: 660px; margin-bottom: 48px;
+  }
+  .hero-stats {
+    display: flex; gap: 48px; flex-wrap: wrap;
+  }
+  .hero-stat { }
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 700; color: var(--gold-light);
+    display: block; line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 12px; color: rgba(255,255,255,0.5);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-top: 4px; display: block;
+  }
+  .hero-divider { width: 1px; background: rgba(201,168,76,0.25); }
+
+  .hero-scroll {
+    position: absolute; bottom: 32px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.3); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .hero-scroll-line {
+    width: 1px; height: 48px;
+    background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0%, 100% { transform: scaleY(1); opacity: 0.5; }
+    50% { transform: scaleY(1.3); opacity: 1; }
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    display: none; padding: 100px 4rem;
+    min-height: 100vh;
+  }
+  section.active { display: block; }
+
+  .section-header {
+    max-width: 800px; margin: 0 auto 64px; text-align: center;
+  }
+  .section-eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold-dark);
+    margin-bottom: 16px; display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    color: var(--navy); font-weight: 700; line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .section-desc {
+    font-size: 17px; color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow);
+  }
+  .card-navy {
+    background: var(--navy);
+    border-color: rgba(201,168,76,0.3);
+    color: var(--white);
+  }
+  .card-gold-accent {
+    border-left: 3px solid var(--gold);
+  }
+
+  /* ── GRID ── */
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+  /* ── BADGES / PILLS ── */
+  .badge {
+    display: inline-block; padding: 4px 12px;
+    border-radius: 12px; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .badge-gold { background: rgba(201,168,76,0.15); color: var(--gold-dark); }
+  .badge-green { background: #E6F4EA; color: #1B5E20; }
+  .badge-blue { background: #E3F2FD; color: #0D47A1; }
+  .badge-red { background: #FDECEA; color: #B71C1C; }
+  .badge-orange { background: #FFF3E0; color: #E65100; }
+  .badge-purple { background: #F3E5F5; color: #4A148C; }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th {
+    background: var(--navy); color: var(--white);
+    padding: 12px 16px; text-align: left;
+    font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+    font-weight: 500;
+  }
+  th:first-child { border-radius: 6px 0 0 0; }
+  th:last-child { border-radius: 0 6px 0 0; }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    color: var(--text-primary);
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: rgba(248,244,236,0.6); }
+  tr:hover td { background: rgba(201,168,76,0.06); }
+
+  /* ── ALERT BOXES ── */
+  .alert {
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin: 24px 0;
+    font-size: 14px; line-height: 1.65;
+    border-left: 4px solid;
+  }
+  .alert-gold {
+    background: rgba(201,168,76,0.08);
+    border-color: var(--gold);
+    color: var(--gold-dark);
+  }
+  .alert-red {
+    background: rgba(185,28,28,0.06);
+    border-color: #B71C1C;
+    color: #7F1D1D;
+  }
+  .alert-green {
+    background: rgba(22,101,52,0.06);
+    border-color: #16A34A;
+    color: #14532D;
+  }
+  .alert-navy {
+    background: rgba(10,22,40,0.06);
+    border-color: var(--navy-mid);
+    color: var(--navy);
+  }
+  .alert strong { font-weight: 600; display: block; margin-bottom: 6px; }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 40px; }
+  .timeline::before {
+    content: ''; position: absolute;
+    left: 12px; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+  .timeline-item { position: relative; margin-bottom: 40px; }
+  .timeline-dot {
+    position: absolute; left: -34px; top: 4px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--gold);
+    border: 3px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--gold);
+  }
+  .timeline-label {
+    font-size: 11px; font-weight: 600; color: var(--gold-dark);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .timeline-content { }
+  .timeline-title {
+    font-weight: 600; font-size: 16px; color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .timeline-body { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+
+  /* ── COUNTRY CARDS ── */
+  .country-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    transition: all 0.2s;
+  }
+  .country-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 8px 32px rgba(201,168,76,0.15);
+    transform: translateY(-2px);
+  }
+  .country-flag { font-size: 24px; margin-bottom: 10px; display: block; }
+  .country-name { font-weight: 600; font-size: 15px; color: var(--navy); margin-bottom: 4px; }
+  .country-entity { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+  .country-meta { display: flex; flex-direction: column; gap: 6px; }
+  .country-row { display: flex; justify-content: space-between; font-size: 12px; }
+  .country-row-label { color: var(--text-muted); }
+  .country-row-value { font-weight: 500; color: var(--text-primary); }
+
+  /* ── PRIORITY MATRIX ── */
+  .priority-phases { display: flex; flex-direction: column; gap: 16px; }
+  .phase-row {
+    display: flex; align-items: flex-start; gap: 20px;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px;
+  }
+  .phase-num {
+    flex-shrink: 0; width: 44px; height: 44px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700;
+    color: var(--white);
+  }
+  .phase-1 .phase-num { background: var(--gold); }
+  .phase-2 .phase-num { background: #1565C0; }
+  .phase-3 .phase-num { background: #E65100; }
+  .phase-4 .phase-num { background: #B71C1C; }
+  .phase-info { flex: 1; }
+  .phase-title { font-weight: 600; font-size: 15px; color: var(--navy); margin-bottom: 8px; }
+  .phase-countries { display: flex; flex-wrap: wrap; gap: 8px; }
+  .phase-country-tag {
+    background: var(--cream); border: 1px solid var(--border);
+    border-radius: 6px; padding: 4px 10px;
+    font-size: 13px; color: var(--text-primary);
+  }
+
+  /* ── FUNNEL DIAGRAM ── */
+  .funnel-wrap {
+    display: flex; gap: 24px;
+    align-items: flex-start; flex-wrap: wrap;
+  }
+  .funnel-box {
+    flex: 1; min-width: 200px;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); overflow: hidden;
+  }
+  .funnel-header {
+    background: var(--navy); padding: 16px 20px;
+    color: var(--white);
+  }
+  .funnel-header h4 { font-size: 14px; font-weight: 600; }
+  .funnel-header p { font-size: 11px; opacity: 0.6; margin-top: 4px; }
+  .funnel-steps { padding: 16px; }
+  .funnel-step {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .funnel-step:last-child { border-bottom: none; }
+  .funnel-step-num {
+    flex-shrink: 0; width: 22px; height: 22px;
+    border-radius: 50%; background: var(--gold);
+    color: var(--white); font-size: 11px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .funnel-step-text { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* ── ADVISOR CARDS ── */
+  .advisor-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px;
+  }
+  .advisor-country { font-size: 20px; margin-bottom: 8px; }
+  .advisor-name { font-weight: 600; font-size: 14px; color: var(--navy); margin-bottom: 4px; }
+  .advisor-type { font-size: 11px; color: var(--gold-dark); font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+  .advisor-spec { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+  .advisor-web { font-size: 11px; color: var(--gold-dark); margin-top: 8px; font-weight: 500; }
+
+  /* ── HUB COMPARISON ── */
+  .hub-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 24px;
+    position: relative;
+  }
+  .hub-card.recommended {
+    border-color: var(--gold);
+    border-width: 2px;
+  }
+  .hub-recommended-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--gold); color: var(--white);
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 4px 14px; border-radius: 10px;
+  }
+  .hub-flag { font-size: 28px; margin-bottom: 12px; }
+  .hub-name { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--navy);
+    font-weight: 700; margin-bottom: 4px; }
+  .hub-role { font-size: 12px; color: var(--gold-dark); font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+  .hub-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .hub-feature { display: flex; gap: 8px; font-size: 13px; color: var(--text-secondary); }
+  .hub-feature::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+
+  /* ── COMPARISON TABLE FOR MARKETS ── */
+  .market-priorities { display: grid; gap: 12px; }
+
+  /* ── CONTENT HEADINGS ── */
+  .content-h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; color: var(--navy); font-weight: 700;
+    margin: 48px 0 20px;
+    padding-bottom: 12px; border-bottom: 2px solid var(--border);
+  }
+  .content-h3 {
+    font-size: 17px; font-weight: 600; color: var(--navy-mid);
+    margin: 32px 0 14px;
+  }
+  .content-p {
+    font-size: 15px; color: var(--text-secondary); line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); color: rgba(255,255,255,0.6);
+    padding: 48px 4rem;
+    border-top: 1px solid rgba(201,168,76,0.3);
+  }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    flex-wrap: wrap; gap: 24px;
+  }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--white); }
+  .footer-tagline { font-size: 12px; color: var(--gold-light); letter-spacing: 0.12em;
+    text-transform: uppercase; margin-top: 4px; }
+  .footer-copy { font-size: 12px; }
+  .footer-copy strong { color: var(--gold-light); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hero, section { padding: 100px 1.5rem 60px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .hero-stats { gap: 24px; }
+    .funnel-wrap { flex-direction: column; }
+    footer { padding: 32px 1.5rem; }
+  }
+
+  /* ── NAV MOBILE TOGGLE ── */
+  .nav-hamburger {
+    display: none; background: none; border: none; cursor: pointer;
+    color: var(--white); font-size: 22px;
+  }
+  @media (max-width: 900px) {
+    .nav-hamburger { display: flex; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: fixed; top: 64px; left: 0; right: 0;
+      background: rgba(10,22,40,0.98);
+      padding: 20px; gap: 4px; z-index: 999;
+    }
+  }
+
+  /* smooth scroll target offset */
+  .scroll-offset { scroll-margin-top: 80px; }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav>
+  <a class="nav-brand" href="#home" onclick="showSection('home')">
+    <div class="nav-logo">O</div>
+    <div>
+      <span class="nav-title">ORYGN</span>
+      <span class="nav-subtitle">BGM Corporation</span>
+    </div>
+  </a>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" onclick="showSection('home')" class="active" id="nav-home">Inicio</a></li>
+    <li><a href="#producto" onclick="showSection('producto')" id="nav-producto">Producto</a></li>
+    <li><a href="#regulatorio" onclick="showSection('regulatorio')" id="nav-regulatorio">Regulatorio</a></li>
+    <li><a href="#documentacion" onclick="showSection('documentacion')" id="nav-documentacion">Docs Maestros</a></li>
+    <li><a href="#mapa-paises" onclick="showSection('mapa-paises')" id="nav-mapa-paises">Países</a></li>
+    <li><a href="#manufactura" onclick="showSection('manufactura')" id="nav-manufactura">Manufactura</a></li>
+    <li><a href="#asesores" onclick="showSection('asesores')" id="nav-asesores">Asesores</a></li>
+    <li><a href="#compensacion" onclick="showSection('compensacion')" id="nav-compensacion">Compensación</a></li>
+    <li><a href="#mlm-latam" onclick="showSection('mlm-latam')" id="nav-mlm-latam">MLM LATAM</a></li>
+    <li><a href="#mlm-europa" onclick="showSection('mlm-europa')" id="nav-mlm-europa">MLM Europa</a></li>
+    <li><a href="#bgm" onclick="showSection('bgm')" id="nav-bgm">BGM Corp</a></li>
+    <li><a href="#preguntas" onclick="showSection('preguntas')" id="nav-preguntas">Preguntas</a></li>
+  </ul>
+
+  <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menú">☰</button>
+</nav>
+
+
+<!-- ═══ HERO / HOME ═══ -->
+<section id="home" class="active" style="padding: 0;">
+  <div class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><span></span>BGM Corporation · Mayo 2026</div>
+      <p class="hero-tagline">Pharma Results. Natural Delivery.</p>
+      <h1>ORYGN &amp; <em>triGLP</em><br>Estrategia Global</h1>
+      <p class="hero-desc">
+        Documentación estratégica completa para la expansión internacional de ORYGN/B-Epic
+        con triGLP — el primer péptido bioactivo natural que activa GLP-1, GIP y GLP-2 simultáneamente.
+        Análisis regulatorio, red MLM y manufactura para LATAM y Europa.
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">15+</span>
+          <span class="hero-stat-label">Mercados LATAM</span>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">4</span>
+          <span class="hero-stat-label">Mercados Europa</span>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">7</span>
+          <span class="hero-stat-label">Documentos</span>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">38</span>
+          <span class="hero-stat-label">Años de network</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      scroll
+    </div>
+  </div>
+
+  <!-- Document overview cards -->
+  <div style="padding: 80px 4rem; background: var(--cream);">
+    <div class="section-header">
+      <span class="section-eyebrow">Documentación del Proyecto</span>
+      <h2 class="section-title">Todos los documentos del proyecto</h2>
+      <p class="section-desc">Selecciona cualquier sección del menú superior para acceder a la información completa de cada informe elaborado por BGM Corporation para ORYGN/B-Epic.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card card-gold-accent" style="cursor:pointer;" onclick="showSection('estrategia')">
+        <div style="font-size:32px; margin-bottom:16px;">🌍</div>
+        <div class="badge badge-gold" style="margin-bottom:12px;">Estrategia Global</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--navy); margin-bottom:10px;">Estrategia de Promoción Global</h3>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">Análisis del producto, empresa y momento de mercado. Sistema replicable MLM con funnels, automatización y plan de expansión 90 días.</p>
+      </div>
+
+      <div class="card card-gold-accent" style="cursor:pointer;" onclick="showSection('regulatorio')">
+        <div style="font-size:32px; margin-bottom:16px;">📋</div>
+        <div class="badge badge-blue" style="margin-bottom:12px;">Regulatorio</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--navy); margin-bottom:10px;">Estrategia Regulatoria LATAM</h3>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">Mapa regulatorio completo de 15 países LATAM. Entidades, procesos, tiempos y costes. Alertas específicas para triGLP.</p>
+      </div>
+
+      <div class="card card-gold-accent" style="cursor:pointer;" onclick="showSection('asesores')">
+        <div style="font-size:32px; margin-bottom:16px;">🤝</div>
+        <div class="badge badge-purple" style="margin-bottom:12px;">Asesores · V2</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--navy); margin-bottom:10px;">Asesores Regulatorios + Caribe + Perú</h3>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">Directorio completo de asesores por país. Puerto Rico, República Dominicana, Caribe. Análisis detallado Perú/DIGEMID.</p>
+      </div>
+
+      <div class="card card-gold-accent" style="cursor:pointer;" onclick="showSection('mlm-latam')">
+        <div style="font-size:32px; margin-bottom:16px;">🌎</div>
+        <div class="badge badge-green" style="margin-bottom:12px;">Red MLM</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--navy); margin-bottom:10px;">Construcción de Red MLM — LATAM</h3>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">Cómo encontrar, contactar y reclutar líderes networkers. Guía país por país con plataformas, hashtags y plantillas.</p>
+      </div>
+
+      <div class="card card-gold-accent" style="cursor:pointer;" onclick="showSection('mlm-europa')">
+        <div style="font-size:32px; margin-bottom:16px;">🇪🇺</div>
+        <div class="badge badge-blue" style="margin-bottom:12px;">Red MLM · Europa</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--navy); margin-bottom:10px;">Estrategia Red MLM — Europa</h3>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">España, Portugal, Francia e Italia. Diferencias clave vs. LATAM, GDPR, canales por país y plan 90 días Europa.</p>
+      </div>
+
+      <div class="card card-gold-accent" style="cursor:pointer;" onclick="showSection('manufactura')">
+        <div style="font-size:32px; margin-bottom:16px;">🏭</div>
+        <div class="badge badge-orange" style="margin-bottom:12px;">Manufactura</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--navy); margin-bottom:10px;">HUB de Manufactura LATAM</h3>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">Estrategia de optimización de costos. Maquila local, zonas francas, Colombia HUB y Panamá. Análisis financiero completo.</p>
+      </div>
+
+      <div class="card card-gold-accent" style="cursor:pointer;" onclick="showSection('mapa-paises')">
+        <div style="font-size:32px; margin-bottom:16px;">📍</div>
+        <div class="badge badge-green" style="margin-bottom:12px;">Análisis por país</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--navy); margin-bottom:10px;">Mercados detallados</h3>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">Perfil completo de cada país prioritario: México, Colombia, Brasil, Ecuador, Chile, Perú, RD, Caribe, CA y Argentina.</p>
+      </div>
+
+      <div class="card card-gold-accent" style="cursor:pointer;" onclick="showSection('compensacion')">
+        <div style="font-size:32px; margin-bottom:16px;">💰</div>
+        <div class="badge badge-gold" style="margin-bottom:12px;">Compensación</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--navy); margin-bottom:10px;">Plan de compensación</h3>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">Las 9 formas de generar ingresos. Bonos clave, guión de presentación y cómo explicar el plan con honestidad y claridad.</p>
+      </div>
+
+      <div class="card card-gold-accent" style="cursor:pointer;" onclick="showSection('documentacion')">
+        <div style="font-size:32px; margin-bottom:16px;">📁</div>
+        <div class="badge badge-blue" style="margin-bottom:12px;">Master Dossier</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--navy); margin-bottom:10px;">Documentación maestra</h3>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">Todos los documentos que ORYGN debe preparar una vez. Guía de transferencia de registros por país. Proceso completo.</p>
+      </div>
+
+      <div class="card card-gold-accent" style="cursor:pointer;" onclick="showSection('bgm')">
+        <div style="font-size:32px; margin-bottom:16px;">🏢</div>
+        <div class="badge badge-purple" style="margin-bottom:12px;">BGM Corporation</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--navy); margin-bottom:10px;">Propuesta BGM para ORYGN</h3>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">Capacidades únicas de BGM: Porto Alegre, red de líderes, multilingüismo, África Occidental. Los 3 mercados de ventaja inmediata.</p>
+      </div>
+
+      <div class="card card-gold-accent" style="cursor:pointer;" onclick="showSection('preguntas')">
+        <div style="font-size:32px; margin-bottom:16px;">❓</div>
+        <div class="badge badge-orange" style="margin-bottom:12px;">Reunión ORYGN</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--navy); margin-bottom:10px;">Preguntas estratégicas</h3>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">7 preguntas clave para la reunión con ORYGN/B-Epic. Opciones de nombre del sistema. Conclusiones y llamada a la acción.</p>
+      </div>
+    </div>
+
+    <!-- mapa de países -->
+    <div style="margin-top:64px;">
+      <div class="section-header" style="margin-bottom:32px;">
+        <span class="section-eyebrow">Expansión Geográfica</span>
+        <h2 class="section-title">Mapa estratégico de países</h2>
+      </div>
+      <div class="priority-phases">
+        <div class="phase-row phase-1">
+          <div class="phase-num">1</div>
+          <div class="phase-info">
+            <div class="phase-title">🟢 PRIORIDAD 1 · Acción inmediata (0-6 meses)</div>
+            <div class="phase-countries">
+              <span class="phase-country-tag">🇲🇽 México (operativo)</span>
+              <span class="phase-country-tag">🇨🇴 Colombia (operativo)</span>
+              <span class="phase-country-tag">🇧🇷 Brasil</span>
+              <span class="phase-country-tag">🇨🇱 Chile</span>
+              <span class="phase-country-tag">🇪🇨 Ecuador</span>
+              <span class="phase-country-tag">🇵🇪 Perú</span>
+              <span class="phase-country-tag">🇩🇴 Rep. Dominicana</span>
+              <span class="phase-country-tag">🇵🇷 Puerto Rico</span>
+            </div>
+          </div>
+        </div>
+        <div class="phase-row phase-2">
+          <div class="phase-num">2</div>
+          <div class="phase-info">
+            <div class="phase-title">🔵 FASE 2 · 6-18 meses</div>
+            <div class="phase-countries">
+              <span class="phase-country-tag">🇦🇷 Argentina</span>
+              <span class="phase-country-tag">🇬🇹 Guatemala</span>
+              <span class="phase-country-tag">🇵🇦 Panamá</span>
+              <span class="phase-country-tag">🇺🇾 Uruguay</span>
+              <span class="phase-country-tag">🇧🇴 Bolivia</span>
+              <span class="phase-country-tag">🇵🇾 Paraguay</span>
+              <span class="phase-country-tag">🇳🇮 Nicaragua</span>
+            </div>
+          </div>
+        </div>
+        <div class="phase-row phase-3">
+          <div class="phase-num">3</div>
+          <div class="phase-info">
+            <div class="phase-title">🟠 FASE 3 · 18-36 meses (África + CA)</div>
+            <div class="phase-countries">
+              <span class="phase-country-tag">🇸🇻 El Salvador</span>
+              <span class="phase-country-tag">🇭🇳 Honduras</span>
+              <span class="phase-country-tag">🇧🇯 Benín</span>
+              <span class="phase-country-tag">🇸🇳 Senegal</span>
+              <span class="phase-country-tag">🇬🇭 Ghana</span>
+              <span class="phase-country-tag">🇹🇬 Togo</span>
+              <span class="phase-country-tag">🇲🇦 Marruecos</span>
+              <span class="phase-country-tag">🇳🇬 Nigeria</span>
+            </div>
+          </div>
+        </div>
+        <div class="phase-row phase-4">
+          <div class="phase-num">!</div>
+          <div class="phase-info">
+            <div class="phase-title">🔴 Analizar economía / Baja prioridad</div>
+            <div class="phase-countries">
+              <span class="phase-country-tag">🇻🇪 Venezuela</span>
+              <span class="phase-country-tag">🇦🇷 Argentina (vigilar)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ EL PRODUCTO ═══ -->
+<section id="producto">
+  <div class="section-header">
+    <span class="section-eyebrow">Análisis de Producto</span>
+    <h2 class="section-title">triGLP — Pharma Results. Natural Delivery.</h2>
+    <p class="section-desc">El primer péptido bioactivo de salmón noruego que activa simultáneamente tres vías metabólicas clave. Respaldo científico publicado. Doble protección de patente.</p>
+  </div>
+
+  <div class="grid-3" style="margin-bottom:48px;">
+    <div class="card" style="text-align:center;">
+      <div style="font-size:40px; margin-bottom:16px;">🐟</div>
+      <div class="badge badge-gold" style="margin-bottom:12px;">Ingrediente</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:16px; color:var(--navy); margin-bottom:10px;">Salmón noruego de calidad sashimi</h3>
+      <p style="font-size:13px; color:var(--text-secondary);">Norwegian Salmon Protein Hydrolysate · Agua desionizada · Extracto de limón ecológico · Extracto de raíz de jengibre ecológico</p>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div style="font-size:40px; margin-bottom:16px;">🔬</div>
+      <div class="badge badge-blue" style="margin-bottom:12px;">Ciencia</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:16px; color:var(--navy); margin-bottom:10px;">Estudios peer-reviewed publicados</h3>
+      <p style="font-size:13px; color:var(--text-secondary);">Journal of Obesity &amp; Weight Loss Therapy (2016, Framroze et al.) · Biomolecules/Stanford (2022, Wei et al.)</p>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div style="font-size:40px; margin-bottom:16px;">📜</div>
+      <div class="badge badge-green" style="margin-bottom:12px;">Regulación</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:16px; color:var(--navy); margin-bottom:10px;">NDI FDA · Doble patente</h3>
+      <p style="font-size:13px; color:var(--text-secondary);">New Dietary Ingredient (FDA USA) · Certificaciones Kosher, Halal y HACCP · Health Canada</p>
+    </div>
+  </div>
+
+  <h2 class="content-h2">Mecanismo de acción — 3 vías simultáneas</h2>
+  <div class="grid-3" style="margin-bottom:40px;">
+    <div class="card card-gold-accent">
+      <div style="font-size:28px; margin-bottom:12px;">⚡</div>
+      <h4 style="font-weight:600; color:var(--navy); margin-bottom:8px;">GLP-1 + GIP</h4>
+      <p style="font-size:13px; color:var(--text-secondary);">Metabolismo y quema de grasa. La misma vía que activan Ozempic y Wegovy — pero de forma natural, sin inyecciones.</p>
+    </div>
+    <div class="card card-gold-accent">
+      <div style="font-size:28px; margin-bottom:12px;">🛡️</div>
+      <h4 style="font-weight:600; color:var(--navy); margin-bottom:8px;">GLP-2</h4>
+      <p style="font-size:13px; color:var(--text-secondary);">Salud intestinal y preservación de masa muscular. Diferencial frente a medicamentos: pérdida de grasa sin pérdida de músculo.</p>
+    </div>
+    <div class="card card-gold-accent">
+      <div style="font-size:28px; margin-bottom:12px;">🌿</div>
+      <h4 style="font-weight:600; color:var(--navy); margin-bottom:8px;">Antiinflamatorio + Antioxidante</h4>
+      <p style="font-size:13px; color:var(--text-secondary);">Protección celular. Reducción del 15% en marcadores inflamatorios (IL-6). Beneficio adicional al metabolismo.</p>
+    </div>
+  </div>
+
+  <h2 class="content-h2">Resultados clínicos publicados</h2>
+  <div class="grid-4" style="margin-bottom:48px;">
+    <div class="card" style="text-align:center; padding:24px 16px;">
+      <div style="font-family:'Playfair Display',serif; font-size:36px; color:var(--gold); font-weight:700;">6–7%</div>
+      <div style="font-size:12px; color:var(--text-muted); margin-top:6px; line-height:1.4;">Reducción IMC<br>en 6-8 semanas</div>
+    </div>
+    <div class="card" style="text-align:center; padding:24px 16px;">
+      <div style="font-family:'Playfair Display',serif; font-size:36px; color:var(--gold); font-weight:700;">10%</div>
+      <div style="font-size:12px; color:var(--text-muted); margin-top:6px; line-height:1.4;">Reducción grasa corporal<br>sin pérdida muscular</div>
+    </div>
+    <div class="card" style="text-align:center; padding:24px 16px;">
+      <div style="font-family:'Playfair Display',serif; font-size:36px; color:var(--gold); font-weight:700;">100%</div>
+      <div style="font-size:12px; color:var(--text-muted); margin-top:6px; line-height:1.4;">Mejora captación<br>de glucosa muscular</div>
+    </div>
+    <div class="card" style="text-align:center; padding:24px 16px;">
+      <div style="font-family:'Playfair Display',serif; font-size:36px; color:var(--gold); font-weight:700;">15%</div>
+      <div style="font-size:12px; color:var(--text-muted); margin-top:6px; line-height:1.4;">Reducción marcadores<br>inflamatorios (IL-6)</div>
+    </div>
+  </div>
+
+  <div class="alert alert-gold">
+    <strong>Advertencia regulatoria clave</strong>
+    En el material de marketing de ORYGN aparecen afirmaciones como "clínicamente probada reducción del IMC en 6-7%" y comparaciones directas con Ozempic. En varios países de LATAM (especialmente Colombia, Argentina y Brasil), estas afirmaciones terapéuticas pueden motivar a la autoridad a reclasificar el producto como medicamento. Se recomienda adaptar el material de marketing a lenguaje de suplemento: "puede contribuir a" en lugar de "clínicamente probada".
+  </div>
+
+  <h2 class="content-h2">Valoración del proyecto — BGM Corporation</h2>
+  <div class="grid-3">
+    <div class="card card-navy" style="text-align:center;">
+      <div style="font-family:'Playfair Display',serif; font-size:48px; color:var(--gold-light); font-weight:700;">8/10</div>
+      <div style="font-weight:600; color:var(--white); margin:8px 0;">El Producto</div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.6);">Sólido para el sector. Diferenciador real con ciencia peer-reviewed publicada.</div>
+    </div>
+    <div class="card card-navy" style="text-align:center;">
+      <div style="font-family:'Playfair Display',serif; font-size:48px; color:var(--gold-light); font-weight:700;">6.5/10</div>
+      <div style="font-weight:600; color:var(--white); margin:8px 0;">La Empresa</div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.6);">Pendiente de verificación B-Epic como matriz. Potencial alto, diligencia debida necesaria.</div>
+    </div>
+    <div class="card card-navy" style="text-align:center;">
+      <div style="font-family:'Playfair Display',serif; font-size:48px; color:var(--gold-light); font-weight:700;">10/10</div>
+      <div style="font-weight:600; color:var(--white); margin:8px 0;">El Momento</div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.6);">El universo GLP-1 domina la conversación global. La ventana de oportunidad es ahora.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ ESTRATEGIA GLOBAL ═══ -->
+<section id="estrategia">
+  <div class="section-header">
+    <span class="section-eyebrow">Estrategia de Promoción Global</span>
+    <h2 class="section-title">Sistema Replicable · Red Internacional</h2>
+    <p class="section-desc">Arquitectura completa del sistema de captación, conversión y duplicación para construir una red MLM internacional con ORYGN/triGLP.</p>
+  </div>
+
+  <h2 class="content-h2">Los 3 avatares de la red</h2>
+  <div class="grid-3" style="margin-bottom:48px;">
+    <div class="card card-gold-accent">
+      <div class="badge badge-gold" style="margin-bottom:12px;">Avatar A</div>
+      <h3 style="font-weight:600; color:var(--navy); margin-bottom:10px;">El Networker Activo</h3>
+      <p style="font-size:13px; color:var(--text-secondary); line-height:1.6;">Ya está en MLM o lo ha estado. Conoce el modelo. Frustrado con su empresa actual o busca diversificar. Habla su idioma: duplicación, volumen, ranqueos, libertad financiera.</p>
+    </div>
+    <div class="card card-gold-accent">
+      <div class="badge badge-blue" style="margin-bottom:12px;">Avatar B</div>
+      <h3 style="font-weight:600; color:var(--navy); margin-bottom:10px;">El Emprendedor Digital</h3>
+      <p style="font-size:13px; color:var(--text-secondary); line-height:1.6;">Tiene presencia online, vende cursos, hace afiliación, busca ingresos pasivos. No necesariamente conoce el MLM pero entiende de funnels, audiencias y monetización.</p>
+    </div>
+    <div class="card card-gold-accent">
+      <div class="badge badge-green" style="margin-bottom:12px;">Avatar C</div>
+      <h3 style="font-weight:600; color:var(--navy); margin-bottom:10px;">El Consciente de Salud</h3>
+      <p style="font-size:13px; color:var(--text-secondary); line-height:1.6;">Le interesa el producto antes que el negocio. Puede convertirse en cliente que luego se convierte en distribuidor. El argumento "GLP-1 natural vs. Ozempic" es su gancho principal.</p>
+    </div>
+  </div>
+
+  <h2 class="content-h2">Los 3 funnels del sistema</h2>
+  <div class="funnel-wrap" style="margin-bottom:48px;">
+    <div class="funnel-box">
+      <div class="funnel-header">
+        <h4>Funnel 1 — "El Negocio"</h4>
+        <p>Para: Avatar A · Networkers y emprendedores</p>
+      </div>
+      <div class="funnel-steps">
+        <div class="funnel-step"><div class="funnel-step-num">1</div><div class="funnel-step-text">Landing de captura: "¿Estás en el NM y sientes que algo falta?"</div></div>
+        <div class="funnel-step"><div class="funnel-step-num">2</div><div class="funnel-step-text">Thank You + Instrucción inmediata: unirse a Telegram, ver video</div></div>
+        <div class="funnel-step"><div class="funnel-step-num">3</div><div class="funnel-step-text">Presentación del Negocio (VSL de 18-22 min)</div></div>
+        <div class="funnel-step"><div class="funnel-step-num">4</div><div class="funnel-step-text">Aplicación / Llamada estratégica 1:1</div></div>
+      </div>
+    </div>
+    <div class="funnel-box">
+      <div class="funnel-header" style="background: var(--navy-light);">
+        <h4>Funnel 2 — "La Salud"</h4>
+        <p>Para: Avatar C · Interesados en salud/GLP-1</p>
+      </div>
+      <div class="funnel-steps">
+        <div class="funnel-step"><div class="funnel-step-num">1</div><div class="funnel-step-text">Landing + Lead Magnet: "Guía GLP-1 Natural"</div></div>
+        <div class="funnel-step"><div class="funnel-step-num">2</div><div class="funnel-step-text">Thank You + Video explicativo triGLP (3 min)</div></div>
+        <div class="funnel-step"><div class="funnel-step-num">3</div><div class="funnel-step-text">Página de producto con estudios y resultados</div></div>
+        <div class="funnel-step"><div class="funnel-step-num">4</div><div class="funnel-step-text">Upsell: "¿Y si además te pagaran por compartirlo?"</div></div>
+      </div>
+    </div>
+    <div class="funnel-box">
+      <div class="funnel-header" style="background: #1C3A5E;">
+        <h4>Funnel 3 — "El Sistema"</h4>
+        <p>Para: Líderes MLM con organización propia</p>
+      </div>
+      <div class="funnel-steps">
+        <div class="funnel-step"><div class="funnel-step-num">1</div><div class="funnel-step-text">Landing: "Líder: ¿tu sistema no duplica como debería?"</div></div>
+        <div class="funnel-step"><div class="funnel-step-num">2</div><div class="funnel-step-text">Thank You + Acceso a Webinar o Video Estratégico</div></div>
+        <div class="funnel-step"><div class="funnel-step-num">3</div><div class="funnel-step-text">Presentación del Sistema Replicable completo</div></div>
+        <div class="funnel-step"><div class="funnel-step-num">4</div><div class="funnel-step-text">Llamada estratégica 1:1 con Benito</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="content-h2">Secuencia de 7 emails — Funnel 1</h2>
+  <div class="table-wrap" style="margin-bottom:48px;">
+    <table>
+      <thead><tr><th>#</th><th>Asunto</th><th>Envío</th><th>Objetivo</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Tu acceso está aquí — léeme antes de hacer nada más</td><td>Inmediato</td><td>Bienvenida + llevar al video</td></tr>
+        <tr><td>2</td><td>Lo que Ozempic hace con inyecciones, triGLP lo hace con una gota</td><td>+4 horas</td><td>Credibilidad del producto</td></tr>
+        <tr><td>3</td><td>Por qué ahora es el momento exacto (y no dentro de 6 meses)</td><td>Día 2</td><td>Urgencia de timing</td></tr>
+        <tr><td>4</td><td>¿Cuánto puedes ganar realmente? Te lo explico sin humo</td><td>Día 4</td><td>Claridad del negocio</td></tr>
+        <tr><td>5</td><td>Lo que me dijo [nombre] después de sus primeras 6 semanas</td><td>Día 6</td><td>Prueba social</td></tr>
+        <tr><td>6</td><td>Lo que recibe cada persona que entra en tu red desde el día 1</td><td>Día 8</td><td>Eliminar objeción técnica</td></tr>
+        <tr><td>7</td><td>[Nombre], es el momento de tomar una decisión</td><td>Día 10</td><td>Conversión final</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="content-h2">Plan de implementación — 90 días</h2>
+  <div class="timeline">
+    <div class="timeline-item"><div class="timeline-dot"></div>
+      <div class="timeline-label">Semanas 1–2</div>
+      <div class="timeline-title">Infraestructura digital</div>
+      <div class="timeline-body">Construir los 3 funnels en Systeme.io. Crear pack de contenido inicial (20 imágenes + copies). Grabar videos de presentación. Configurar secuencias de email.</div>
+    </div>
+    <div class="timeline-item"><div class="timeline-dot"></div>
+      <div class="timeline-label">Semanas 3–6</div>
+      <div class="timeline-title">Lanzamiento personal</div>
+      <div class="timeline-body">Activar lista y audiencia actual. Publicar contenido diario. Hacer los primeros 2-3 webinars en vivo. Objetivo: 10-20 distribuidores en diferentes mercados.</div>
+    </div>
+    <div class="timeline-item"><div class="timeline-dot"></div>
+      <div class="timeline-label">Semanas 7–12</div>
+      <div class="timeline-title">Duplicación y optimización</div>
+      <div class="timeline-body">Entregar Kit de Inicio a cada distribuidor. Onboarding grupal semanal. Medir qué funnel y qué mercado convierte mejor. Crear líderes en cada región.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ REGULATORIO LATAM ═══ -->
+<section id="regulatorio">
+  <div class="section-header">
+    <span class="section-eyebrow">Estudio 1 · Estrategia Regulatoria LATAM</span>
+    <h2 class="section-title">Mapa Regulatorio — 15 Mercados</h2>
+    <p class="section-desc">Guía completa de permisos, licencias y autorizaciones sanitarias para la comercialización de triGLP como suplemento alimenticio en América Latina.</p>
+  </div>
+
+  <div class="alert alert-navy" style="margin-bottom:40px;">
+    <strong>Base regulatoria de triGLP</strong>
+    triGLP está clasificado como NDI (New Dietary Ingredient) por la FDA de EEUU, cuenta con certificaciones Kosher, Halal y HACCP, y sus estudios clínicos están publicados en revistas peer-reviewed. Esta base regulatoria estadounidense es el punto de partida más sólido para el proceso de registro en todos los países LATAM.
+  </div>
+
+  <h2 class="content-h2">Tabla maestra regulatoria</h2>
+  <div class="table-wrap" style="margin-bottom:48px;">
+    <table>
+      <thead><tr><th>País</th><th>Entidad</th><th>Categoría</th><th>Tiempo Est.</th><th>Coste Est.</th><th>Prioridad</th></tr></thead>
+      <tbody>
+        <tr><td>🇲🇽 México</td><td>COFEPRIS</td><td>Suplemento Alimenticio</td><td>3-6 meses</td><td>$2,000–8,000</td><td><span class="badge badge-gold">Fase 1</span></td></tr>
+        <tr><td>🇧🇷 Brasil</td><td>ANVISA</td><td>Suplemento Alimentar</td><td>6-18 meses</td><td>$5,000–15,000</td><td><span class="badge badge-gold">Fase 1</span></td></tr>
+        <tr><td>🇨🇴 Colombia</td><td>INVIMA</td><td>Suplemento Dietario</td><td>6-12 meses</td><td>$3,000–10,000</td><td><span class="badge badge-gold">Fase 1</span></td></tr>
+        <tr><td>🇨🇱 Chile</td><td>ISP – ANAMED</td><td>Suplemento Alimentario</td><td>2-8 semanas</td><td>$1,500–5,000</td><td><span class="badge badge-gold">Fase 1</span></td></tr>
+        <tr><td>🇪🇨 Ecuador</td><td>ARCSA</td><td>Suplemento Alimenticio</td><td>2-3 meses</td><td>$1,000–4,000</td><td><span class="badge badge-gold">Fase 1</span></td></tr>
+        <tr><td>🇵🇪 Perú</td><td>DIGEMID – MINSA</td><td>Producto Dietético</td><td>6-12 meses</td><td>$3,000–8,000</td><td><span class="badge badge-blue">Fase 2</span></td></tr>
+        <tr><td>🇦🇷 Argentina</td><td>ANMAT / SENASA</td><td>Suplemento Dietario</td><td>6-18 meses</td><td>$4,000–12,000</td><td><span class="badge badge-blue">Fase 2</span></td></tr>
+        <tr><td>🇬🇹 Guatemala</td><td>MSPAS</td><td>Alimento / Suplemento</td><td>3-6 meses</td><td>$1,000–4,000</td><td><span class="badge badge-blue">Fase 2</span></td></tr>
+        <tr><td>🇵🇦 Panamá</td><td>MINSA</td><td>Suplemento / Alimento Especial</td><td>3-6 meses</td><td>$1,500–5,000</td><td><span class="badge badge-blue">Fase 2</span></td></tr>
+        <tr><td>🇸🇻 El Salvador</td><td>MINSAL – DISAM</td><td>Alimento / Suplemento</td><td>3-6 meses</td><td>$800–3,000</td><td><span class="badge badge-orange">Fase 3</span></td></tr>
+        <tr><td>🇭🇳 Honduras</td><td>ARSA</td><td>Alimento / Suplemento</td><td>3-6 meses</td><td>$800–3,000</td><td><span class="badge badge-orange">Fase 3</span></td></tr>
+        <tr><td>🇧🇴 Bolivia</td><td>SENASAG</td><td>Suplemento nutricional</td><td>4-8 meses</td><td>$2,000–5,000</td><td><span class="badge badge-orange">Fase 3</span></td></tr>
+        <tr><td>🇵🇾 Paraguay</td><td>DNVS – INAN</td><td>Suplemento / Alimento Especial</td><td>4-8 meses</td><td>$1,500–4,000</td><td><span class="badge badge-orange">Fase 3</span></td></tr>
+        <tr><td>🇺🇾 Uruguay</td><td>MSP – DIGESA</td><td>Suplemento Alimentario</td><td>4-8 meses</td><td>$2,000–5,000</td><td><span class="badge badge-orange">Fase 3</span></td></tr>
+        <tr><td>🇻🇪 Venezuela</td><td>MPPS – INHRR</td><td>Suplemento / Alimento Especial</td><td>12-24+ meses</td><td>Variable</td><td><span class="badge badge-red">Fase 4</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="content-h2">Alertas regulatorias específicas para triGLP</h2>
+  <div class="alert alert-red" style="margin-bottom:24px;">
+    <strong>Riesgo de reclasificación como medicamento</strong>
+    triGLP activa vías GLP-1, GIP y GLP-2 — exactamente las mismas que Ozempic, Wegovy, Mounjaro. Aunque lo hace con péptidos naturales, algunas autoridades podrían reclasificarlo como medicamento. Estrategia defensiva: presentar siempre como "suplemento para contribuir al bienestar general y el mantenimiento de un peso saludable". Evitar comparaciones directas con Ozempic en material regulatorio.
+  </div>
+  <div class="alert alert-gold" style="margin-bottom:24px;">
+    <strong>Ingrediente novel / Novel Food</strong>
+    En algunos países, el hidrolizado de proteína de salmón con actividad GLP-1 podría calificarse como "ingrediente novedoso". Argumentos defensivos: reconocimiento FDA como GRAS/NDI, estudios publicados (Framroze 2016, Wei 2022/Stanford), certificaciones Kosher/Halal/HACCP.
+  </div>
+  <div class="alert alert-navy">
+    <strong>Forma de presentación en gotas (líquido)</strong>
+    En algunos países puede generar confusión con medicamentos homeopáticos o herbales. Clasificar siempre como "suplemento alimenticio líquido" o "alimento especial en presentación líquida concentrada", nunca como "tintura" o "extracto medicinal".
+  </div>
+
+  <h2 class="content-h2">Hoja de ruta — Próximos 180 días</h2>
+  <div class="timeline">
+    <div class="timeline-item"><div class="timeline-dot"></div>
+      <div class="timeline-label">Mes 1-2</div>
+      <div class="timeline-title">México, Ecuador, Colombia</div>
+      <div class="timeline-body">Preparación Master Dossier (CLV, BPM, análisis, fórmulas). Verificación clasificación regulatoria. Identificar asesores en México y Ecuador. Mapear distribuidores ancla Colombia y México.</div>
+    </div>
+    <div class="timeline-item"><div class="timeline-dot"></div>
+      <div class="timeline-label">Mes 2-3</div>
+      <div class="timeline-title">Presentar solicitudes en México y Ecuador</div>
+      <div class="timeline-body">Aviso de Funcionamiento COFEPRIS México. Iniciar Notificación Sanitaria ARCSA Ecuador. Verificar ingredientes INVIMA Colombia.</div>
+    </div>
+    <div class="timeline-item"><div class="timeline-dot"></div>
+      <div class="timeline-label">Mes 3-4</div>
+      <div class="timeline-title">Ecuador operativo · Avanzar México y Colombia</div>
+      <div class="timeline-body">Obtener Notificación Sanitaria Ecuador (primero de toda LATAM). Primeras 100 ventas y 20 distribuidores activos en LATAM.</div>
+    </div>
+    <div class="timeline-item"><div class="timeline-dot"></div>
+      <div class="timeline-label">Mes 4-5</div>
+      <div class="timeline-title">Chile, Colombia, Brasil (pre-apertura)</div>
+      <div class="timeline-body">Iniciar proceso Chile (SEREMI primer embarque). Presentar expediente Colombia INVIMA. Establecer base Porto Alegre (junio 2026). Identificar RL Brasil.</div>
+    </div>
+    <div class="timeline-item"><div class="timeline-dot"></div>
+      <div class="timeline-label">Mes 5-6</div>
+      <div class="timeline-title">Chile activo · Colombia en proceso</div>
+      <div class="timeline-body">Chile operativo (embarque autorizado). 200+ distribuidores activos. Pipeline Argentina, Perú. Evento virtual para líderes LATAM.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ MLM LATAM ═══ -->
+<section id="mlm-latam">
+  <div class="section-header">
+    <span class="section-eyebrow">Construcción de Red MLM · LATAM</span>
+    <h2 class="section-title">Cómo encontrar, contactar y reclutar líderes</h2>
+    <p class="section-desc">Guía país por país para América Latina. 7 métodos de prospección probados, plantillas de mensajes, manejo de objeciones y sistema de seguimiento.</p>
+  </div>
+
+  <div class="alert alert-gold" style="margin-bottom:40px;">
+    <strong>La propuesta de valor diferencial</strong>
+    No les ofreces "otro suplemento" ni "otra empresa de MLM". Les ofreces el primer producto natural que activa GLP-1, GIP y GLP-2 simultáneamente, respaldado por estudios publicados (Stanford, Journal of Obesity 2016), con doble patente, certificaciones FDA/Kosher/Halal/HACCP, y un plan de compensación que paga el 50% al cliente y tiene 9 formas de ganar.
+  </div>
+
+  <h2 class="content-h2">Ecosistema MLM en LATAM — datos clave</h2>
+  <div class="table-wrap" style="margin-bottom:40px;">
+    <table>
+      <thead><tr><th>País</th><th>Distribuidores</th><th>Empresas dominantes</th><th>Nicho más fuerte</th></tr></thead>
+      <tbody>
+        <tr><td>🇲🇽 México</td><td>4.5M+</td><td>Herbalife, Amway, USANA, Omnilife, 4Life</td><td>Nutrición, pérdida de peso, cuidado personal</td></tr>
+        <tr><td>🇧🇷 Brasil</td><td>5M+</td><td>Natura, Herbalife, Amway, Mary Kay, Nu Skin</td><td>Belleza, nutrición, suplementos deportivos</td></tr>
+        <tr><td>🇨🇴 Colombia</td><td>1.2M+</td><td>Herbalife, Amway, USANA, 4Life, Omnilife</td><td>Nutrición deportiva, pérdida de peso</td></tr>
+        <tr><td>🇦🇷 Argentina</td><td>800K</td><td>Herbalife, Amway, Natura, Nu Skin</td><td>Bienestar, anti-envejecimiento</td></tr>
+        <tr><td>🇨🇱 Chile</td><td>500K</td><td>Herbalife, Omnilife, Amway, Nu Skin</td><td>Nutrición premium, lifestyle</td></tr>
+        <tr><td>🇵🇪 Perú</td><td>700K</td><td>Herbalife, Amway, Belcorp, L'Bel, 4Life</td><td>Belleza, nutrición, suplementos</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="content-h2">7 métodos de prospección</h2>
+  <div class="grid-3" style="margin-bottom:48px; gap:16px;">
+    <div class="card card-gold-accent"><div style="font-weight:600; color:var(--navy); margin-bottom:8px;">1. Búsqueda avanzada Instagram</div><p style="font-size:13px; color:var(--text-secondary);">Hashtags de industria + nicho de producto. Busca: #networkmarketingcolombia, #multinivelbrasil, #mlmmexico. Filtra por "más recientes" para encontrar activos HOY.</p></div>
+    <div class="card card-gold-accent"><div style="font-weight:600; color:var(--navy); margin-bottom:8px;">2. Grupos de Facebook</div><p style="font-size:13px; color:var(--text-secondary);">La mina de oro oculta. Únete a 5-10 grupos por país. Participa 2 semanas aportando valor. Luego contacta en privado a los líderes identificados.</p></div>
+    <div class="card card-gold-accent"><div style="font-weight:600; color:var(--navy); margin-bottom:8px;">3. LinkedIn — perfil corporativo</div><p style="font-size:13px; color:var(--text-secondary);">Buscar "Network Marketing + país + Director/Manager/Líder". Títulos: Brand Partner, Independent Distributor, MLM Coach. Ver años en empresa actual.</p></div>
+    <div class="card card-gold-accent"><div style="font-weight:600; color:var(--navy); margin-bottom:8px;">4. YouTube — creadores de contenido</div><p style="font-size:13px; color:var(--text-secondary);">Los líderes con canal de YouTube tienen audiencia construida y son multiplicadores naturales. Un canal puede traer a su red entera.</p></div>
+    <div class="card card-gold-accent"><div style="font-weight:600; color:var(--navy); margin-bottom:8px;">5. TikTok — líderes jóvenes</div><p style="font-size:13px; color:var(--text-secondary);">TikTok supera a Instagram en México, Brasil y Colombia entre 18-35 años. #networkmarketinglatino, #mlmtips, #negociodigital + país.</p></div>
+    <div class="card card-gold-accent"><div style="font-weight:600; color:var(--navy); margin-bottom:8px;">6. WhatsApp — canal de cierre</div><p style="font-size:13px; color:var(--text-secondary);">En LATAM (especialmente Brasil, Colombia, Ecuador), WhatsApp es el canal principal incluso para negocios. La propuesta formal siempre por WhatsApp.</p></div>
+  </div>
+
+  <h2 class="content-h2">Las 5 objeciones más comunes — respuestas óptimas</h2>
+  <div class="table-wrap" style="margin-bottom:48px;">
+    <table>
+      <thead><tr><th>Objeción</th><th>Respuesta óptima</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:500;">"Ya estoy en otra empresa"</td><td>Valida su experiencia. No pide nada. Cambia el foco a la diferencia del producto: "triGLP tiene doble patente y estudios clínicos publicados en Stanford. ¿Puedo mostrarte los resultados?"</td></tr>
+        <tr><td style="font-weight:500;">"Ya probé muchas empresas MLM y no funcionó"</td><td>"La mayoría no fallan por falta de esfuerzo — fallan porque el producto no tiene ciencia detrás. triGLP tiene estudios publicados con resultados medibles. ¿Me dejas mostrarte el estudio de Stanford?"</td></tr>
+        <tr><td style="font-weight:500;">"¿Es otra pirámide?"</td><td>"El 80% del ingreso en ORYGN viene de ventas de producto, no de reclutamiento. Además, el producto tiene registro sanitario en [país]. Las pirámides no pasan ese filtro."</td></tr>
+        <tr><td style="font-weight:500;">"¿Cuánto se gana realmente?"</td><td>Honesto. Redirige a demostración concreta del sistema: "El plan paga el 50% en la primera venta al cliente y el 50% cuando inscribes a alguien. ¿Quieres ver cómo funciona en vivo?"</td></tr>
+        <tr><td style="font-weight:500;">"No tengo tiempo"</td><td>"Con ORYGN el sistema es digital — tu tienda personal está activa 24/7, los clientes compran solos y recibes la comisión automáticamente. Empezar requiere 2-3 horas semanales. ¿Eso encaja?"</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- ═══ MLM EUROPA ═══ -->
+<section id="mlm-europa">
+  <div class="section-header">
+    <span class="section-eyebrow">Construcción de Red MLM · Europa</span>
+    <h2 class="section-title">España · Portugal · Francia · Italia</h2>
+    <p class="section-desc">Europa requiere un modelo completamente distinto al latinoamericano. Más regulado, más escéptico, más exigente en credenciales — pero también más lucrativo por unidad de distribución.</p>
+  </div>
+
+  <div class="alert alert-gold" style="margin-bottom:40px;">
+    <strong>Ventaja estratégica BGM en Europa</strong>
+    Benito García Míguez tiene residencia en España y Portugal, habla español, portugués y francés fluidamente, y entiende italiano. Esto elimina la principal barrera de entrada en los 4 mercados objetivo. Ningún competidor externo a Europa puede igualar esta posición.
+  </div>
+
+  <h2 class="content-h2">Las 7 diferencias fundamentales Europa vs. LATAM</h2>
+  <div class="table-wrap" style="margin-bottom:48px;">
+    <table>
+      <thead><tr><th>Dimensión</th><th>LATAM</th><th>Europa</th><th>Implicación práctica</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:500;">Cultura hacia el MLM</td><td>Alta receptividad. Aspiracional y socialmente aceptado.</td><td>Escepticismo generalizado. Asociado a "ventas agresivas".</td><td>En Europa NUNCA empieces hablando de la oportunidad. Empieza SIEMPRE por el producto y la ciencia.</td></tr>
+        <tr><td style="font-weight:500;">Regulación comunicaciones</td><td>Más permisiva. Contacto masivo aceptado culturalmente.</td><td>GDPR aplica con fuerza. Contacto no solicitado puede ser ilegal.</td><td>Toda prospección digital debe respetar GDPR. Solo contacto individual en plataformas públicas.</td></tr>
+        <tr><td style="font-weight:500;">Perfil del líder ideal</td><td>Emprendedor aspiracional. Motivación emocional fuerte.</td><td>Profesional que busca ingresos complementarios. Más analítico.</td><td>El argumento "Stanford + patente doble + NDI FDA" debe estar en el primer mensaje.</td></tr>
+        <tr><td style="font-weight:500;">Plataformas dominantes</td><td>Facebook, WhatsApp, Instagram, TikTok.</td><td>LinkedIn muy relevante. Facebook en declive &lt;45 años.</td><td>LinkedIn es la puerta de acceso a líderes profesionales en Europa.</td></tr>
+        <tr><td style="font-weight:500;">Velocidad de decisión</td><td>Rápida. 1ª o 2ª conversación.</td><td>Lenta. 2-4 semanas de due diligence mínimo.</td><td>El pipeline europeo requiere más tiempo y paciencia. Seguimiento más educativo y menos comercial.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="content-h2">Los 4 mercados europeos — perfil y estrategia</h2>
+  <div class="grid-2" style="margin-bottom:48px;">
+    <div class="card card-gold-accent">
+      <div style="font-size:28px; margin-bottom:12px;">🇪🇸</div>
+      <h3 style="font-weight:600; color:var(--navy); margin-bottom:8px;">España — Base de operaciones BGM</h3>
+      <div class="badge badge-gold" style="margin-bottom:12px;">Prioridad máxima</div>
+      <p style="font-size:13px; color:var(--text-secondary); margin-bottom:12px;">Mercado con mayor conexión cultural a LATAM. +800K latinoamericanos residentes (colombianos, venezolanos, ecuatorianos). Volumen venta directa: ~$800M/año.</p>
+      <p style="font-size:13px; color:var(--text-secondary);"><strong style="color:var(--navy-mid);">Canal #1:</strong> LinkedIn + Instagram · <strong style="color:var(--navy-mid);">Horario:</strong> Mar-Jue 19-21h · <strong style="color:var(--navy-mid);">Término clave:</strong> "Brand Partner" / "Red de mercadeo"</p>
+    </div>
+    <div class="card card-gold-accent">
+      <div style="font-size:28px; margin-bottom:12px;">🇵🇹</div>
+      <h3 style="font-weight:600; color:var(--navy); margin-bottom:8px;">Portugal — Puente Europa-Brasil</h3>
+      <div class="badge badge-gold" style="margin-bottom:12px;">Prioridad alta</div>
+      <p style="font-size:13px; color:var(--text-secondary); margin-bottom:12px;">Mercado en desarrollo, menos saturado. +250K brasileños residentes en Portugal. Network Marketing Summit Portugal (networkmarketingsummit.pt). Volumen: ~$300M/año.</p>
+      <p style="font-size:13px; color:var(--text-secondary);"><strong style="color:var(--navy-mid);">Canal #1:</strong> Instagram + eventos presenciales · <strong style="color:var(--navy-mid);">Horario:</strong> Mar-Jue 19-21h · <strong style="color:var(--navy-mid);">Término clave:</strong> "Marketing de rede"</p>
+    </div>
+    <div class="card card-gold-accent">
+      <div style="font-size:28px; margin-bottom:12px;">🇫🇷</div>
+      <h3 style="font-weight:600; color:var(--navy); margin-bottom:8px;">Francia — Mercado exigente y lucrativo</h3>
+      <div class="badge badge-blue" style="margin-bottom:12px;">Alta · Difícil</div>
+      <p style="font-size:13px; color:var(--text-secondary); margin-bottom:12px;">#8 en el mundo en venta directa. $5,000M/año. El más escéptico pero el más lucrativo. La palabra "MLM" puede cerrar puertas inmediatamente. Usar "vente directe" o "brand partner indépendant".</p>
+      <p style="font-size:13px; color:var(--text-secondary);"><strong style="color:var(--navy-mid);">Canal #1:</strong> LinkedIn impecable · <strong style="color:var(--navy-mid);">Horario:</strong> Mar-Jue 18-20h · <strong style="color:var(--navy-mid);">Regla:</strong> Nunca inglés en el primer mensaje</p>
+    </div>
+    <div class="card card-gold-accent">
+      <div style="font-size:28px; margin-bottom:12px;">🇮🇹</div>
+      <h3 style="font-weight:600; color:var(--navy); margin-bottom:8px;">Italia — #12 Mundial · Líderes suplementos</h3>
+      <div class="badge badge-gold" style="margin-bottom:12px;">Prioridad máxima</div>
+      <p style="font-size:13px; color:var(--text-secondary); margin-bottom:12px;">#12 en el mundo con $3,200M/año. 70% de italianos toma algún tipo de integratore regularmente. Amway desde 1985, Herbalife, Nu Skin, doTERRA. AVEDISCO: 90+ empresas MLM registradas.</p>
+      <p style="font-size:13px; color:var(--text-secondary);"><strong style="color:var(--navy-mid);">Canal #1:</strong> Instagram + Facebook sur · <strong style="color:var(--navy-mid);">Horario:</strong> Mar-Jue 19-21h · <strong style="color:var(--navy-mid);">Argumento:</strong> "salmone norvegese + Stanford + doppio brevetto"</p>
+    </div>
+  </div>
+
+  <h2 class="content-h2">Plan de acción Europa — 90 días</h2>
+  <div class="timeline">
+    <div class="timeline-item"><div class="timeline-dot"></div>
+      <div class="timeline-label">Semanas 1-2</div>
+      <div class="timeline-title">Preparación digital europea</div>
+      <div class="timeline-body">Optimizar LinkedIn en español, portugués y francés. Crear perfil Instagram europeo. Preparar 5 piezas de contenido científico sobre triGLP. Adaptar materiales al contexto europeo (sin lenguaje de ventas agresivo).</div>
+    </div>
+    <div class="timeline-item"><div class="timeline-dot"></div>
+      <div class="timeline-label">Semanas 3-4</div>
+      <div class="timeline-title">Primer contenido + prospección España</div>
+      <div class="timeline-body">Publicar artículo LinkedIn "GLP-1 natural: lo que la ciencia dice". Reels Instagram triGLP vs Ozempic. Identificar 50 prospectos en España. Primeros 20 contactos. Objetivo: 5-7 respuestas.</div>
+    </div>
+    <div class="timeline-item"><div class="timeline-dot"></div>
+      <div class="timeline-label">Semanas 4-5</div>
+      <div class="timeline-title">Portugal y comunidad luso</div>
+      <div class="timeline-body">Contactar organizadores Network Marketing Summit Portugal. Publicar en LinkedIn/Instagram en portugués europeo. Conectar con comunidad brasileira em Portugal. 20 contactos Portugal.</div>
+    </div>
+    <div class="timeline-item"><div class="timeline-dot"></div>
+      <div class="timeline-label">Semanas 7-9</div>
+      <div class="timeline-title">Italia y Francia</div>
+      <div class="timeline-body">Italia: Instagram + Facebook sur. Enfoque integratori + salmone norvegese. Francia: LinkedIn impecable. Contacto extremadamente formal y científico. Aparecer como invitado en podcast de salud. 20 contactos por país.</div>
+    </div>
+    <div class="timeline-item"><div class="timeline-dot"></div>
+      <div class="timeline-label">Semanas 9-12</div>
+      <div class="timeline-title">Escalado y formación de equipo</div>
+      <div class="timeline-body">Onboarding sistema europeo a primeros inscritos. Grupo WhatsApp equipo europeo (solo con consentimiento). Primer evento virtual de equipo. Objetivo: 10+ inscritos Europa, pipeline de 100+ prospectos.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ MANUFACTURA HUB ═══ -->
+<section id="manufactura">
+  <div class="section-header">
+    <span class="section-eyebrow">Estrategia de Manufactura · Optimización de Costos</span>
+    <h2 class="section-title">HUB de Manufactura LATAM</h2>
+    <p class="section-desc">Maquila local, importación de materia prima y zonas francas para reducir la carga fiscal en LATAM. Modelo híbrido con Colombia como HUB regional y Panamá como opción fiscal máxima.</p>
+  </div>
+
+  <div class="alert alert-navy" style="margin-bottom:40px;">
+    <strong>El problema: los aranceles destruyen margen en LATAM</strong>
+    Si el coste de fabricación de triGLP en origen es $15 USD por frasco, y el precio de venta al distribuidor en Brasil es $45 USD, el margen operativo real puede ser inferior al 15% después de aranceles, transporte, almacén y comisiones MLM. Importar la materia prima a granel e iniciar producción local puede reducir el coste logístico-fiscal al 30-40% del escenario importación producto terminado.
+  </div>
+
+  <h2 class="content-h2">Las 5 opciones estratégicas</h2>
+  <div class="table-wrap" style="margin-bottom:40px;">
+    <table>
+      <thead><tr><th>Opción</th><th>Modelo</th><th>Ahorro vs. Actual</th><th>Mejor para</th><th>Recomendación</th></tr></thead>
+      <tbody>
+        <tr><td><strong>A</strong></td><td>Importación producto terminado (actual)</td><td>Base 0 (índice 100)</td><td>Chile, Ecuador, PR, CA</td><td>Mantener en mercados con aranceles bajos</td></tr>
+        <tr><td><strong>B</strong></td><td>Materia prima bulk + maquila local</td><td>Brasil: 60-90% · Colombia: 10-17%</td><td>Brasil, Argentina</td><td>Recomendada Brasil desde 200-300 uds/mes</td></tr>
+        <tr><td><strong>C</strong></td><td>HUB regional: un país fabrica para toda LATAM</td><td>0% arancel Alianza Pacífico</td><td>Colombia → Chile, Perú, Ecuador</td><td>Colombia es el candidato ideal</td></tr>
+        <tr><td><strong>D</strong></td><td>Zona Franca Panamá</td><td>Máximo (~100%) en exportaciones</td><td>Distribución regional LATAM</td><td>Evaluar en Fase 2 según volumen</td></tr>
+        <tr><td><strong>E</strong></td><td>Modelo Híbrido (recomendado)</td><td>22-35% reducción por unidad</td><td>Toda LATAM</td><td>⭐ Estrategia óptima a 3 años</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="content-h2">Los 3 HUBs candidatos</h2>
+  <div class="grid-3" style="margin-bottom:48px;">
+    <div class="hub-card recommended">
+      <div class="hub-recommended-badge">RECOMENDADO</div>
+      <div class="hub-flag">🇨🇴</div>
+      <div class="hub-name">Colombia</div>
+      <div class="hub-role">HUB Alianza Pacífico</div>
+      <ul class="hub-features">
+        <li>Registro INVIMA ya activo</li>
+        <li>0% arancel a Chile, Perú, Ecuador (Alianza Pacífico)</li>
+        <li>Peso COP favorable (menor coste manufactura)</li>
+        <li>Laboratorios BPM certificados: RC2 Pharma, Quibi, OlharLab</li>
+        <li>Hub logístico aéreo regional Bogotá</li>
+        <li>Arancel materia prima: 5-8% vs. 16%+ producto terminado</li>
+      </ul>
+    </div>
+    <div class="hub-card">
+      <div class="hub-flag">🇵🇦</div>
+      <div class="hub-name">Panamá</div>
+      <div class="hub-role">Zona Franca · Opción fiscal máxima</div>
+      <ul class="hub-features">
+        <li>0% ISR en exportaciones</li>
+        <li>0% aranceles sobre importación de insumos</li>
+        <li>0% ITBMS (IVA) sobre exportaciones</li>
+        <li>Estado Asociado MERCOSUR desde 2024</li>
+        <li>TLCs con Colombia, México, Perú, Chile</li>
+        <li>Setup: 60-90 días · Coste: $5,000-10,000/mes</li>
+      </ul>
+    </div>
+    <div class="hub-card">
+      <div class="hub-flag">🇧🇷</div>
+      <div class="hub-name">Brasil</div>
+      <div class="hub-role">Maquila local obligatoria</div>
+      <ul class="hub-features">
+        <li>Diferencial fiscal más alto de LATAM (90-120% ahorro)</li>
+        <li>Rentable desde 200-300 unidades/mes</li>
+        <li>Socio local obligatorio (ANVISA)</li>
+        <li>Base BGM en Porto Alegre desde junio 2026</li>
+        <li>Mandala International como RL candidato</li>
+        <li>Independiente del HUB Colombia (por volumen)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="content-h2">Laboratorios maquiladores en Colombia</h2>
+  <div class="table-wrap" style="margin-bottom:48px;">
+    <table>
+      <thead><tr><th>Empresa</th><th>Ciudad</th><th>Especialidad</th><th>Contacto</th></tr></thead>
+      <tbody>
+        <tr><td><strong>RC2 Pharmaceutical ⭐</strong></td><td>Medellín</td><td>Líquidos orales, jarabes, soluciones, tinturas. 1ml–6000ml. Gestión INVIMA incluida.</td><td>rc2pharma.com.co</td></tr>
+        <tr><td>OlharLab Copacker</td><td>Medellín-Bogotá</td><td>Bebidas y líquidos concentrados. Envases PET y vidrio 35ml–3.5L. Exportaciones.</td><td>olharlab.com</td></tr>
+        <tr><td>Quibi Pharma</td><td>Cali</td><td>Líquidos orales (1ml–6000ml). BPM INVIMA + ISO 9001. Frascos con gotero.</td><td>quibi.com.co</td></tr>
+        <tr><td>Laboratorios ESKO</td><td>Bogotá/Medellín</td><td>Cosméticos + suplementos líquidos. Desde 1988. 35+ años experiencia exportación LATAM.</td><td>labesko.com</td></tr>
+        <tr><td>Nutrilab</td><td>Medellín</td><td>Suplementos en polvo y líquidos. Zona Industrial Belén. Gestión regulatoria incluida.</td><td>nutritionanddevelopmentlab.com</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="content-h2">¿Cuándo vale la pena el HUB? — Análisis financiero</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Volumen mensual</th><th>Ahorro aranceles</th><th>Coste fijo HUB</th><th>Balance</th><th>Recomendación</th></tr></thead>
+      <tbody>
+        <tr><td>&lt; 500 uds/mes</td><td>$750-1,250</td><td>$2,000-3,000</td><td style="color:#B71C1C;">-$750 a -$2,250</td><td><span class="badge badge-red">No rentable</span></td></tr>
+        <tr><td>500-1,000 uds/mes</td><td>$1,250-2,500</td><td>$2,000-3,000</td><td>Break-even</td><td><span class="badge badge-orange">Evaluar</span></td></tr>
+        <tr><td>1,000-3,000 uds/mes</td><td>$2,500-7,500</td><td>$2,000-3,000</td><td style="color:#166534;">+$500 a +$5,500</td><td><span class="badge badge-green">Rentable</span></td></tr>
+        <tr><td>3,000-10,000 uds/mes</td><td>$7,500-25,000</td><td>$2,500-4,000</td><td style="color:#166534;">+$5,000 a +$22,000</td><td><span class="badge badge-green">Muy rentable</span></td></tr>
+        <tr><td>&gt; 10,000 uds/mes</td><td>&gt; $25,000</td><td>$3,000-5,000</td><td style="color:#166534;">&gt; $20,000/mes</td><td><span class="badge badge-gold">Estratégico</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- ═══ ASESORES ═══ -->
+<section id="asesores">
+  <div class="section-header">
+    <span class="section-eyebrow">Estudio 2 · V2 · Asesores Regulatorios + Caribe + Perú</span>
+    <h2 class="section-title">Directorio de Asesores Regulatorios</h2>
+    <p class="section-desc">Empresas y profesionales identificados para gestionar los procesos regulatorios de ORYGN/B-Epic en cada país. Incluye análisis especial Puerto Rico, Caribe, y Perú/DIGEMID.</p>
+  </div>
+
+  <div class="alert alert-green" style="margin-bottom:40px;">
+    <strong>Cláusula contractual obligatoria con todos los asesores</strong>
+    "Una vez obtenido el Registro/Notificación Sanitaria, la titularidad corresponde exclusivamente a ORYGN/B-Epic. El asesor actúa como gestor administrativo sin derechos sobre el registro. En caso de terminación, el asesor facilita la transferencia en máximo 30 días."
+  </div>
+
+  <h2 class="content-h2">🇵🇷 Puerto Rico + 🏝️ Caribe — Análisis especial</h2>
+  <div class="alert alert-gold" style="margin-bottom:24px;">
+    <strong>Puerto Rico: Acceso inmediato FDA</strong>
+    Puerto Rico es territorio de los Estados Unidos. Los suplementos dietéticos aprobados por la FDA NO requieren registro sanitario adicional. ORYGN puede vender en Puerto Rico exactamente igual que en cualquier estado de USA — sin trámites adicionales, usando el mismo NDI y etiqueta en inglés/español.
+  </div>
+  <div class="table-wrap" style="margin-bottom:48px;">
+    <table>
+      <thead><tr><th>Isla/País</th><th>Regulador</th><th>Tiempo</th><th>Prioridad</th></tr></thead>
+      <tbody>
+        <tr><td>🇵🇷 Puerto Rico</td><td>US FDA (sin trámite adicional)</td><td>Inmediato</td><td><span class="badge badge-gold">MÁXIMA</span></td></tr>
+        <tr><td>🇩🇴 Rep. Dominicana</td><td>DIGEMAPS/MISPAS</td><td>30 días (online) / 90 días (ventanilla)</td><td><span class="badge badge-gold">PRIORIDAD 1</span></td></tr>
+        <tr><td>🇯🇲 Jamaica</td><td>MOHW – Food &amp; Drug Division</td><td>3-6 meses</td><td><span class="badge badge-blue">Fase 2</span></td></tr>
+        <tr><td>🇹🇹 Trinidad y Tobago</td><td>TTBS / Ministry of Health</td><td>2-4 meses</td><td><span class="badge badge-blue">Fase 2</span></td></tr>
+        <tr><td>🇨🇺 Cuba</td><td>CECMED</td><td>2-5 años</td><td><span class="badge badge-red">Baja</span></td></tr>
+        <tr><td>🇭🇹 Haití</td><td>MSPP</td><td>Incierto</td><td><span class="badge badge-red">Muy baja</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="content-h2">Perú — Análisis DIGEMID detallado</h2>
+  <div class="alert alert-gold" style="margin-bottom:24px;">
+    <strong>Ventaja decisiva en Perú</strong>
+    La empresa ya dispone de almacén y oficina en Lima. Si el almacén puede habilitarse como BPA, el tiempo y costo para obtener el Registro Sanitario se reduce drásticamente. La Droguería puede constituirse sobre la estructura ya existente, ahorrando 3-4 meses y entre $8,000-15,000 USD en infraestructura. Este mercado debe ser PRIORIDAD ABSOLUTA.
+  </div>
+
+  <h2 class="content-h2">Asesores por país — Prioridad 1</h2>
+  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin-bottom:48px;">
+    <div class="advisor-card"><div class="advisor-country">🇧🇷</div><div class="advisor-name">Mandala International Regulatory Services</div><div class="advisor-type">Rep. Legal + ANVISA</div><div class="advisor-spec">15+ años experiencia. Servicios en español. Puede actuar como titular de AF para empresa extranjera.</div><div class="advisor-web">mandala-intl.com</div></div>
+    <div class="advisor-card"><div class="advisor-country">🇧🇷</div><div class="advisor-name">SCR Consultings</div><div class="advisor-type">Consultoría ANVISA</div><div class="advisor-spec">Basados en Porto Alegre. Ideal para coordinación directa con BGM desde junio 2026.</div><div class="advisor-web">scrconsultings.com</div></div>
+    <div class="advisor-card"><div class="advisor-country">🇵🇪</div><div class="advisor-name">Hi Droguería Peruana</div><div class="advisor-type">Droguería titular + DIGEMID</div><div class="advisor-spec">Especialistas en ser "holder" de registros para empresas extranjeras. Traspasan el RS a ORYGN.</div><div class="advisor-web">hidrogueria.com</div></div>
+    <div class="advisor-card"><div class="advisor-country">🇵🇪</div><div class="advisor-name">Pharma Consulting Perú</div><div class="advisor-type">Consultoría DIGEMID</div><div class="advisor-spec">15+ años, productos dietéticos DIGEMID. Consulta técnica previa, gestión completa. San Isidro, Lima.</div><div class="advisor-web">pharmaconsulting.pe</div></div>
+    <div class="advisor-card"><div class="advisor-country">🇨🇱</div><div class="advisor-name">Regulatory Chile Consultores</div><div class="advisor-type">Consultoría ISP/SEREMI</div><div class="advisor-spec">Equipo de Químicos Farmacéuticos. Especialistas en autorización por embarque SEREMI y clasificación RSA.</div><div class="advisor-web">regulatorychile.cl</div></div>
+    <div class="advisor-card"><div class="advisor-country">🇪🇨</div><div class="advisor-name">CREINEC S.A.</div><div class="advisor-type">Representación + ARCSA</div><div class="advisor-spec">Empresa ecuatoriana especialista en VUE/ARCSA. Más de 10 años. Gestión permiso funcionamiento + notificación sanitaria.</div><div class="advisor-web">creinec.com</div></div>
+    <div class="advisor-card"><div class="advisor-country">🇩🇴</div><div class="advisor-name">MacroBridge RD</div><div class="advisor-type">Consultoría DIGEMAPS</div><div class="advisor-spec">Especialistas en importaciones USA→RD. Conocen el proceso simplificado online de DIGEMAPS.</div><div class="advisor-web">macro-bridge.com</div></div>
+    <div class="advisor-card"><div class="advisor-country">🌎</div><div class="advisor-name">Scheel Consulting</div><div class="advisor-type">Firma Regional Centroamérica</div><div class="advisor-spec">Presencia en 7 países CA. Gestionan reconocimiento COMIECO en los 5 países simultáneamente. PRIMERA OPCIÓN corredor CA.</div><div class="advisor-web">scheel.consulting</div></div>
+  </div>
+
+  <h2 class="content-h2">Plan de acción inmediato — 30/60/90 días</h2>
+  <div class="timeline">
+    <div class="timeline-item"><div class="timeline-dot"></div>
+      <div class="timeline-label">Días 1-15</div>
+      <div class="timeline-title">Puerto Rico + Perú + Ecuador</div>
+      <div class="timeline-body">Puerto Rico: confirmar activación inmediata (FDA ya cubre). Perú: evaluar almacén Lima para BPA, contactar Pharma Consulting para consulta técnica DIGEMID. Ecuador: contactar CREINEC para presupuesto ARCSA.</div>
+    </div>
+    <div class="timeline-item"><div class="timeline-dot"></div>
+      <div class="timeline-label">Días 15-30</div>
+      <div class="timeline-title">Rep. Dominicana + Brasil</div>
+      <div class="timeline-body">Contactar MacroBridge RD para iniciar proceso DIGEMAPS (potencial 30 días online). Contactar Mandala International para GAP analysis ANVISA. Inicio planificación Porto Alegre junio 2026.</div>
+    </div>
+    <div class="timeline-item"><div class="timeline-dot"></div>
+      <div class="timeline-label">Días 30-60</div>
+      <div class="timeline-title">Costa Rica COMIECO + Chile</div>
+      <div class="timeline-body">Coordinarse con ASEJIM Costa Rica para seguimiento del registro. Una vez obtenido, activar Scheel Consulting para los 5 países COMIECO simultáneamente. Contactar Regulatory Chile para primer embarque SEREMI.</div>
+    </div>
+    <div class="timeline-item"><div class="timeline-dot"></div>
+      <div class="timeline-label">Días 60-90</div>
+      <div class="timeline-title">Perú Droguería + Brasil Porto Alegre</div>
+      <div class="timeline-body">Si almacén Lima es apto, iniciar proceso Droguería (RS DIGEMID en 4-5 meses desde inicio). BGM establece operaciones físicas Porto Alegre. Coordinación directa con Mandala o SCR. Identificar socio local brasileño.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ MAPA DE PAÍSES (nueva sección) ═══ -->
+<section id="mapa-paises">
+  <div class="section-header">
+    <span class="section-eyebrow">Expansión Geográfica</span>
+    <h2 class="section-title">Análisis detallado por mercado</h2>
+    <p class="section-desc">Perfil completo de cada mercado prioritario: regulación, red MLM, plataformas, estrategia de contacto y datos clave por país.</p>
+  </div>
+
+  <!-- MEXICO -->
+  <div class="country-detail-block" style="margin-bottom:56px;">
+    <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px; padding-bottom:16px; border-bottom:2px solid var(--border);">
+      <span style="font-size:40px;">🇲🇽</span>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:24px; color:var(--navy);">México — MERCADO ACTIVO</h3>
+        <div style="display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;">
+          <span class="badge badge-green">Ya operativo</span>
+          <span class="badge badge-gold">Prioridad Máxima</span>
+          <span class="badge badge-blue">130M habitantes</span>
+        </div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">📋 Regulatorio — COFEPRIS</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">No exige registro sanitario formal para suplementos, sino sistema de avisos. <strong>Proceso:</strong> Aviso de Funcionamiento → Responsable Sanitario → PSPI por embarque → Etiquetado NOM-192-SSA1-2012. Tiempo: 3-6 meses. Coste: $2,000–8,000 USD.</p>
+      </div>
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">🎯 Red MLM — Perfiles</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">4.5M+ distribuidores activos. Buscar: distribuidores Herbalife (buscan mejor plan), líderes USANA, networkers Omnilife buscando diversificarse, coaches de bienestar con 10K-100K seguidores, creadores de contenido pérdida de peso en Instagram/TikTok.</p>
+      </div>
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">📱 Plataformas y canales</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;"><strong>Instagram:</strong> #networkmarketingmexico #mlmmexico · <strong>Facebook:</strong> 'Red de Mercadeo México', 'Networkers Exitosos México' · <strong>TikTok:</strong> dominante entre 18-35 años · <strong>Mejor horario:</strong> Mié-Vie 7-9pm hora México.</p>
+      </div>
+    </div>
+    <div class="alert alert-gold" style="margin-top:16px;">
+      <strong>Ventaja clave triGLP en México:</strong> El NDI FDA + certificaciones Kosher/Halal/HACCP son directamente reconocibles. El argumento "GLP-1 natural vs. Ozempic" tiene tracción enorme dado que el 75% de adultos mexicanos tiene sobrepeso u obesidad. México es el primer mercado de habla hispana por tamaño.
+    </div>
+  </div>
+
+  <!-- COLOMBIA -->
+  <div class="country-detail-block" style="margin-bottom:56px;">
+    <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px; padding-bottom:16px; border-bottom:2px solid var(--border);">
+      <span style="font-size:40px;">🇨🇴</span>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:24px; color:var(--navy);">Colombia — HUB LATAM · ACTIVO</h3>
+        <div style="display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;">
+          <span class="badge badge-green">Ya operativo · INVIMA activo</span>
+          <span class="badge badge-gold">Prioridad Máxima</span>
+          <span class="badge badge-blue">Hub Manufactura</span>
+        </div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">📋 Regulatorio — INVIMA</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">Decreto 3249/2006. Registro sanitario vía InvimAgil (plataforma online desde 2025). Verificar ingredientes lista autorizada INVIMA. Evaluación por Sala Especializada. Vigencia 5 años. Tiempo: 6-12 meses. Coste: $3,000–10,000 USD.</p>
+      </div>
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">🎯 Red MLM — Élite mundial</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">Los mejores networkers MLM del mundo son colombianos (Juan Fernando Franco e Iván Martínez: $13.2M USD anuales). 1.2M+ distribuidores. Buscar: distribuidores 4Life, USANA, Amway con 3+ años; influencers nutrición deportiva; coaches emprendimiento en Medellín y Bogotá.</p>
+      </div>
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">📱 Plataformas y canales</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;"><strong>WhatsApp:</strong> esencial — Colombia es el país con más uso per cápita en LATAM · <strong>Instagram:</strong> muy activo en Medellín · <strong>Evento presencial:</strong> Congreso Red de Mercadeo Bogotá — mayor evento MLM de habla hispana · <strong>Mejor horario:</strong> Lun-Mié 6-9pm.</p>
+      </div>
+    </div>
+    <div class="alert alert-navy" style="margin-top:16px;">
+      <strong>Tip cultural:</strong> Colombia es el único país de LATAM donde los dos mayores ganadores de MLM del mundo son locales. Hay un enorme orgullo por el networking como profesión legítima. Usar: "Colombia ya produce los mejores networkers del mundo — ORYGN quiere que el siguiente movimiento global salga desde aquí."
+    </div>
+  </div>
+
+  <!-- BRASIL -->
+  <div class="country-detail-block" style="margin-bottom:56px;">
+    <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px; padding-bottom:16px; border-bottom:2px solid var(--border);">
+      <span style="font-size:40px;">🇧🇷</span>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:24px; color:var(--navy);">Brasil — Mayor mercado LATAM</h3>
+        <div style="display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;">
+          <span class="badge badge-gold">Prioridad 1</span>
+          <span class="badge badge-blue">215M habitantes</span>
+          <span class="badge badge-orange">BGM Porto Alegre jun. 2026</span>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-bottom:16px;">
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">📋 Sistema de impuestos ANVISA — La cascada</h4>
+        <div class="table-wrap">
+          <table style="font-size:12px;">
+            <thead><tr><th>Impuesto</th><th>Tasa suplementos</th><th>¿Recuperable?</th></tr></thead>
+            <tbody>
+              <tr><td>II — Importación</td><td>~16%</td><td>No</td></tr>
+              <tr><td>IPI</td><td>~5%</td><td>Sí (crédito)</td></tr>
+              <tr><td>PIS</td><td>1.65%</td><td>Sí</td></tr>
+              <tr><td>COFINS</td><td>7.6%</td><td>Sí</td></tr>
+              <tr><td>ICMS</td><td>12-18%</td><td>Sí (crédito)</td></tr>
+              <tr><td><strong>TOTAL EFECTIVO</strong></td><td><strong>~150-180%</strong></td><td>~40% recuperable</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">🎯 Red MLM — 5M+ distribuidores</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65; margin-bottom:10px;">Natura (empresa brasileña #1 MLM cosmética), Herbalife Brasil, Mary Kay, Avon. Perfil: hombre o mujer 25-45, muy activo en WhatsApp.</p>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;"><strong>Mensaje clave Brasil:</strong> "el primer suplemento noruego con ciencia de Stanford llega a Brasil" — el componente noruego es muy bien percibido por asociación con alta tecnología.</p>
+        <p style="font-size:13px; color:var(--text-secondary); margin-top:8px;"><strong>Contacto SIEMPRE en portugués</strong> — un error en el idioma puede ser un dealbreaker.</p>
+      </div>
+    </div>
+    <div class="alert alert-red">
+      <strong>Ventaja única BGM en Brasil:</strong> Presencia física en Porto Alegre desde junio 2026. Ningún otro consultor externo ofrece esto. El proceso ANVISA requiere socio local; BGM puede coordinar directamente in situ, acelerando el proceso 3-6 meses respecto a gestionarlo desde el exterior. Asesores identificados: Mandala International (São Paulo + Porto Alegre) y SCR Consultings (Porto Alegre).
+    </div>
+  </div>
+
+  <!-- ECUADOR -->
+  <div class="country-detail-block" style="margin-bottom:56px;">
+    <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px; padding-bottom:16px; border-bottom:2px solid var(--border);">
+      <span style="font-size:40px;">🇪🇨</span>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:24px; color:var(--navy);">Ecuador — Proceso más rápido de LATAM</h3>
+        <div style="display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;">
+          <span class="badge badge-gold">Prioridad 1 · Inicio rápido</span>
+          <span class="badge badge-green">2-3 meses</span>
+        </div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">📋 Notificación ARCSA (no registro)</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">Resolución ARCSA-DE-028-2016. Notificación Sanitaria vía VUE (Ventanilla Única Ecuatoriana) — sistema automatizado, sin presentación física. Revisión técnica: 5 días laborables. Si hay observaciones: 15-20 días para corregir. Vigencia: 5 años. Coste: $1,000–4,000 USD.</p>
+      </div>
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">🎯 Red MLM</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">300K distribuidores. Fuerte tradición Yanbal y Belcorp — muchas mujeres con redes de 500-5000 personas buscando diversificar con productos de salud. Son el perfil más receptivo del mercado ecuatoriano. Facebook domina en Quito y Guayaquil.</p>
+      </div>
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">⚡ Argumento de contacto</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">"La Notificación Sanitaria ARCSA puede obtenerse en 30 días — serías de los primeros distribuidores con producto legalmente autorizado en Ecuador." Asesor recomendado: CREINEC S.A. (creinec.com) o ASETECNI.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHILE -->
+  <div class="country-detail-block" style="margin-bottom:56px;">
+    <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px; padding-bottom:16px; border-bottom:2px solid var(--border);">
+      <span style="font-size:40px;">🇨🇱</span>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:24px; color:var(--navy);">Chile — Mercado premium LATAM</h3>
+        <div style="display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;">
+          <span class="badge badge-gold">Prioridad 1</span>
+          <span class="badge badge-green">2-8 semanas por embarque</span>
+          <span class="badge badge-blue">Mayor ingreso per cápita LATAM</span>
+        </div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">📋 ISP / SEREMI — Por embarque</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">La autorización opera por embarque (SEREMI), no por producto. Puede iniciarse de forma inmediata sin esperar registro previo. Bodega de almacenamiento debe tener Resolución Sanitaria vigente. Clasificar como Suplemento Alimentario Título XXVIII RSA. Coste: $1,500–5,000 USD.</p>
+      </div>
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">🎯 Red MLM — Perfil técnico</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">500K distribuidores. Líderes de Nu Skin Chile (anti-envejecimiento), USANA Chile (valoran ciencia y calidad), coaches wellness. Perfil más técnico de LATAM — valora datos antes que promesas. <strong>En Chile no empieces con el negocio. Empieza con la ciencia.</strong></p>
+      </div>
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">💬 Primer contacto recomendado</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">"Trabajo con triGLP, un péptido bioactivo de salmón noruego con doble protección de patente y estudios publicados — reducción del 6-7% de IMC en 6-8 semanas en ensayos clínicos. Ya tiene autorización en Chile. ¿Te puedo enviar los estudios?"</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERU -->
+  <div class="country-detail-block" style="margin-bottom:56px;">
+    <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px; padding-bottom:16px; border-bottom:2px solid var(--border);">
+      <span style="font-size:40px;">🇵🇪</span>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:24px; color:var(--navy);">Perú — Almacén y oficina existentes en Lima</h3>
+        <div style="display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;">
+          <span class="badge badge-gold">Prioridad 1</span>
+          <span class="badge badge-green">Ventaja infraestructura</span>
+          <span class="badge badge-blue">6-12 meses DIGEMID</span>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-gold" style="margin-bottom:20px;">
+      <strong>Ventaja decisiva:</strong> Si la empresa ya tiene almacén y oficina en Lima, el tiempo y coste para obtener el RS se reduce drásticamente. Solo falta: (1) constituir empresa peruana o adaptar la existente, (2) contratar Director Técnico QF, (3) certificar almacén en BPA, (4) registrar como Droguería ante DIGEMID — proceso de 30 días hábiles. Ahorro estimado: 3-4 meses y $8,000–15,000 USD.
+    </div>
+    <div class="grid-2">
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">📋 DIGEMID — 5 fases del proceso</h4>
+        <div class="funnel-steps" style="padding:0;">
+          <div class="funnel-step"><div class="funnel-step-num">A</div><div class="funnel-step-text">Estructura Droguería: empresa peruana + QF Director Técnico + almacén BPA + autorización DIGEMID (30 días hábiles)</div></div>
+          <div class="funnel-step"><div class="funnel-step-num">B</div><div class="funnel-step-text">Preparación del Dossier: CLV FDA, composición cuali-cuantitativa, estudios clínicos, BPM, etiqueta en español</div></div>
+          <div class="funnel-step"><div class="funnel-step-num">C</div><div class="funnel-step-text">Presentación VUCE: solicitud electrónica + pago tasa S/2,751 (~$750 USD) + código 6556 Banco de la Nación</div></div>
+          <div class="funnel-step"><div class="funnel-step-num">D</div><div class="funnel-step-text">Evaluación DIGEMID: 30 días hábiles oficiales (en práctica 45-60 días). Máx. 2 ciclos de observaciones.</div></div>
+          <div class="funnel-step"><div class="funnel-step-num">E</div><div class="funnel-step-text">Resolución Directoral + número RS → inicio importaciones. Vigencia: 5 años renovable.</div></div>
+        </div>
+      </div>
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">🎯 Red MLM + Argumento local</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65; margin-bottom:10px;">700K distribuidores. Distribuidores 4Life (reunión 600 dist. Bogotá 2025 incluyó líderes peruanos), Herbalife Perú y Belcorp. Alta tasa de mujeres en MLM.</p>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;"><strong>Argumento diferenciador:</strong> Mencionar que hay almacén local en Lima. La mayoría de empresas MLM en Perú tardan semanas en entregar. "Entrega en 24-48 horas en Lima" es una ventaja competitiva única.</p>
+        <p style="font-size:13px; color:var(--text-secondary); margin-top:10px;"><strong>Asesor recomendado:</strong> Pharma Consulting Perú (pharmaconsulting.pe) para consulta técnica previa.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPÚBLICA DOMINICANA -->
+  <div class="country-detail-block" style="margin-bottom:56px;">
+    <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px; padding-bottom:16px; border-bottom:2px solid var(--border);">
+      <span style="font-size:40px;">🇩🇴</span>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:24px; color:var(--navy);">República Dominicana — 30 días (proceso online)</h3>
+        <div style="display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;">
+          <span class="badge badge-gold">Prioridad 1</span>
+          <span class="badge badge-green">30 días simplificado online</span>
+        </div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">📋 DIGEMAPS — Proceso ágil</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">Autoridad: DIGEMAPS (Ministerio Salud Pública / MISPAS). Decreto 528-01. Ventanilla Única online: 30 días. Ventanilla tradicional: 90 días. Vigencia: 2 años (renovable). Representante local con licencia sanitaria — condición sine qua non. Coste: $1,500–4,000 USD.</p>
+      </div>
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">🎯 Red MLM — Alta cultura MLM</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">200K+ distribuidores. Herbalife RD, 4Life RD, Omnilife RD. Cultura de comunidad y celebración del éxito muy fuerte. Líderes conectados con diáspora en EEUU (NYC, Miami) — multiplicadores transnacionales.</p>
+      </div>
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">💬 Argumento transnacional único</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">Un líder dominicano bien conectado puede construir una red que opera simultáneamente en RD y en EEUU, donde el producto no requiere registro adicional (FDA). Mejor horario: Jue-Sáb 7-10pm. Asesor: MacroBridge RD (macro-bridge.com).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CORREDOR CA -->
+  <div class="country-detail-block" style="margin-bottom:56px;">
+    <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px; padding-bottom:16px; border-bottom:2px solid var(--border);">
+      <span style="font-size:40px;">🌎</span>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:24px; color:var(--navy);">Corredor Centroamericano — Estrategia COMIECO</h3>
+        <div style="display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;">
+          <span class="badge badge-blue">Costa Rica en proceso</span>
+          <span class="badge badge-gold">6 mercados con 1 registro</span>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-gold" style="margin-bottom:20px;">
+      <strong>Oportunidad única COMIECO:</strong> La Resolución COMIECO 388-2017 permite el reconocimiento mutuo de registros sanitarios entre Guatemala, Honduras, Nicaragua y Costa Rica. Obtener un único registro en Costa Rica puede abrir el acceso a los 5 países con trámite simplificado. BGM puede coordinar los 5 trámites de reconocimiento simultáneamente una vez obtenido el RS costarricense. Asesor recomendado: Scheel Consulting (scheel.consulting) — presencia propia en los 7 países.
+    </div>
+    <div class="grid-3">
+      <div class="card"><div style="font-weight:600; color:var(--navy); margin-bottom:8px;">1. Costa Rica (base COMIECO)</div><p style="font-size:13px; color:var(--text-secondary);">Registro base ante Ministerio de Salud CR (RTCR 436:2009). Asesor: ASEJIM (asesoriasjimenez.com, 25+ años). Proceso: 3-6 meses. Una vez obtenido → activa los 5 países restantes.</p></div>
+      <div class="card"><div style="font-weight:600; color:var(--navy); margin-bottom:8px;">2. Guatemala, Honduras, El Salvador, Nicaragua</div><p style="font-size:13px; color:var(--text-secondary);">Reconocimiento automático vía COMIECO con el RS de Costa Rica. Scheel Consulting gestiona los 4 simultáneamente desde Guatemala. Tiempo adicional: 2-4 semanas por país.</p></div>
+      <div class="card"><div style="font-weight:600; color:var(--navy); margin-bottom:8px;">3. Panamá — Hub financiero</div><p style="font-size:13px; color:var(--text-secondary);">Proceso separado (MINSA). Hub financiero Caribe con alta penetración de consumidores internacionales. Asesor: Cedeño &amp; Méndez Abogados (cedeymen.com). También útil como HUB de manufactura ligera vía Zona Franca.</p></div>
+    </div>
+  </div>
+
+  <!-- ARGENTINA -->
+  <div class="country-detail-block" style="margin-bottom:40px;">
+    <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px; padding-bottom:16px; border-bottom:2px solid var(--border);">
+      <span style="font-size:40px;">🇦🇷</span>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:24px; color:var(--navy);">Argentina — Analizar economía</h3>
+        <div style="display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;">
+          <span class="badge badge-orange">Fase 2</span>
+          <span class="badge badge-red">Alta complejidad regulatoria</span>
+          <span class="badge badge-blue">Gran mercado salud</span>
+        </div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">📋 ANMAT / SENASA</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">Código Alimentario Argentino (CAA), Art. 1381. Requiere: Representante local argentino, habilitación establecimiento (RNE), Número RNPA por producto. Análisis en laboratorios argentinos. Riesgo cambiario. Tiempo: 6-18 meses. Coste: $4,000–12,000 USD.</p>
+      </div>
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">🎯 Red MLM — Cultura salud sofisticada</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">800K distribuidores. Cultura salud muy desarrollada — los argentinos son de los más informados sobre nutrición y bienestar de LATAM. Influencers de salud holística muy activos. <strong>Argumento más poderoso:</strong> "Con ORYGN puedes cobrar en USD — el plan paga en dólares directamente a tu E-Wallet."</p>
+      </div>
+      <div class="card card-gold-accent">
+        <h4 style="font-weight:600; color:var(--navy); margin-bottom:12px;">⚠️ Sensibilidad económica</h4>
+        <p style="font-size:13px; color:var(--text-secondary); line-height:1.65;">El pago en USD es el argumento más poderoso en Argentina dado el contexto económico. Analizar precios y márgenes ante la volatilidad cambiaria. Asesor: Consultoría Regulatoria Argentina (consultoriaregulatoria.com.ar). Mejor horario: Mié-Vie 7-10pm.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ PLAN DE COMPENSACIÓN ═══ -->
+<section id="compensacion">
+  <div class="section-header">
+    <span class="section-eyebrow">Plan de Compensación ORYGN / B-Epic</span>
+    <h2 class="section-title">Las 9 formas de generar ingresos</h2>
+    <p class="section-desc">El plan entró en vigor en noviembre de 2025. Combina ingresos inmediatos (ventas directas), ingresos residuales (red de equipo) y bonos de reconocimiento (rangos y estilos de vida). En vigor desde noviembre 2025.</p>
+  </div>
+
+  <!-- Resumen visual 3 pilares -->
+  <div class="grid-3" style="margin-bottom:56px;">
+    <div class="card card-navy" style="text-align:center; padding:32px 20px;">
+      <div style="font-size:28px; margin-bottom:10px;">⚡</div>
+      <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:8px;">Pilar 1</div>
+      <div style="font-family:'Playfair Display',serif; font-size:20px; color:var(--gold-light); font-weight:700; margin-bottom:8px;">Ingresos Inmediatos</div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.65); line-height:1.6;">Bonos pagados en tiempo real al hacer ventas directas o inscribir nuevos distribuidores. Formas nº 1, 2 y 3.</div>
+    </div>
+    <div class="card card-navy" style="text-align:center; padding:32px 20px;">
+      <div style="font-size:28px; margin-bottom:10px;">🔄</div>
+      <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:8px;">Pilar 2</div>
+      <div style="font-family:'Playfair Display',serif; font-size:20px; color:var(--gold-light); font-weight:700; margin-bottom:8px;">Ingresos Residuales</div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.65); line-height:1.6;">Comisiones sobre el volumen de todo tu equipo, semana a semana. Formas nº 4 y 5.</div>
+    </div>
+    <div class="card card-navy" style="text-align:center; padding:32px 20px;">
+      <div style="font-size:28px; margin-bottom:10px;">🏆</div>
+      <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:8px;">Pilar 3</div>
+      <div style="font-family:'Playfair Display',serif; font-size:20px; color:var(--gold-light); font-weight:700; margin-bottom:8px;">Bonos y Reconocimiento</div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.65); line-height:1.6;">Bonos por rangos, estilo de vida, liderazgo y herencia. Formas nº 6, 7, 8 y 9.</div>
+    </div>
+  </div>
+
+  <!-- ── PILAR 1: INGRESOS INMEDIATOS ── -->
+  <h2 class="content-h2">⚡ Pilar 1 — Ingresos Inmediatos</h2>
+
+  <!-- FORMA 1 -->
+  <div class="card card-gold-accent" style="margin-bottom:20px;">
+    <div style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;">
+      <div style="flex-shrink:0; width:56px; height:56px; background:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-family:'Playfair Display',serif; font-size:22px; font-weight:700;">1</div>
+      <div style="flex:1; min-width:200px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+          <h3 style="font-weight:700; font-size:17px; color:var(--navy);">Bono de Cliente</h3>
+          <span class="badge badge-gold" style="font-size:13px; padding:6px 16px;">50% del pedido</span>
+        </div>
+        <p style="font-size:14px; color:var(--text-secondary); line-height:1.7; margin-bottom:12px;">Cada vez que un cliente realiza una compra a través de tu enlace personal de ORYGN, recibes automáticamente el <strong>50% del valor de ese pedido</strong> en tiempo real, directo a tu E-Wallet. No hay espera, no hay ciclos, no hay calificaciones — la comisión llega en el momento en que el cliente hace clic en "comprar".</p>
+        <div class="alert alert-gold" style="margin:0; padding:12px 16px;">
+          <strong>Ejemplo concreto:</strong> Un cliente compra una botella de triGLP a $79 USD → recibes $39.50 en ese mismo instante. 10 clientes activos = $395/mes de ingreso pasivo sin hacer nada más. 50 clientes = ~$2,000/mes.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMA 2 -->
+  <div class="card card-gold-accent" style="margin-bottom:20px;">
+    <div style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;">
+      <div style="flex-shrink:0; width:56px; height:56px; background:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-family:'Playfair Display',serif; font-size:22px; font-weight:700;">2</div>
+      <div style="flex:1; min-width:200px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+          <h3 style="font-weight:700; font-size:17px; color:var(--navy);">Bono de Inicio Rápido (Fast Start)</h3>
+          <span class="badge badge-gold" style="font-size:13px; padding:6px 16px;">50% del primer pedido</span>
+        </div>
+        <p style="font-size:14px; color:var(--text-secondary); line-height:1.7; margin-bottom:12px;">Cuando inscribes a un nuevo distribuidor y éste realiza su <strong>primer pedido de producto</strong>, recibes el 50% del valor de ese pedido como bono de inicio rápido. Es el incentivo más poderoso para el arranque: quien entra con un kit grande genera más a su patrocinador, lo que crea una cultura de "entrar bien desde el principio".</p>
+        <div class="alert alert-gold" style="margin:0; padding:12px 16px;">
+          <strong>Ejemplo:</strong> Un nuevo distribuidor entra con un pack de $200 → recibes $100 inmediatamente. 5 distribuidores nuevos en el mes = $500 extras. Combinado con el Bono de Cliente, muchos distribuidores cubren su coste de producto desde el primer mes.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMA 3 -->
+  <div class="card card-gold-accent" style="margin-bottom:40px;">
+    <div style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;">
+      <div style="flex-shrink:0; width:56px; height:56px; background:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-family:'Playfair Display',serif; font-size:22px; font-weight:700;">3</div>
+      <div style="flex:1; min-width:200px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+          <h3 style="font-weight:700; font-size:17px; color:var(--navy);">Bono de Empaquetado (Pack Bonus)</h3>
+          <span class="badge badge-blue" style="font-size:13px; padding:6px 16px;">Por packs de inscripción</span>
+        </div>
+        <p style="font-size:14px; color:var(--text-secondary); line-height:1.7; margin-bottom:12px;">Cuando un nuevo distribuidor entra con uno de los <strong>packs de inscripción especiales</strong> (kits de inicio con producto + materiales), se activa un bono adicional diferenciado del Fast Start estándar. Los packs de mayor valor generan bonos más altos que incentivan la formación de distribuidores bien equipados desde el día uno. Esta forma de ingreso es clave para arranques fuertes de mercado.</p>
+        <div class="alert alert-navy" style="margin:0; padding:12px 16px;">
+          <strong>Uso estratégico:</strong> En mercados nuevos (apertura LATAM), la combinación del Bono de Inicio Rápido + Pack Bonus puede representar la fuente de ingresos principal durante los primeros 3-6 meses, antes de que el volumen de equipo genere Two Team Pay significativo.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PILAR 2: INGRESOS RESIDUALES ── -->
+  <h2 class="content-h2">🔄 Pilar 2 — Ingresos Residuales de Equipo</h2>
+
+  <!-- FORMA 4 -->
+  <div class="card card-gold-accent" style="margin-bottom:20px;">
+    <div style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;">
+      <div style="flex-shrink:0; width:56px; height:56px; background:var(--navy); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--gold-light); font-family:'Playfair Display',serif; font-size:22px; font-weight:700;">4</div>
+      <div style="flex:1; min-width:200px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+          <h3 style="font-weight:700; font-size:17px; color:var(--navy);">Two Team Pay (2TP) — El núcleo residual</h3>
+          <span class="badge badge-gold" style="font-size:13px; padding:6px 16px;">8–20% · máx. $20,000/semana</span>
+        </div>
+        <p style="font-size:14px; color:var(--text-secondary); line-height:1.7; margin-bottom:16px;">La pieza central del plan. ORYGN utiliza una <strong>estructura de 2 equipos (izquierdo y derecho)</strong>. Cada semana se calcula el volumen de ventas acumulado de cada equipo y se paga entre el 8% y el 20% del volumen del <strong>equipo más débil</strong> (el de menor volumen). No hay límite de generaciones ni de profundidad — se paga hasta el infinito de la estructura.</p>
+        <div class="table-wrap" style="margin-bottom:12px;">
+          <table style="font-size:13px;">
+            <thead><tr><th>Volumen equipo débil/semana</th><th>% que se paga</th><th>Ingreso semanal</th></tr></thead>
+            <tbody>
+              <tr><td>$500</td><td>8%</td><td>$40</td></tr>
+              <tr><td>$2,000</td><td>10%</td><td>$200</td></tr>
+              <tr><td>$10,000</td><td>15%</td><td>$1,500</td></tr>
+              <tr><td>$50,000</td><td>20%</td><td>máx. $20,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="alert alert-gold" style="margin:0; padding:12px 16px;">
+          <strong>Clave estratégica:</strong> El limitante no es la profundidad de la red, sino mantener equilibrio entre los dos equipos. Un buen líder dedica tiempo a fortalecer el lado más débil. El volumen sobrante del equipo fuerte se "acumula" (carry-over) para la siguiente semana — no se pierde.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMA 5 -->
+  <div class="card card-gold-accent" style="margin-bottom:40px;">
+    <div style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;">
+      <div style="flex-shrink:0; width:56px; height:56px; background:var(--navy); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--gold-light); font-family:'Playfair Display',serif; font-size:22px; font-weight:700;">5</div>
+      <div style="flex:1; min-width:200px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+          <h3 style="font-weight:700; font-size:17px; color:var(--navy);">Bono de Reorden (Re-order Bonus)</h3>
+          <span class="badge badge-blue" style="font-size:13px; padding:6px 16px;">Comisiones sobre recompras</span>
+        </div>
+        <p style="font-size:14px; color:var(--text-secondary); line-height:1.7; margin-bottom:12px;">Cada vez que un cliente o distribuidor de tu red realiza un <strong>pedido de reorden</strong> (compra repetida de producto), se genera una comisión en cascada hacia arriba en la estructura. Este bono premia la <strong>retención de clientes</strong> y la constancia de los distribuidores activos, no solo el reclutamiento nuevo. Es el que construye el ingreso pasivo real a largo plazo, ya que un cliente satisfecho con triGLP reordena cada 30-45 días.</p>
+        <div class="alert alert-green" style="margin:0; padding:12px 16px;">
+          <strong>Por qué es crítico:</strong> El 80% de los ingresos de las organizaciones maduras proviene del bono de reorden, no del reclutamiento. En LATAM, convencer de que "triGLP es un producto de consumo mensual" — no una compra única — es la clave para construir ingresos estables. El argumento: "Un cliente que pierde peso con triGLP seguirá comprándolo para mantener los resultados."
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PILAR 3: BONOS Y RECONOCIMIENTO ── -->
+  <h2 class="content-h2">🏆 Pilar 3 — Bonos de Rango y Reconocimiento</h2>
+
+  <!-- FORMA 6 -->
+  <div class="card card-gold-accent" style="margin-bottom:20px;">
+    <div style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;">
+      <div style="flex-shrink:0; width:56px; height:56px; background:linear-gradient(135deg,var(--gold),var(--gold-dark)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-family:'Playfair Display',serif; font-size:22px; font-weight:700;">6</div>
+      <div style="flex:1; min-width:200px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+          <h3 style="font-weight:700; font-size:17px; color:var(--navy);">Bono de Estilo de Vida (Lifestyle Bonus)</h3>
+          <span class="badge badge-gold" style="font-size:13px; padding:6px 16px;">$100 – $700 / mes</span>
+        </div>
+        <p style="font-size:14px; color:var(--text-secondary); line-height:1.7; margin-bottom:16px;">Bono mensual recurrente que se activa al mantener ciertos requisitos de actividad personal y de equipo directo. Es el primer bono de "reconocimiento de rango" y uno de los más poderosos para motivar a distribuidores nuevos, porque <strong>pueden recibirlo desde los primeros meses</strong> sin necesidad de una red grande.</p>
+        <div class="table-wrap" style="margin-bottom:12px;">
+          <table style="font-size:13px;">
+            <thead><tr><th>Nivel / Rango</th><th>Bono mensual</th><th>Requisito aproximado</th></tr></thead>
+            <tbody>
+              <tr><td>Nivel básico activo</td><td>$100/mes</td><td>Paquete activo + equipo directo activo</td></tr>
+              <tr><td>Nivel intermedio</td><td>$300/mes</td><td>Volumen personal + equipo directo cualificado</td></tr>
+              <tr><td>Nivel senior</td><td>$500/mes</td><td>Estructura de equipo estable</td></tr>
+              <tr><td>Nivel máximo</td><td>$700/mes</td><td>Rango senior con equipo activo consistente</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="alert alert-gold" style="margin:0; padding:12px 16px;">
+          <strong>Argumento clave en LATAM:</strong> "Empieza, mantén tu paquete activo y con tener tu equipo directo activo puedes recibir entre $100 y $700 al mes de forma recurrente — muchos distribuidores cubren el coste de su producto y tienen ingresos netos desde el primer mes."
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMA 7 -->
+  <div class="card card-gold-accent" style="margin-bottom:20px;">
+    <div style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;">
+      <div style="flex-shrink:0; width:56px; height:56px; background:linear-gradient(135deg,var(--gold),var(--gold-dark)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-family:'Playfair Display',serif; font-size:22px; font-weight:700;">7</div>
+      <div style="flex:1; min-width:200px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+          <h3 style="font-weight:700; font-size:17px; color:var(--navy);">Bono de Liderazgo (Leadership Bonus)</h3>
+          <span class="badge badge-blue" style="font-size:13px; padding:6px 16px;">% sobre volumen de líderes en profundidad</span>
+        </div>
+        <p style="font-size:14px; color:var(--text-secondary); line-height:1.7; margin-bottom:12px;">A partir de ciertos rangos de liderazgo, se desbloquea un porcentaje sobre el volumen generado por los <strong>líderes cualificados en profundidad</strong> de tu organización. Es decir, cuando un distribuidor de tu red alcanza el rango de líder, tú también te beneficias económicamente de ello. Este bono hace que el interés del upline esté completamente alineado con el éxito del downline — cuanto mejor le va a tu red, más ganas tú.</p>
+        <div class="alert alert-navy" style="margin:0; padding:12px 16px;">
+          <strong>Mensaje para líderes experimentados:</strong> "Este bono resuelve el problema estructural de muchos MLM, donde el upline deja de ayudar una vez que el distribuidor alcanza cierto nivel. Aquí, cuanto más alto llegan tus líderes, más ganas tú. Tus incentivos y los suyos son exactamente los mismos."
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMA 8 -->
+  <div class="card card-gold-accent" style="margin-bottom:20px;">
+    <div style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;">
+      <div style="flex-shrink:0; width:56px; height:56px; background:linear-gradient(135deg,var(--gold),var(--gold-dark)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-family:'Playfair Display',serif; font-size:22px; font-weight:700;">8</div>
+      <div style="flex:1; min-width:200px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+          <h3 style="font-weight:700; font-size:17px; color:var(--navy);">Bonos únicos de Diamante (Diamond Matching Bonus)</h3>
+          <span class="badge badge-gold" style="font-size:13px; padding:6px 16px;">Bonos únicos al alcanzar Diamante</span>
+        </div>
+        <p style="font-size:14px; color:var(--text-secondary); line-height:1.7; margin-bottom:12px;">Al alcanzar el rango de <strong>Diamante</strong> (y sus variantes: Diamante, Doble Diamante, Triple Diamante, etc.), se desbloquean bonos únicos de reconocimiento de alto valor. Estos bonos son la "zanahoria" aspiracional del plan — crean una meta tangible y emocionalmente motivadora para líderes con experiencia en MLM que han visto los rangos de otras empresas y valoran los hitos de carrera.</p>
+        <p style="font-size:14px; color:var(--text-secondary); line-height:1.7; margin-bottom:12px;">Adicionalmente, el <strong>Diamond Matching Bonus</strong> permite a los Diamantes recibir un porcentaje del Two Team Pay generado por los Diamantes en su organización — un multiplicador que hace que alcanzar el rango Diamante sea exponencialmente más valioso.</p>
+        <div class="alert alert-gold" style="margin:0; padding:12px 16px;">
+          <strong>Nota importante:</strong> Los valores numéricos exactos de los bonos Diamante deben verificarse directamente con ORYGN/B-Epic, ya que en la documentación original algunos campos aparecían con valores pendientes de confirmación. Solicitar el plan de compensación actualizado antes de cada presentación con líderes de alto nivel.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMA 9 -->
+  <div class="card card-gold-accent" style="margin-bottom:48px;">
+    <div style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;">
+      <div style="flex-shrink:0; width:56px; height:56px; background:linear-gradient(135deg,var(--gold),var(--gold-dark)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-family:'Playfair Display',serif; font-size:22px; font-weight:700;">9</div>
+      <div style="flex:1; min-width:200px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+          <h3 style="font-weight:700; font-size:17px; color:var(--navy);">Bono de Herencia (Generational / Legacy Bonus)</h3>
+          <span class="badge badge-blue" style="font-size:13px; padding:6px 16px;">Ingresos transmisibles a herederos</span>
+        </div>
+        <p style="font-size:14px; color:var(--text-secondary); line-height:1.7; margin-bottom:12px;">Una de las características más diferenciadoras y menos comunes del sector: a partir de ciertos rangos de liderazgo avanzado, los ingresos de la organización pueden <strong>transmitirse a los herederos designados</strong> por el distribuidor. Es el bono que convierte al negocio ORYGN en un activo real, no en un ingreso que desaparece si el distribuidor deja de trabajar o fallece.</p>
+        <p style="font-size:14px; color:var(--text-secondary); line-height:1.7; margin-bottom:12px;">Este elemento es especialmente poderoso en conversaciones con líderes maduros (45+) que piensan en legado y patrimonio familiar. Es el argumento que hace que ORYGN no sea "otro MLM" sino "un activo transferible como un negocio real".</p>
+        <div class="alert alert-green" style="margin:0; padding:12px 16px;">
+          <strong>Argumento para el perfil de liderazgo senior:</strong> "La mayoría de empresas MLM te pagan mientras trabajas. ORYGN también te paga cuando no puedes, y puede dejar ese flujo a tu familia. Eso lo convierte en patrimonio, no solo en ingreso activo."
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resumen visual de las 9 formas -->
+  <h2 class="content-h2">Resumen — Las 9 formas en un vistazo</h2>
+  <div class="table-wrap" style="margin-bottom:48px;">
+    <table>
+      <thead><tr><th>#</th><th>Nombre</th><th>Tipo</th><th>Cuándo se activa</th><th>Perfil más receptivo</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:700; color:var(--gold-dark);">1</td><td style="font-weight:600;">Bono de Cliente</td><td><span class="badge badge-gold">Inmediato</span></td><td>Cada compra de cliente vía enlace personal</td><td>Todos — es el primero que se menciona</td></tr>
+        <tr><td style="font-weight:700; color:var(--gold-dark);">2</td><td style="font-weight:600;">Bono Fast Start</td><td><span class="badge badge-gold">Inmediato</span></td><td>Primer pedido de nuevo distribuidor inscrito</td><td>Networkers activos, emprendedores</td></tr>
+        <tr><td style="font-weight:700; color:var(--gold-dark);">3</td><td style="font-weight:600;">Pack Bonus</td><td><span class="badge badge-gold">Inmediato</span></td><td>Inscripción con pack especial de inicio</td><td>Arranques de mercado, lanzamientos</td></tr>
+        <tr><td style="font-weight:700; color:var(--gold-dark);">4</td><td style="font-weight:600;">Two Team Pay (2TP)</td><td><span class="badge badge-blue">Residual</span></td><td>Semanal sobre volumen equipo más débil</td><td>Líderes con red, objetivo libertad financiera</td></tr>
+        <tr><td style="font-weight:700; color:var(--gold-dark);">5</td><td style="font-weight:600;">Bono de Reorden</td><td><span class="badge badge-blue">Residual</span></td><td>Cada recompra de clientes/distrib. en red</td><td>Constructores de largo plazo</td></tr>
+        <tr><td style="font-weight:700; color:var(--gold-dark);">6</td><td style="font-weight:600;">Lifestyle Bonus</td><td><span class="badge badge-green">Rango mensual</span></td><td>Mensual al mantener actividad y equipo</td><td>Distribuidores nuevos — cubrir coste producto</td></tr>
+        <tr><td style="font-weight:700; color:var(--gold-dark);">7</td><td style="font-weight:600;">Bono de Liderazgo</td><td><span class="badge badge-green">Rango</span></td><td>Al alcanzar rangos de liderazgo medio-alto</td><td>Líderes experimentados MLM</td></tr>
+        <tr><td style="font-weight:700; color:var(--gold-dark);">8</td><td style="font-weight:600;">Diamond Matching Bonus</td><td><span class="badge badge-purple">Rango élite</span></td><td>Al alcanzar rango Diamante y superiores</td><td>Top earners, networkers profesionales</td></tr>
+        <tr><td style="font-weight:700; color:var(--gold-dark);">9</td><td style="font-weight:600;">Bono de Herencia / Legado</td><td><span class="badge badge-purple">Legado</span></td><td>Rangos avanzados — activo transferible</td><td>Líderes 45+, patrimonio familiar</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Guión de presentación -->
+  <h2 class="content-h2">Guión de presentación — en 3 niveles de detalle</h2>
+  <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:40px;">
+    <div class="card" style="border-left:4px solid var(--gold);">
+      <div style="font-weight:700; color:var(--navy); font-size:15px; margin-bottom:8px;">🟡 Nivel 1 — Primera conversación (30 segundos)</div>
+      <p style="font-size:14px; color:var(--text-secondary); line-height:1.7; font-style:italic;">"El plan tiene 9 formas de ganar. Las 3 más inmediatas: 50% de cada compra de cliente, 50% cuando inscribes a alguien, y comisiones semanales sobre el volumen de todo tu equipo hasta el infinito — hasta $20,000 por semana. El resto son bonos de rango y reconocimiento que se van desbloqueando conforme creces. ¿Quieres ver cómo funciona en detalle?"</p>
+    </div>
+    <div class="card" style="border-left:4px solid var(--navy);">
+      <div style="font-weight:700; color:var(--navy); font-size:15px; margin-bottom:8px;">🔵 Nivel 2 — Segunda conversación / Presentación formal (3 minutos)</div>
+      <p style="font-size:14px; color:var(--text-secondary); line-height:1.7;">Cubrir los 3 pilares del plan. Explicar cada uno con un ejemplo numérico real. Mostrar la tabla de las 9 formas. No entrar en detalles técnicos del 2TP hasta que el prospecto lo pida — la mayoría se conecta emocionalmente con el "50% en tiempo real" antes de querer entender los mecanismos binarios.</p>
+    </div>
+    <div class="card" style="border-left:4px solid var(--gold-dark);">
+      <div style="font-weight:700; color:var(--navy); font-size:15px; margin-bottom:8px;">🟤 Nivel 3 — Líderes experimentados MLM (reunión estratégica)</div>
+      <p style="font-size:14px; color:var(--text-secondary); line-height:1.7;">Para este perfil, los bonos más poderosos son el Diamond Matching Bonus y el Bono de Herencia — los que hacen que ORYGN sea diferente a cualquier empresa que ya conocen. Entrar directo a explicar estos dos: "¿Tu empresa actual tiene algo así?" La respuesta casi siempre es no.</p>
+    </div>
+  </div>
+
+  <div class="alert alert-navy">
+    <strong>Nota de honestidad esencial (BGM):</strong> El plan de compensación es atractivo, pero los ingresos dependen del trabajo de cada persona. Nunca presentar cifras de ganancia como garantizadas. Enfatizar siempre que el 2TP requiere equilibrio de equipos y el Lifestyle Bonus requiere mantener actividad. La transparencia construye equipos más sólidos y reduce la rotación de distribuidores frustrados por expectativas mal gestionadas.
+  </div>
+</section>
+
+
+<!-- ═══ DOCUMENTACIÓN MAESTRA ═══ -->
+<section id="documentacion">
+  <div class="section-header">
+    <span class="section-eyebrow">Master Dossier Regulatorio</span>
+    <h2 class="section-title">Documentación maestra común a todos los países</h2>
+    <p class="section-desc">ORYGN/B-Epic debe preparar este dossier una sola vez. Con él, adaptar el registro a cada país es solo cuestión de traducciones, análisis locales y formularios específicos.</p>
+  </div>
+
+  <div class="table-wrap" style="margin-bottom:48px;">
+    <table>
+      <thead><tr><th>Documento</th><th>Descripción</th><th>Países que lo requieren</th></tr></thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:600;">Certificado de Libre Venta (CLV)</td>
+          <td>Emitido por FDA/USA. Vigencia máx. 2 años. Apostillado según Convenio de La Haya.</td>
+          <td>Todos los países LATAM — requisito universal</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Certificado BPM/GMP</td>
+          <td>FDA, NSF o entidad certificadora reconocida. Certifica estándares de calidad de la fábrica.</td>
+          <td>Colombia, Brasil, México, Perú, Argentina y todos</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Composición Cuali-Cuantitativa</td>
+          <td>Fórmula completa: Norwegian Salmon Protein Hydrolysate, Deionized Water, Organic Lemon Peel Extract, Organic Ginger Root Extract con cantidades exactas por dosis.</td>
+          <td>Todos los países</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Ficha Técnica del Producto</td>
+          <td>Nombre, indicaciones, contraindicaciones, modo de uso, presentación, almacenamiento, vida útil, número de lote, fabricante.</td>
+          <td>Todos los países</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Estudios de Estabilidad</td>
+          <td>Pruebas que demuestran mantenimiento de características durante la vida útil del producto.</td>
+          <td>Colombia (INVIMA), Brasil (ANVISA), Argentina (ANMAT)</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Análisis Microbiológico</td>
+          <td>Prueba de laboratorio del producto final. En la mayoría de países debe realizarse en laboratorio acreditado del país destino.</td>
+          <td>Todos los países</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Análisis Fisicoquímico</td>
+          <td>Pruebas de identidad y concentración de ingredientes activos. Confirma que el producto cumple con las especificaciones declaradas.</td>
+          <td>Todos los países</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Etiqueta en idioma local</td>
+          <td>Versión en español (o portugués para Brasil) con todos los requisitos locales: ingredientes, modo de uso, advertencias, nombre importador local, número de registro, peso neto.</td>
+          <td>Todos los países — versión adaptada por país</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Poder Notarial</td>
+          <td>Para representantes locales donde el titular extranjero necesita designar un representante. Debe apostillarse según Convenio de La Haya.</td>
+          <td>Brasil (obligatorio), Argentina, Perú y otros</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Información del Fabricante</td>
+          <td>Datos completos de ORYGN/B-Epic como fabricante: dirección, licencia de fabricación, certificaciones ISO/GMP. Datos de la planta de producción en Noruega/USA.</td>
+          <td>Todos los países</td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;">Declaración de No Adulteración</td>
+          <td>Declaración del fabricante de que el producto no contiene sustancias prohibidas, metales pesados en límites permitidos, libre de pesticidas y antibióticos.</td>
+          <td>Todos los países</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="content-h2">Guía de transferencia de registros a ORYGN</h2>
+  <div class="alert alert-green" style="margin-bottom:24px;">
+    <strong>Recomendación universal:</strong> Siempre que sea posible, es mejor que ORYGN figure como titular del registro DESDE EL INICIO, usando el asesor local solo como gestor administrativo (apoderado). Esto elimina el riesgo de la transferencia posterior. El contrato con el asesor debe especificar: (1) actúa como apoderada de ORYGN/B-Epic; (2) el RS/NS se otorga directamente a nombre de ORYGN; (3) en caso de terminación, facilita la transición en 30 días sin coste adicional.
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>País</th><th>Mecanismo de transferencia</th><th>Plazo</th><th>Coste est.</th></tr></thead>
+      <tbody>
+        <tr><td>🇧🇷 Brasil</td><td>Petição administrativa ANVISA + poder notarial. Requiere que ORYGN constituya empresa en Brasil o designe nuevo RL.</td><td>60-90 días</td><td>$3,000–6,000</td></tr>
+        <tr><td>🇵🇪 Perú</td><td>Expediente de cambio de titular ante DIGEMID. Nuevo titular debe ser también una Droguería.</td><td>30-45 días hábiles</td><td>$1,500–3,000</td></tr>
+        <tr><td>🇨🇱 Chile</td><td>En Chile no hay registro de producto centralizado — el permiso es por embarque. Cuando ORYGN tenga empresa chilena con Resolución Sanitaria, opera directamente.</td><td>Inmediato con empresa local</td><td>$500–1,500</td></tr>
+        <tr><td>🇪🇨 Ecuador</td><td>ARCSA permite cambio de titular de la NS vía VUE. El asesor inicial es el solicitante; la transferencia a ORYGN se solicita online.</td><td>15-30 días</td><td>$800–2,000</td></tr>
+        <tr><td>🇩🇴 Rep. Dom.</td><td>DIGEMAPS acepta solicitud de transferencia de RS con documentación del nuevo titular.</td><td>30-60 días</td><td>$1,000–2,500</td></tr>
+        <tr><td>🌎 CA (COMIECO)</td><td>Si el RS base de Costa Rica está a nombre de ORYGN, todos los reconocimientos COMIECO derivados también lo son. Clave: RS costarricense a nombre de ORYGN desde el inicio.</td><td>Incluido en proceso CR</td><td>$0 adicional</td></tr>
+        <tr><td>🇦🇷 Argentina</td><td>ANMAT permite cambio de titular con expediente completo. Requiere habilitación del nuevo establecimiento importador.</td><td>Proceso complejo</td><td>$2,000–5,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- ═══ ABOUT BGM ═══ -->
+<section id="bgm">
+  <div class="section-header">
+    <span class="section-eyebrow">BGM Corporation</span>
+    <h2 class="section-title">La ventaja diferencial de BGM para ORYGN</h2>
+    <p class="section-desc">Capacidades únicas e inmediatas de BGM Corporation que ningún otro partner puede aportar a ORYGN/B-Epic en este momento.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:48px;">
+    <div class="card card-navy">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+        <div style="width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,var(--gold),var(--gold-dark)); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:white; flex-shrink:0;">B</div>
+        <div>
+          <div style="font-family:'Playfair Display',serif; font-size:20px; color:white; font-weight:700;">Benito García Míguez</div>
+          <div style="font-size:12px; color:var(--gold-light); text-transform:uppercase; letter-spacing:0.1em;">CEO · BGM Corporation</div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div style="text-align:center; padding:16px; background:rgba(255,255,255,0.06); border-radius:8px;">
+          <div style="font-family:'Playfair Display',serif; font-size:28px; color:var(--gold-light); font-weight:700;">38+</div>
+          <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.08em; margin-top:4px;">Años network marketing</div>
+        </div>
+        <div style="text-align:center; padding:16px; background:rgba(255,255,255,0.06); border-radius:8px;">
+          <div style="font-family:'Playfair Display',serif; font-size:28px; color:var(--gold-light); font-weight:700;">5</div>
+          <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.08em; margin-top:4px;">Continentes con redes activas</div>
+        </div>
+        <div style="text-align:center; padding:16px; background:rgba(255,255,255,0.06); border-radius:8px;">
+          <div style="font-family:'Playfair Display',serif; font-size:28px; color:var(--gold-light); font-weight:700;">15+</div>
+          <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.08em; margin-top:4px;">Programas de formación creados</div>
+        </div>
+        <div style="text-align:center; padding:16px; background:rgba(255,255,255,0.06); border-radius:8px;">
+          <div style="font-family:'Playfair Display',serif; font-size:28px; color:var(--gold-light); font-weight:700;">4</div>
+          <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.08em; margin-top:4px;">Idiomas de trabajo</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <div class="card card-gold-accent">
+        <div style="font-weight:600; color:var(--navy); margin-bottom:8px;">🇧🇷 Porto Alegre — Ventaja única Brasil</div>
+        <p style="font-size:13px; color:var(--text-secondary);">Presencia física en Brasil desde junio 2026. Coordinación directa con asesores ANVISA, identificación de socio local, operación como Representante de facto. Aceleración de 3-6 meses vs. gestión externa.</p>
+      </div>
+      <div class="card card-gold-accent">
+        <div style="font-weight:600; color:var(--navy); margin-bottom:8px;">🌍 Red de líderes latinoamericanos</div>
+        <p style="font-size:13px; color:var(--text-secondary);">Identificación inmediata de distribuidores ancla en México, Colombia, Chile, Argentina. No hay que construir desde cero — hay líderes con red establecida esperando una oportunidad diferenciada.</p>
+      </div>
+      <div class="card card-gold-accent">
+        <div style="font-weight:600; color:var(--navy); margin-bottom:8px;">🗣️ Multilingüe: ES / PT / FR + comprende IT</div>
+        <p style="font-size:13px; color:var(--text-secondary);">Gestión directa de 4 mercados sin intermediarios. España/LATAM (ES), Brasil (PT), África francófona (FR). Ahorro en costes de mediación y velocidad de comunicación.</p>
+      </div>
+      <div class="card card-gold-accent">
+        <div style="font-weight:600; color:var(--navy); margin-bottom:8px;">🌍 África Occidental — Mercado no contemplado</div>
+        <p style="font-size:13px; color:var(--text-secondary);">Residencia en Benín. Red en Costa de Marfil, Senegal, Benín, Camerún (120M personas, mínima competencia en suplementos naturales). Puede ser el diferenciador geográfico de ORYGN vs. cualquier otra empresa MLM de salud.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="content-h2">Propuesta de valor BGM para ORYGN — tabla completa</h2>
+  <div class="table-wrap" style="margin-bottom:48px;">
+    <table>
+      <thead><tr><th>Capacidad BGM</th><th>Beneficio directo para ORYGN</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:600;">Porto Alegre como Hub Brasil (desde jun. 2026)</td><td>Presencia física en el mayor mercado de LATAM. Coordinación directa con asesores ANVISA, identificación de socio local Brasil. Aceleración 3-6 meses vs. gestión externa.</td></tr>
+        <tr><td style="font-weight:600;">Red de líderes latinoamericanos (38 años de network)</td><td>Identificación inmediata de distribuidores ancla en México, Colombia, Chile, Argentina. No hay que construir desde cero; hay líderes con red establecida esperando una oportunidad diferenciada.</td></tr>
+        <tr><td style="font-weight:600;">Capacidad multilingüe (ES/PT/FR + IT)</td><td>Gestión directa de 4 mercados sin intermediarios. Ahorro en costes de mediación y velocidad de comunicación.</td></tr>
+        <tr><td style="font-weight:600;">Sistemas propios de formación (Growth Code, Fábrica de Contactos)</td><td>Los distribuidores ORYGN de la red BGM tienen acceso a formación probada. Reducción del tiempo de onboarding y aumento de la tasa de activación de nuevos distribuidores.</td></tr>
+        <tr><td style="font-weight:600;">Inteligencia de mercado local pre-apertura</td><td>BGM puede operar como "sensor de terreno" en países donde ORYGN aún no está activo: mapear reguladores locales, identificar asesores sanitarios, detectar distribuidores candidatos — antes del lanzamiento oficial.</td></tr>
+        <tr><td style="font-weight:600;">Acceso a soluciones de pago alternativas (plataforma KYC + VISA)</td><td>Herramienta inmediata para distribuidores en mercados con limitaciones bancarias. Esencial en Venezuela, Bolivia y situaciones de exclusión financiera.</td></tr>
+        <tr><td style="font-weight:600;">Residencia España y Portugal — Base Europa</td><td>Posición única para liderar toda la estrategia de expansión europea de ORYGN desde la Península Ibérica, coordinando España, Portugal, Francia e Italia.</td></tr>
+        <tr><td style="font-weight:600;">África Occidental — Red en Benín y región</td><td>Mercado no contemplado por la competencia. 120M personas con creciente clase media y mínima competencia en suplementos naturales. BGM tiene residencia y red en toda la región.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="content-h2">3 mercados donde la ventaja BGM es más inmediata</h2>
+  <div class="grid-3">
+    <div class="card card-navy" style="text-align:center; padding:32px 24px;">
+      <div style="font-size:36px; margin-bottom:16px;">🇧🇷</div>
+      <div style="font-family:'Playfair Display',serif; font-size:20px; color:white; font-weight:700; margin-bottom:12px;">Brasil</div>
+      <div class="badge" style="background:rgba(201,168,76,0.25); color:var(--gold-light); margin-bottom:16px;">Ventaja única</div>
+      <p style="font-size:13px; color:rgba(255,255,255,0.7);">Ningún otro consultor externo ofrece presencia física en Brasil desde junio 2026. El proceso ANVISA requiere socio local; BGM puede coordinar directamente desde Porto Alegre. Convierte Brasil de "mercado difícil" en "mercado accesible con el socio correcto".</p>
+    </div>
+    <div class="card card-navy" style="text-align:center; padding:32px 24px;">
+      <div style="font-size:36px; margin-bottom:16px;">🌍</div>
+      <div style="font-family:'Playfair Display',serif; font-size:20px; color:white; font-weight:700; margin-bottom:12px;">África Francófona</div>
+      <div class="badge" style="background:rgba(201,168,76,0.25); color:var(--gold-light); margin-bottom:16px;">Mercado no contemplado</div>
+      <p style="font-size:13px; color:rgba(255,255,255,0.7);">Costa de Marfil, Senegal, Benín, Camerún — 120M personas con creciente clase media y mínima competencia en suplementos naturales. BGM tiene residencia en Benín y red en toda la región. Este mercado puede ser el "diferenciador geográfico" de ORYGN.</p>
+    </div>
+    <div class="card card-navy" style="text-align:center; padding:32px 24px;">
+      <div style="font-size:36px; margin-bottom:16px;">🇪🇺</div>
+      <div style="font-family:'Playfair Display',serif; font-size:20px; color:white; font-weight:700; margin-bottom:12px;">España + Portugal</div>
+      <div class="badge" style="background:rgba(201,168,76,0.25); color:var(--gold-light); margin-bottom:16px;">Puerta de entrada europea</div>
+      <p style="font-size:13px; color:rgba(255,255,255,0.7);">España (47M) y Portugal (10M) son los mercados más naturales para hispanohablantes y lusoparlantes. BGM opera en ambos con residencia activa. Coordinación del proceso regulatorio europeo en paralelo a la expansión latinoamericana.</p>
+    </div>
+  </div>
+
+  <div class="alert alert-navy" style="margin-top:40px;">
+    <strong>Propuesta concreta para ORYGN:</strong> BGM Corporation propone iniciar colaboración estratégica en 3 mercados piloto simultáneos: <strong>Ecuador (proceso rápido: 2-3 meses) │ México (mayor mercado hispano) │ Colombia (hub LATAM)</strong>. Mientras se procesan estos registros, BGM activa su red de distribución y formación para garantizar que cuando llegue el permiso, el mercado ya esté preparado.
+  </div>
+</section>
+
+
+<!-- ═══ PREGUNTAS ESTRATÉGICAS ═══ -->
+<section id="preguntas">
+  <div class="section-header">
+    <span class="section-eyebrow">Preparación para la reunión con ORYGN/B-Epic</span>
+    <h2 class="section-title">Preguntas estratégicas clave</h2>
+    <p class="section-desc">Antes de definir el alcance exacto de la colaboración, es importante obtener respuestas a estas preguntas por parte del equipo de ORYGN/B-Epic.</p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:48px;">
+    <div class="card card-gold-accent">
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div style="flex-shrink:0; width:36px; height:36px; background:var(--navy); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--gold-light); font-weight:700; font-size:14px;">1</div>
+        <div>
+          <div style="font-weight:600; color:var(--navy); margin-bottom:6px;">¿En qué países de LATAM ya tiene ORYGN/B-Epic algún tipo de presencia o distribución activa, aunque sea informal?</div>
+          <p style="font-size:13px; color:var(--text-muted);"><em>Determina dónde hay terreno abonado vs. dónde hay que comenzar desde cero.</em></p>
+        </div>
+      </div>
+    </div>
+    <div class="card card-gold-accent">
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div style="flex-shrink:0; width:36px; height:36px; background:var(--navy); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--gold-light); font-weight:700; font-size:14px;">2</div>
+        <div>
+          <div style="font-weight:600; color:var(--navy); margin-bottom:6px;">¿Tiene ORYGN el Certificado de Libre Venta (CLV) emitido por FDA o entidad USA para triGLP? ¿Certificado BPM/GMP de la planta de producción?</div>
+          <p style="font-size:13px; color:var(--text-muted);"><em>Son los documentos más críticos para cualquier proceso de registro en LATAM.</em></p>
+        </div>
+      </div>
+    </div>
+    <div class="card card-gold-accent">
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div style="flex-shrink:0; width:36px; height:36px; background:var(--navy); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--gold-light); font-weight:700; font-size:14px;">3</div>
+        <div>
+          <div style="font-weight:600; color:var(--navy); margin-bottom:6px;">¿Hay un departamento de Asuntos Regulatorios en ORYGN/B-Epic? ¿Están trabajando ya en algún país LATAM?</div>
+          <p style="font-size:13px; color:var(--text-muted);"><em>Evitar duplicar esfuerzos y determinar cómo puede integrarse BGM con el equipo interno.</em></p>
+        </div>
+      </div>
+    </div>
+    <div class="card card-gold-accent">
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div style="flex-shrink:0; width:36px; height:36px; background:var(--navy); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--gold-light); font-weight:700; font-size:14px;">4</div>
+        <div>
+          <div style="font-weight:600; color:var(--navy); margin-bottom:6px;">¿Cuál es el precio de venta actual de triGLP (PV/CV en USD) y cuál sería el margen disponible para importadores/distribuidores en LATAM considerando aranceles locales?</div>
+          <p style="font-size:13px; color:var(--text-muted);"><em>Fundamental para validar viabilidad comercial en cada mercado.</em></p>
+        </div>
+      </div>
+    </div>
+    <div class="card card-gold-accent">
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div style="flex-shrink:0; width:36px; height:36px; background:var(--navy); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--gold-light); font-weight:700; font-size:14px;">5</div>
+        <div>
+          <div style="font-weight:600; color:var(--navy); margin-bottom:6px;">¿Hay planes concretos de inversión en apertura de nuevos mercados LATAM con presupuesto asignado? ¿O el modelo es que los distribuidores lideren el proceso regulatorio?</div>
+          <p style="font-size:13px; color:var(--text-muted);"><em>Define si el soporte es corporativo o si BGM debería gestionar el proceso de forma autónoma.</em></p>
+        </div>
+      </div>
+    </div>
+    <div class="card card-gold-accent">
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div style="flex-shrink:0; width:36px; height:36px; background:var(--navy); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--gold-light); font-weight:700; font-size:14px;">6</div>
+        <div>
+          <div style="font-weight:600; color:var(--navy); margin-bottom:6px;">¿Tiene ORYGN restricciones de ingredientes o de claims en algún país específico ya identificadas?</div>
+          <p style="font-size:13px; color:var(--text-muted);"><em>Hay alertas regulatorias en algunos países sobre el ingrediente salmon peptide y las claims GLP-1.</em></p>
+        </div>
+      </div>
+    </div>
+    <div class="card card-gold-accent">
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div style="flex-shrink:0; width:36px; height:36px; background:var(--navy); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--gold-light); font-weight:700; font-size:14px;">7</div>
+        <div>
+          <div style="font-weight:600; color:var(--navy); margin-bottom:6px;">¿Cuál es la política de ORYGN respecto a registros sanitarios: los gestiona corporativamente o los deja en manos de los distribuidores/socios locales?</div>
+          <p style="font-size:13px; color:var(--text-muted);"><em>Determina el modelo de colaboración más adecuado.</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="content-h2">Sistema de nombres del proyecto — Opciones</h2>
+  <div class="grid-2" style="margin-bottom:32px;">
+    <div class="card" style="border:2px solid var(--gold); position:relative;">
+      <div style="position:absolute; top:-12px; left:20px; background:var(--gold); color:white; font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:4px 14px; border-radius:10px;">RECOMENDADO</div>
+      <div class="badge badge-gold" style="margin-bottom:12px;">Concepto 1</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:22px; color:var(--navy); margin-bottom:8px;">MÉTODO ORIGEN</h3>
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">metodoorigen.com</p>
+      <p style="font-size:13px; color:var(--text-secondary); line-height:1.65; margin-bottom:12px;">"Método" comunica sistema replicable. "Origen" conecta con ORYGN sin depender de esa marca. Funciona igual en español y portugués. Serio y profesional.</p>
+      <p style="font-size:12px; color:var(--gold-dark); font-style:italic;">"El sistema que transforma tu salud y tu economía desde el origen."</p>
+    </div>
+    <div class="card">
+      <div class="badge badge-blue" style="margin-bottom:12px;">Concepto 2</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:22px; color:var(--navy); margin-bottom:8px;">RED ÉLITE GLOBAL</h3>
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">redeliteglobal.com</p>
+      <p style="font-size:13px; color:var(--text-secondary); line-height:1.65; margin-bottom:12px;">"Élite" filtra desde el nombre — no buscas a cualquiera. "Global" comunica expansión internacional desde el primer segundo. Funciona muy bien en el mercado latinoamericano.</p>
+      <p style="font-size:12px; color:var(--gold-dark); font-style:italic;">"No construimos distribuidores. Construimos líderes internacionales."</p>
+    </div>
+    <div class="card">
+      <div class="badge badge-green" style="margin-bottom:12px;">Concepto 3</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:22px; color:var(--navy); margin-bottom:8px;">SISTEMA GLP NATURAL</h3>
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">sistemoglpnatural.com</p>
+      <p style="font-size:13px; color:var(--text-secondary); line-height:1.65; margin-bottom:12px;">Aprovecha el boom de GLP-1/Ozempic para capturar tráfico orgánico y pagado. Enorme potencial de posicionamiento SEO. Orientado al Avatar C (salud) con upsell natural al negocio.</p>
+      <p style="font-size:12px; color:var(--gold-dark); font-style:italic;">"La alternativa natural al GLP-1 que también te paga."</p>
+    </div>
+    <div class="card">
+      <div class="badge badge-purple" style="margin-bottom:12px;">Concepto 4</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:22px; color:var(--navy); margin-bottom:8px;">PROYECTO VÉRTICE</h3>
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">proyectovertice.com</p>
+      <p style="font-size:13px; color:var(--text-secondary); line-height:1.65; margin-bottom:12px;">"Vértice" evoca el punto más alto, la cima, la convergencia. Diferente, sofisticado y no suena a MLM genérico. Permite posicionarse como líder que lleva a otros al tope.</p>
+      <p style="font-size:12px; color:var(--gold-dark); font-style:italic;">"Donde la salud de próxima generación y la libertad financiera convergen."</p>
+    </div>
+  </div>
+
+  <div class="alert alert-navy">
+    <strong>Conclusión general BGM Corporation:</strong> triGLP llega al mercado LATAM en el momento más favorable de la última década: el universo GLP-1 domina la conversación global de salud, hay demanda masiva de alternativas naturales, y ORYGN tiene la única solución natural con doble protección de patente y ciencia publicada. <strong>La ventana de oportunidad es ahora.</strong>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">ORYGN · triGLP</div>
+      <div class="footer-tagline">Pharma Results. Natural Delivery.</div>
+    </div>
+    <div class="footer-copy">
+      Preparado por <strong>BGM Corporation | Benito García Míguez</strong><br>
+      CEO · Business of Global Marketing, LLC<br>
+      990 Biscayne Blvd, Ste 501-16, Miami, FL 33132<br>
+      <strong>bgmcorporation.com</strong> · Mayo 2026
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    const sec = document.getElementById(id);
+    if (sec) { sec.classList.add('active'); sec.scrollIntoView({behavior:'smooth', block:'start'}); }
+    const navEl = document.getElementById('nav-' + id);
+    if (navEl) navEl.classList.add('active');
+    const nav = document.getElementById('navLinks');
+    if (nav.classList.contains('open')) nav.classList.remove('open');
+    return false;
+  }
+
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+    });
+  });
+</script>
+</body>
+</html>

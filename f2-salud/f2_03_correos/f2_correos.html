@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MÉTODO ORIGEN — Secuencia 5 Emails · Funnel 2 "La Salud"</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #F97316;
+  --orange-deep: #FE5000;
+  --black: #000000;
+  --near-black: #1F2937;
+  --gray: #4B5563;
+  --light-gray: #6B7280;
+  --soft-border: #E5E7EB;
+  --cream: #F2F2EB;
+  --white: #FBFBFB;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-serif: 'DM Serif Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--font-body); background:var(--cream); color:var(--near-black); }
+
+/* ── COVER ── */
+.cover {
+  background:var(--near-black);
+  padding:80px 6% 72px;
+  position:relative; overflow:hidden;
+}
+.cover-grid {
+  position:absolute; inset:0;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(249,115,22,0.05) 60px),
+    repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(249,115,22,0.05) 60px);
+}
+.cover-glow {
+  position:absolute; width:500px; height:500px;
+  background:radial-gradient(circle,rgba(249,115,22,0.1) 0%,transparent 70%);
+  top:-100px; right:-100px; pointer-events:none;
+}
+.cover-inner { position:relative; z-index:1; max-width:860px; }
+.cover-eyebrow {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.3);
+  padding:5px 14px; font-size:11px; color:var(--orange);
+  letter-spacing:0.2em; text-transform:uppercase; margin-bottom:24px;
+}
+.cover-eyebrow::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--orange); }
+.cover h1 { font-family:var(--font-display); font-size:clamp(42px,6vw,80px); color:var(--white); line-height:0.95; font-weight:700; margin-bottom:12px; }
+.cover h1 span { color:var(--orange); }
+.cover-sub { font-size:15px; color:rgba(251,251,251,0.55); font-family:var(--font-serif); font-style:italic; margin-bottom:36px; max-width:580px; line-height:1.5; }
+.cover-meta { display:flex; gap:40px; flex-wrap:wrap; }
+.cover-meta-num { font-family:var(--font-display); font-size:36px; color:var(--orange); display:block; line-height:1; }
+.cover-meta-label { font-size:11px; color:rgba(251,251,251,0.35); text-transform:uppercase; letter-spacing:0.1em; margin-top:3px; display:block; }
+.cover-divider { width:1px; background:rgba(249,115,22,0.2); }
+
+/* ── INSTRUCCIONES ── */
+.instructions { background:var(--white); border-bottom:2px solid var(--soft-border); padding:32px 6%; }
+.inst-inner { max-width:860px; margin:0 auto; }
+.inst-title { font-size:12px; font-weight:700; color:var(--near-black); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:14px; }
+.inst-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.inst-card { background:var(--cream); border:1px solid var(--soft-border); padding:14px; }
+.inst-label { font-size:10px; font-weight:600; color:var(--orange); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:5px; }
+.inst-val { font-size:13px; color:var(--near-black); line-height:1.5; font-weight:500; }
+
+/* ── EMAIL SECTION ── */
+.email-section { padding:44px 6%; }
+.email-section:nth-child(odd) { background:var(--cream); }
+.email-section:nth-child(even) { background:var(--white); }
+.email-inner { max-width:860px; margin:0 auto; }
+
+.email-header {
+  display:grid; grid-template-columns:auto 1fr auto;
+  gap:18px; align-items:center;
+  padding-bottom:22px; border-bottom:2px solid var(--soft-border); margin-bottom:28px;
+}
+.email-num-badge {
+  width:52px; height:52px; border-radius:50%;
+  background:var(--near-black);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); font-size:22px; color:var(--orange); flex-shrink:0;
+}
+.email-num-badge.featured { background:var(--orange); color:var(--white); }
+.email-send-time { font-size:11px; font-weight:600; color:var(--orange); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:4px; }
+.email-asunto-label { font-size:11px; color:var(--light-gray); letter-spacing:0.06em; margin-bottom:2px; }
+.email-asunto { font-size:17px; font-weight:600; color:var(--near-black); line-height:1.3; }
+.email-objetivo-tag {
+  background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.25);
+  padding:6px 14px; font-size:11px; color:var(--orange);
+  letter-spacing:0.1em; text-transform:uppercase; white-space:nowrap; align-self:flex-start;
+}
+
+/* ── EMAIL BODY ── */
+.email-body-box {
+  background:var(--white); border:1px solid var(--soft-border);
+  border-top:3px solid var(--orange);
+  padding:36px 40px; margin-bottom:18px;
+  font-size:15px; color:var(--near-black); line-height:1.85;
+}
+.email-body-box.dark {
+  background:var(--near-black); border-color:rgba(249,115,22,0.2);
+  border-top:3px solid var(--orange); color:rgba(251,251,251,0.8);
+}
+.email-body-box p { margin-bottom:16px; }
+.email-body-box p:last-child { margin-bottom:0; }
+.saludo { font-weight:600; color:var(--near-black); }
+.email-body-box.dark .saludo { color:var(--white); }
+.email-body-box strong { color:var(--near-black); font-weight:600; }
+.email-body-box.dark strong { color:var(--white); }
+
+.highlight-block {
+  background:rgba(249,115,22,0.07); border-left:3px solid var(--orange);
+  padding:16px 20px; margin:20px 0; font-size:14px; line-height:1.7;
+}
+.email-body-box.dark .highlight-block { background:rgba(249,115,22,0.08); }
+
+.stats-inline { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin:20px 0; }
+.stat-i { background:rgba(249,115,22,0.08); border:1px solid rgba(249,115,22,0.15); padding:14px 10px; text-align:center; }
+.stat-i-num { font-family:var(--font-display); font-size:28px; color:var(--orange); line-height:1; display:block; }
+.stat-i-lbl { font-size:10px; color:rgba(251,251,251,0.4); text-transform:uppercase; letter-spacing:0.06em; margin-top:3px; display:block; line-height:1.3; }
+.email-body-box:not(.dark) .stat-i { background:rgba(249,115,22,0.06); }
+.email-body-box:not(.dark) .stat-i-lbl { color:var(--gray); }
+
+.via-row { display:flex; flex-direction:column; gap:10px; margin:18px 0; }
+.via-item { display:flex; gap:12px; align-items:flex-start; padding:12px 16px; background:rgba(249,115,22,0.05); border-left:3px solid var(--orange); }
+.via-tag { font-size:11px; font-weight:700; color:var(--orange); letter-spacing:0.1em; text-transform:uppercase; flex-shrink:0; min-width:90px; margin-top:1px; }
+.via-text { font-size:13px; color:rgba(251,251,251,0.65); line-height:1.5; }
+.email-body-box:not(.dark) .via-text { color:var(--gray); }
+
+ul.email-list { padding-left:0; list-style:none; margin:14px 0 18px; }
+ul.email-list li { display:flex; gap:10px; align-items:flex-start; font-size:14px; margin-bottom:8px; color:var(--gray); }
+ul.email-list li::before { content:'—'; color:var(--orange); font-weight:700; flex-shrink:0; }
+.email-body-box.dark ul.email-list li { color:rgba(251,251,251,0.6); }
+
+.cta-btn {
+  display:inline-block; background:var(--orange); color:var(--white);
+  font-weight:700; font-size:14px; padding:13px 26px;
+  letter-spacing:0.05em; text-transform:uppercase; text-decoration:none; margin:10px 0;
+}
+.firma { margin-top:28px; padding-top:20px; border-top:1px solid var(--soft-border); font-size:13px; color:var(--light-gray); line-height:1.65; }
+.email-body-box.dark .firma { border-color:rgba(255,255,255,0.08); color:rgba(251,251,251,0.3); }
+.firma strong { color:var(--near-black); font-size:14px; font-weight:600; }
+.email-body-box.dark .firma strong { color:rgba(251,251,251,0.7); }
+.ps { font-size:13px; color:var(--light-gray); font-style:italic; margin-top:18px; }
+.email-body-box.dark .ps { color:rgba(251,251,251,0.3); }
+
+.email-notes-box {
+  background:rgba(249,115,22,0.06); border:1px solid rgba(249,115,22,0.2);
+  padding:16px 20px; display:flex; gap:10px; align-items:flex-start;
+}
+.email-notes-title { font-size:11px; font-weight:700; color:var(--orange); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px; }
+.email-notes-text { font-size:13px; color:var(--gray); line-height:1.6; }
+
+/* ── SUMMARY ── */
+.summary-section { background:var(--near-black); padding:56px 6%; }
+.summary-inner { max-width:860px; margin:0 auto; }
+.summary-title { font-family:var(--font-display); font-size:36px; color:var(--white); letter-spacing:0.04em; margin-bottom:26px; }
+.summary-title span { color:var(--orange); }
+table { width:100%; border-collapse:collapse; font-size:14px; }
+th { background:rgba(249,115,22,0.12); color:var(--orange); padding:11px 16px; text-align:left; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; font-weight:600; }
+td { padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.06); color:rgba(251,251,251,0.7); vertical-align:top; }
+tr:last-child td { border-bottom:none; }
+tr:hover td { background:rgba(249,115,22,0.04); }
+td:first-child { color:var(--orange); font-family:var(--font-display); font-size:20px; padding-top:10px; }
+td:nth-child(2) { color:var(--white); font-weight:500; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .inst-grid { grid-template-columns:1fr 1fr; }
+  .email-header { grid-template-columns:auto 1fr; }
+  .email-objetivo-tag { grid-column:1/-1; }
+  .email-body-box { padding:24px 20px; }
+  .stats-inline { grid-template-columns:1fr 1fr; }
+  .cover-meta { gap:20px; }
+  .cover-divider { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-grid"></div>
+  <div class="cover-glow"></div>
+  <div class="cover-inner">
+    <div class="cover-eyebrow">Método Origen · Funnel 2 "La Salud"</div>
+    <h1>SECUENCIA<br><span>5 EMAILS</span></h1>
+    <p class="cover-sub">Copy completo listo para configurar en Systeme.io. Avatar C — Personas interesadas en salud metabólica y pérdida de peso natural.</p>
+    <div class="cover-meta">
+      <div><span class="cover-meta-num">5</span><span class="cover-meta-label">Emails completos</span></div>
+      <div class="cover-divider"></div>
+      <div><span class="cover-meta-num">7</span><span class="cover-meta-label">Días de secuencia</span></div>
+      <div class="cover-divider"></div>
+      <div><span class="cover-meta-num">1</span><span class="cover-meta-label">Objetivo: Compra</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- INSTRUCCIONES -->
+<div class="instructions">
+  <div class="inst-inner">
+    <div class="inst-title">⚙️ Configuración en Systeme.io</div>
+    <div class="inst-grid">
+      <div class="inst-card"><div class="inst-label">Nombre del remitente</div><div class="inst-val">[Tu nombre] — Método Origen</div></div>
+      <div class="inst-card"><div class="inst-label">Email de respuesta</div><div class="inst-val">Tu email personal real</div></div>
+      <div class="inst-card"><div class="inst-label">Activación</div><div class="inst-val">Inmediata tras descarga de la guía (Funnel 2)</div></div>
+      <div class="inst-card"><div class="inst-label">Variable dinámica</div><div class="inst-val">[Nombre] = nombre del prospecto</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════ -->
+<!-- EMAIL 1 -->
+<!-- ═══════════════════════════════ -->
+<div class="email-section">
+  <div class="email-inner">
+    <div class="email-header">
+      <div class="email-num-badge featured">1</div>
+      <div class="email-meta">
+        <div class="email-send-time">⚡ Envío: Inmediato tras el registro</div>
+        <div class="email-asunto-label">Asunto:</div>
+        <div class="email-asunto">[Nombre], tu guía está aquí — ábrela antes de cerrar este email</div>
+      </div>
+      <div class="email-objetivo-tag">Entrega guía</div>
+    </div>
+    <div class="email-body-box">
+      <p class="saludo">Hola [Nombre],</p>
+      <p>Tu guía «GLP-1 Natural: La revolución metabólica» está lista para descargarse.</p>
+      <p>Antes de que la abras, quiero que sepas algo: este PDF no es un folleto de producto. Es información que normalmente solo encuentras en publicaciones científicas, traducida a un lenguaje directo y sin rodeos.</p>
+      <div class="highlight-block">
+        <strong>Descarga tu guía aquí:</strong><br>
+        <a href="#" class="cta-btn">Descargar la guía gratuita →</a>
+      </div>
+      <p>En los próximos días te voy a compartir información concreta sobre triGLP: la ciencia detrás del producto, qué esperar semana a semana y cómo es diferente a todo lo que habrás visto hasta ahora en el mercado de la salud metabólica.</p>
+      <p>Sin presión, sin urgencias artificiales. Solo información real para que puedas tomar una decisión con conocimiento.</p>
+      <p>Si tienes alguna pregunta antes de que llegue el siguiente email, responde directamente a este mensaje. Leo y respondo personalmente.</p>
+      <div class="firma"><strong>[Tu nombre]</strong><br>Método Origen · triGLP<br>WhatsApp: [TU NÚMERO]</div>
+    </div>
+    <div class="email-notes-box">
+      <div>
+        <div class="email-notes-title">💡 Nota estratégica</div>
+        <div class="email-notes-text">Este email cumple una sola función: entregar lo prometido y generar confianza desde el primer segundo. No vende nada. El tono educativo y sin presión es intencional — el Avatar C es analítico y desconfía del lenguaje de ventas agresivo.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════ -->
+<!-- EMAIL 2 -->
+<!-- ═══════════════════════════════ -->
+<div class="email-section">
+  <div class="email-inner">
+    <div class="email-header">
+      <div class="email-num-badge">2</div>
+      <div class="email-meta">
+        <div class="email-send-time">📅 Envío: Día 1 — 24 horas después</div>
+        <div class="email-asunto-label">Asunto:</div>
+        <div class="email-asunto">El dato que las clínicas de adelgazamiento prefieren que no sepas</div>
+      </div>
+      <div class="email-objetivo-tag">El problema</div>
+    </div>
+    <div class="email-body-box dark">
+      <p class="saludo">Hola [Nombre],</p>
+      <p>Quiero hablarte de algo que no sale en los anuncios de las clínicas de pérdida de peso, ni en las presentaciones de los médicos que recetan inyectables.</p>
+      <p><strong>Cuando alguien pierde peso con inyectables farmacológicos, entre el 40% y el 60% del peso que pierde no es grasa.</strong></p>
+      <p>Es músculo.</p>
+      <p>Los estudios clínicos lo documentan: la pérdida muscular asociada a los inyectables GLP-1 es uno de los efectos más consistentes y menos comunicados. El resultado es lo que ya habrás visto: pérdida de peso sí, pero también flacidez, envejecimiento visible del rostro, metabolismo más lento a largo plazo.</p>
+      <div class="highlight-block">
+        Perder músculo no es solo un problema estético. El músculo es el principal tejido que quema calorías en reposo. Perderlo significa que el efecto rebote, cuando se abandona el tratamiento, es casi inevitable.
+      </div>
+      <p>Esto no es una crítica a quien elige esa opción. Es contexto que necesitas para entender <strong>por qué la vía metabólica GLP-2 importa tanto</strong>.</p>
+      <p>El GLP-2 es la segunda vía que activa triGLP — y precisamente la que los inyectables farmacológicos no activan. Su función es reparar la barrera intestinal y proteger activamente la masa muscular magra mientras el cuerpo pierde grasa.</p>
+      <p>Mañana te explico los cuatro resultados clínicos publicados de triGLP en detalle.</p>
+      <div class="firma"><strong>[Tu nombre]</strong><br>Método Origen · triGLP<br>WhatsApp: [TU NÚMERO]</div>
+    </div>
+    <div class="email-notes-box">
+      <div>
+        <div class="email-notes-title">💡 Nota estratégica</div>
+        <div class="email-notes-text">Este email posiciona el problema sin atacar directamente a los competidores. El dato del 40-60% de pérdida muscular está documentado en la literatura clínica. Planta la semilla del GLP-2 como diferenciador — que se desarrollará en el email 3.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════ -->
+<!-- EMAIL 3 -->
+<!-- ═══════════════════════════════ -->
+<div class="email-section">
+  <div class="email-inner">
+    <div class="email-header">
+      <div class="email-num-badge featured">3</div>
+      <div class="email-meta">
+        <div class="email-send-time">📅 Envío: Día 3</div>
+        <div class="email-asunto-label">Asunto:</div>
+        <div class="email-asunto">Los 4 datos del estudio publicado — sin filtros de marketing</div>
+      </div>
+      <div class="email-objetivo-tag">La ciencia</div>
+    </div>
+    <div class="email-body-box">
+      <p class="saludo">Hola [Nombre],</p>
+      <p>Hoy toca hablar de los números reales. Sin inflar, sin minimizar.</p>
+      <p>Los estudios clínicos de triGLP están publicados en revistas científicas con revisión por pares — lo que en el mundo científico significa que otros investigadores han revisado y validado la metodología antes de su publicación.</p>
+      <p>Estos son los cuatro resultados que documentan:</p>
+      <div class="stats-inline">
+        <div class="stat-i"><span class="stat-i-num">6–7%</span><span class="stat-i-lbl">Reducción IMC en 6–8 semanas</span></div>
+        <div class="stat-i"><span class="stat-i-num">10%</span><span class="stat-i-lbl">Reducción de grasa sin pérdida muscular</span></div>
+        <div class="stat-i"><span class="stat-i-num">100%</span><span class="stat-i-lbl">Mejora en captación de glucosa muscular</span></div>
+        <div class="stat-i"><span class="stat-i-num">15%</span><span class="stat-i-lbl">Reducción marcadores inflamatorios IL-6</span></div>
+      </div>
+      <p>Las tres vías que activa triGLP, explicadas en una frase cada una:</p>
+      <div class="via-row">
+        <div class="via-item">
+          <div class="via-tag">GLP-1 + GIP</div>
+          <div class="via-text">Regula el hambre a nivel neuronal y optimiza el metabolismo de las grasas. La misma vía que los inyectables farmacológicos, activada de forma natural.</div>
+        </div>
+        <div class="via-item">
+          <div class="via-tag">GLP-2</div>
+          <div class="via-text">Repara la barrera intestinal, reduce la inflamación sistémica y preserva la masa muscular magra. Lo que ningún inyectable hace.</div>
+        </div>
+        <div class="via-item">
+          <div class="via-tag">Antiinflamatorio</div>
+          <div class="via-text">Activa rutas antioxidantes y reduce los marcadores de inflamación crónica. Los usuarios reportan mejora en articulaciones, piel y claridad mental.</div>
+        </div>
+      </div>
+      <div class="highlight-block">
+        <strong>Las fuentes:</strong><br>
+        Journal of Obesity &amp; Weight Loss Therapy (2016, Framroze et al.) · Biomolecules (2022, Wei et al.) — Investigación con respaldo de Stanford.
+      </div>
+      <p>Si quieres acceder a los estudios directamente, están disponibles en PubMed. Puedo enviarte los enlaces si me lo pides respondiendo a este email.</p>
+      <div class="firma"><strong>[Tu nombre]</strong><br>Método Origen · triGLP<br>WhatsApp: [TU NÚMERO]</div>
+    </div>
+    <div class="email-notes-box">
+      <div>
+        <div class="email-notes-title">💡 Nota estratégica</div>
+        <div class="email-notes-text">El email más importante de la secuencia para el Avatar C. La oferta de enviar los enlaces a PubMed tiene una función estratégica: quienes la piden son los prospectos de mayor calidad. Genera conversación y pre-cualifica antes del email de cierre.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════ -->
+<!-- EMAIL 4 -->
+<!-- ═══════════════════════════════ -->
+<div class="email-section">
+  <div class="email-inner">
+    <div class="email-header">
+      <div class="email-num-badge">4</div>
+      <div class="email-meta">
+        <div class="email-send-time">📅 Envío: Día 5</div>
+        <div class="email-asunto-label">Asunto:</div>
+        <div class="email-asunto">Lo que notaron en las primeras dos semanas</div>
+      </div>
+      <div class="email-objetivo-tag">Prueba social</div>
+    </div>
+    <div class="email-body-box dark">
+      <p class="saludo">Hola [Nombre],</p>
+      <p>Los datos científicos explican el mecanismo. Los testimonios explican la experiencia real.</p>
+      <p>Estas son las tres cosas que los usuarios reportan de forma más consistente en las primeras dos semanas:</p>
+      <ul class="email-list">
+        <li><strong>El ruido alimentario desaparece.</strong> Ese pensamiento constante sobre la comida — qué comer, cuándo, cuánto — se reduce notablemente desde los primeros días. No es fuerza de voluntad; es el GLP-1 actuando a nivel neuronal.</li>
+        <li><strong>La energía se estabiliza.</strong> Sin los picos y bajones asociados a la glucosa. Los usuarios describen una energía "limpia" y sostenida a lo largo del día, sin necesidad de cafeína adicional.</li>
+        <li><strong>La digestión mejora.</strong> Muchos reportan que dolores o molestias digestivas crónicas mejoran en la primera semana. Es el GLP-2 reparando la barrera intestinal.</li>
+      </ul>
+      <div class="highlight-block">
+        «Lo que más me sorprendió no fue la báscula. Fue que dejé de pensar en comida constantemente. Recuperé el control sin esfuerzo.»<br>
+        <em style="font-size:12px; color:rgba(251,251,251,0.4);">— [Insertar testimonio real de tu organización cuando dispongas de él]</em>
+      </div>
+      <p>Los cambios en composición corporal (reducción de grasa, mejora del tono muscular) se vuelven más visibles entre la semana 4 y la 8, que es cuando los estudios clínicos miden los resultados documentados.</p>
+      <p>Mañana te hablo de cómo empezar si decides que quieres probarlo.</p>
+      <div class="firma"><strong>[Tu nombre]</strong><br>Método Origen · triGLP<br>WhatsApp: [TU NÚMERO]</div>
+    </div>
+    <div class="email-notes-box">
+      <div>
+        <div class="email-notes-title">💡 Nota estratégica</div>
+        <div class="email-notes-text">Sustituye el testimonio genérico por uno real en cuanto lo tengas — nombre, ciudad y resultado específico. Los testimonios verificables multiplican la conversión del email de cierre. El cierre "mañana te hablo de cómo empezar" crea anticipación sin presión.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════ -->
+<!-- EMAIL 5 -->
+<!-- ═══════════════════════════════ -->
+<div class="email-section">
+  <div class="email-inner">
+    <div class="email-header">
+      <div class="email-num-badge featured">5</div>
+      <div class="email-meta">
+        <div class="email-send-time">📅 Envío: Día 7</div>
+        <div class="email-asunto-label">Asunto:</div>
+        <div class="email-asunto">[Nombre], ¿quieres probarlo?</div>
+      </div>
+      <div class="email-objetivo-tag">Conversión</div>
+    </div>
+    <div class="email-body-box">
+      <p class="saludo">Hola [Nombre],</p>
+      <p>Esta semana hemos hablado del problema con los inyectables, de los datos clínicos publicados, de las tres vías que activa triGLP y de lo que reportan los usuarios en las primeras semanas.</p>
+      <p>Hoy voy a ser directo.</p>
+      <p>Si has llegado hasta aquí y la información tiene sentido para ti, hay una sola pregunta que importa: <strong>¿quieres probarlo?</strong></p>
+      <div class="highlight-block">
+        <strong>Pedir triGLP es sencillo:</strong><br><br>
+        El pedido se gestiona directamente en la tienda oficial de ORYGN. Envío a más de 80 países. Sin receta médica. Sin intermediarios.<br><br>
+        <a href="#" class="cta-btn">Comprar triGLP ahora →</a><br><br>
+        <span style="font-size:12px; color:var(--gray);">O si tienes preguntas antes de decidir:</span><br>
+        <a href="https://wa.me/TUNUMERO" class="cta-btn" style="background:var(--near-black);">Escribir por WhatsApp →</a>
+      </div>
+      <p>Si no es el momento ahora, también está bien. Quédate con la guía y con la información. Cuando estés listo, sabrás dónde encontrarme.</p>
+      <p>Lo único que te pido es que tomes una decisión consciente — en un sentido o en el otro.</p>
+      <p>Ha sido un placer compartir esta semana contigo.</p>
+      <div class="firma"><strong>[Tu nombre]</strong><br>Método Origen · triGLP<br>WhatsApp: [TU NÚMERO]</div>
+      <p class="ps">P.D. — Si quieres que te envíe los enlaces directos a los estudios publicados en PubMed, responde a este email y te los mando. Sin compromiso de ningún tipo.</p>
+    </div>
+    <div class="email-notes-box">
+      <div>
+        <div class="email-notes-title">💡 Nota estratégica · El email más importante</div>
+        <div class="email-notes-text">El P.D. es deliberado: quienes piden los estudios de PubMed son los prospectos más cualificados y con mayor probabilidad de compra. La doble opción (compra directa + WhatsApp) captura dos perfiles: el que decide solo y el que necesita hablar antes. El botón de WhatsApp en fondo oscuro genera contraste visual y diferenciación.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- TABLA RESUMEN -->
+<div class="summary-section">
+  <div class="summary-inner">
+    <h2 class="summary-title">RESUMEN <span>DE LA SECUENCIA</span></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Asunto</th>
+          <th>Envío</th>
+          <th>Objetivo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>[Nombre], tu guía está aquí — ábrela antes de cerrar este email</td>
+          <td>Inmediato</td>
+          <td>Entrega guía · Primera impresión</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>El dato que las clínicas de adelgazamiento prefieren que no sepas</td>
+          <td>Día 1</td>
+          <td>Posicionar el problema · Sembrar GLP-2</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Los 4 datos del estudio publicado — sin filtros de marketing</td>
+          <td>Día 3</td>
+          <td>Credibilidad científica · Pre-cualificar</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Lo que notaron en las primeras dos semanas</td>
+          <td>Día 5</td>
+          <td>Prueba social · Experiencia real</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>[Nombre], ¿quieres probarlo?</td>
+          <td>Día 7</td>
+          <td>Conversión directa · CTA de compra</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:32px; background:rgba(249,115,22,0.07); border:1px solid rgba(249,115,22,0.25); padding:24px 28px;">
+      <div style="font-size:12px; font-weight:700; color:var(--orange); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:10px;">Elementos a personalizar antes de activar</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+        <div style="font-size:13px; color:rgba(251,251,251,0.6); line-height:1.6;">✓ Reemplazar <strong style="color:var(--white);">[Tu nombre]</strong> en los 5 emails</div>
+        <div style="font-size:13px; color:rgba(251,251,251,0.6); line-height:1.6;">✓ Reemplazar <strong style="color:var(--white);">[TU NÚMERO]</strong> con tu WhatsApp Business</div>
+        <div style="font-size:13px; color:rgba(251,251,251,0.6); line-height:1.6;">✓ Enlace de descarga de la guía PDF en Email 1</div>
+        <div style="font-size:13px; color:rgba(251,251,251,0.6); line-height:1.6;">✓ Enlace a tienda oficial ORYGN en Email 5</div>
+        <div style="font-size:13px; color:rgba(251,251,251,0.6); line-height:1.6;">✓ Testimonio real en Email 4 cuando lo tengas</div>
+        <div style="font-size:13px; color:rgba(251,251,251,0.6); line-height:1.6;">✓ Variable [Nombre] = {{contact.first_name}} en Systeme.io</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MÉTODO ORYGN — Tu guía está en camino | triGLP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #F97316;
+  --orange-deep: #FE5000;
+  --black: #000000;
+  --near-black: #1F2937;
+  --mid: #374151;
+  --gray: #4B5563;
+  --light-gray: #6B7280;
+  --soft-border: #E5E7EB;
+  --cream: #F2F2EB;
+  --white: #FBFBFB;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-serif: 'DM Serif Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--font-body); background:var(--near-black); color:var(--white); overflow-x:hidden; min-height:100vh; }
+
+/* ── NAV ── */
+.nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:rgba(0,0,0,0.97);
+  height:60px; display:flex; align-items:center;
+  padding:0 5%; justify-content:space-between;
+  border-bottom:1px solid rgba(249,115,22,0.2);
+}
+.nav-logo { font-family:var(--font-display); font-size:20px; color:var(--white); letter-spacing:0.06em; }
+.nav-logo span { color:var(--orange); }
+.nav-tag { font-size:10px; color:rgba(249,115,22,0.6); letter-spacing:0.18em; text-transform:uppercase; padding-left:10px; border-left:1px solid rgba(249,115,22,0.2); }
+
+/* ── BACKGROUND ── */
+.bg-grid {
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(249,115,22,0.03) 60px),
+    repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(249,115,22,0.03) 60px);
+}
+.bg-glow {
+  position:fixed; width:700px; height:700px;
+  background:radial-gradient(circle,rgba(249,115,22,0.07) 0%,transparent 65%);
+  top:-150px; left:50%; transform:translateX(-50%);
+  pointer-events:none; z-index:0;
+}
+
+/* ── CONFIRM HERO ── */
+.confirm-hero {
+  position:relative; z-index:1;
+  padding:140px 5% 64px;
+  max-width:800px; margin:0 auto; text-align:center;
+}
+.check-circle {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:72px; height:72px; border-radius:50%; background:var(--orange);
+  margin-bottom:28px;
+  animation:popIn 0.5s cubic-bezier(0.175,0.885,0.32,1.275) both;
+}
+@keyframes popIn { 0%{transform:scale(0);opacity:0} 100%{transform:scale(1);opacity:1} }
+.check-circle svg {
+  width:32px; height:32px; stroke:var(--white); stroke-width:3;
+  fill:none; stroke-linecap:round; stroke-linejoin:round;
+  stroke-dasharray:50; stroke-dashoffset:50;
+  animation:drawCheck 0.4s ease 0.4s forwards;
+}
+@keyframes drawCheck { to{stroke-dashoffset:0} }
+.confirm-eyebrow {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.3);
+  padding:5px 16px; font-size:10px; color:var(--orange);
+  letter-spacing:0.2em; text-transform:uppercase; margin-bottom:24px;
+}
+.confirm-hero h1 {
+  font-family:var(--font-display);
+  font-size:clamp(44px,7vw,80px);
+  color:var(--white); line-height:0.95;
+  letter-spacing:0.02em; margin-bottom:14px;
+}
+.confirm-hero h1 span { color:var(--orange); }
+.confirm-sub {
+  font-family:var(--font-serif); font-style:italic;
+  font-size:clamp(17px,2.2vw,22px);
+  color:rgba(251,251,251,0.5); line-height:1.5;
+  max-width:540px; margin:0 auto 48px;
+}
+
+/* ── 3 PASOS ── */
+.steps-section {
+  position:relative; z-index:1;
+  padding:0 5% 72px; max-width:920px; margin:0 auto;
+}
+.steps-label {
+  font-size:10px; font-weight:600; color:var(--orange);
+  letter-spacing:0.22em; text-transform:uppercase;
+  text-align:center; margin-bottom:28px;
+}
+.steps-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+}
+.step-card {
+  background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07);
+  padding:30px 22px; text-align:center; position:relative;
+  animation:fadeUp 0.5s ease both;
+}
+.step-card:nth-child(1){animation-delay:0.15s}
+.step-card:nth-child(2){animation-delay:0.3s}
+.step-card:nth-child(3){animation-delay:0.45s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.step-card.featured {
+  background:rgba(249,115,22,0.1);
+  border-color:rgba(249,115,22,0.4);
+  border-top:3px solid var(--orange);
+}
+.step-arrow {
+  position:absolute; right:-14px; top:50%; transform:translateY(-50%);
+  width:26px; height:26px; background:var(--near-black);
+  border:1px solid rgba(249,115,22,0.25); border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:11px; color:var(--orange); z-index:2; font-weight:700;
+}
+.step-card:last-child .step-arrow { display:none; }
+.step-icon { font-size:28px; margin-bottom:12px; display:block; }
+.step-num {
+  font-size:10px; font-weight:600; color:var(--orange);
+  letter-spacing:0.18em; text-transform:uppercase; margin-bottom:8px;
+}
+.step-card.featured .step-num { color:var(--orange); }
+.step-title { font-size:14px; font-weight:600; color:var(--white); margin-bottom:6px; line-height:1.3; }
+.step-desc { font-size:12px; color:rgba(251,251,251,0.45); line-height:1.65; }
+
+/* ── VIDEO ── */
+.video-section {
+  position:relative; z-index:1;
+  padding:0 5% 64px; max-width:860px; margin:0 auto;
+}
+.video-label {
+  font-size:10px; font-weight:600; color:var(--orange);
+  letter-spacing:0.2em; text-transform:uppercase;
+  text-align:center; margin-bottom:12px;
+}
+.video-pretitle {
+  font-family:var(--font-serif);
+  font-size:clamp(20px,3vw,30px); color:var(--white);
+  text-align:center; margin-bottom:28px; line-height:1.25;
+}
+.video-pretitle em { color:var(--orange); font-style:normal; }
+.video-wrapper {
+  position:relative; width:100%;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(249,115,22,0.2);
+  aspect-ratio:16/9;
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:14px; cursor:pointer; overflow:hidden;
+  transition:border-color 0.2s;
+}
+.video-wrapper:hover { border-color:rgba(249,115,22,0.5); }
+.video-bg-text {
+  position:absolute; font-family:var(--font-display);
+  font-size:clamp(60px,12vw,160px); color:rgba(249,115,22,0.04);
+  letter-spacing:0.04em; pointer-events:none; user-select:none; white-space:nowrap;
+}
+.play-btn {
+  width:68px; height:68px; border-radius:50%; background:var(--orange);
+  display:flex; align-items:center; justify-content:center;
+  position:relative; z-index:1; transition:transform 0.2s, background 0.2s;
+}
+.play-btn:hover { transform:scale(1.1); background:var(--orange-deep); }
+.play-btn svg { width:26px; height:26px; fill:var(--white); margin-left:4px; }
+.video-caption { font-size:12px; color:rgba(251,251,251,0.3); letter-spacing:0.06em; position:relative; z-index:1; }
+.video-duration {
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.2);
+  padding:4px 12px; font-size:10px; color:var(--orange);
+  letter-spacing:0.1em; position:relative; z-index:1;
+}
+.video-cta-row {
+  display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-top:2px;
+}
+.btn-video-product {
+  display:block; background:var(--orange); color:var(--white);
+  font-family:var(--font-body); font-weight:700; font-size:14px;
+  padding:16px; text-align:center; text-decoration:none;
+  letter-spacing:0.05em; text-transform:uppercase;
+  transition:background 0.2s;
+}
+.btn-video-product:hover { background:var(--orange-deep); }
+.btn-video-wa {
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  background:#25D366; color:var(--white);
+  font-family:var(--font-body); font-weight:600; font-size:14px;
+  padding:16px; text-decoration:none;
+  letter-spacing:0.04em; text-transform:uppercase;
+  transition:background 0.2s;
+}
+.btn-video-wa:hover { background:#1ebe5d; }
+
+/* ── GUÍA TEASER ── */
+.guide-teaser {
+  position:relative; z-index:1;
+  padding:0 5% 64px; max-width:860px; margin:0 auto;
+}
+.guide-block {
+  background:rgba(249,115,22,0.06); border:1px solid rgba(249,115,22,0.2);
+  border-left:3px solid var(--orange);
+  padding:32px; display:grid; grid-template-columns:auto 1fr; gap:24px; align-items:start;
+}
+.guide-icon { font-size:48px; line-height:1; }
+.guide-label {
+  font-size:10px; font-weight:600; color:var(--orange);
+  letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px;
+}
+.guide-title {
+  font-family:var(--font-serif); font-size:clamp(18px,2.5vw,26px);
+  color:var(--white); margin-bottom:10px; line-height:1.25;
+}
+.guide-title em { color:var(--orange); font-style:normal; }
+.guide-desc { font-size:13px; color:rgba(251,251,251,0.5); line-height:1.7; margin-bottom:16px; }
+.guide-contents { display:flex; flex-direction:column; gap:8px; }
+.guide-item { display:flex; gap:10px; font-size:13px; color:rgba(251,251,251,0.6); }
+.guide-item::before { content:'✓'; color:var(--orange); font-weight:700; flex-shrink:0; }
+
+/* ── TIMELINE EMAILS ── */
+.expect-section {
+  position:relative; z-index:1;
+  padding:0 5% 64px; max-width:860px; margin:0 auto;
+}
+.expect-label {
+  font-size:10px; font-weight:600; color:var(--orange);
+  letter-spacing:0.2em; text-transform:uppercase; margin-bottom:14px;
+}
+.expect-title {
+  font-family:var(--font-serif);
+  font-size:clamp(20px,3vw,32px); color:var(--white);
+  margin-bottom:28px; line-height:1.2;
+}
+.expect-title em { color:var(--orange); font-style:normal; }
+.email-timeline { display:flex; flex-direction:column; gap:2px; }
+.email-row { display:grid; grid-template-columns:80px 1fr; gap:0; align-items:stretch; }
+.email-day {
+  background:rgba(249,115,22,0.08); border:1px solid rgba(249,115,22,0.15);
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column; padding:14px 8px; text-align:center;
+}
+.email-day-num { font-family:var(--font-display); font-size:22px; color:var(--orange); line-height:1; }
+.email-day-label { font-size:9px; color:rgba(249,115,22,0.5); letter-spacing:0.1em; text-transform:uppercase; margin-top:2px; }
+.email-content {
+  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);
+  border-left:none; padding:14px 20px;
+  display:flex; align-items:center; justify-content:space-between; gap:14px;
+}
+.email-content.hl { background:rgba(249,115,22,0.06); border-color:rgba(249,115,22,0.2); }
+.email-subject { font-size:13px; font-weight:500; color:var(--white); margin-bottom:3px; }
+.email-goal { font-size:11px; color:rgba(251,251,251,0.35); }
+.email-tag {
+  flex-shrink:0;
+  background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.2);
+  padding:3px 10px; font-size:10px; color:var(--orange);
+  letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;
+}
+.email-tag.dim {
+  background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.07);
+  color:rgba(251,251,251,0.25);
+}
+
+/* ── PRODUCT TEASER ── */
+.product-teaser {
+  position:relative; z-index:1;
+  padding:0 5% 64px; max-width:860px; margin:0 auto;
+}
+.product-block {
+  background:rgba(255,255,255,0.03); border:2px solid rgba(249,115,22,0.3);
+  padding:40px; display:grid; grid-template-columns:auto 1fr; gap:32px; align-items:center;
+}
+/* Frasco CSS */
+.pt-bottle-wrap { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.pt-cap {
+  width:30px; height:13px;
+  background:linear-gradient(180deg,#374151,#1F2937);
+  border-radius:3px 3px 0 0; border:1px solid rgba(249,115,22,0.25);
+}
+.pt-body {
+  width:56px; height:92px;
+  background:linear-gradient(180deg,#1F2937 0%,#111827 100%);
+  border:1px solid rgba(249,115,22,0.4); border-top:none;
+  border-radius:0 0 7px 7px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:3px; position:relative; overflow:hidden;
+}
+.pt-body::before {
+  content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+  background:linear-gradient(135deg,rgba(249,115,22,0.08) 0%,transparent 60%);
+}
+.pt-name { font-family:var(--font-display); font-size:14px; color:var(--orange); letter-spacing:0.1em; position:relative; z-index:1; }
+.pt-sub { font-size:7px; color:rgba(251,251,251,0.4); letter-spacing:0.12em; text-transform:uppercase; position:relative; z-index:1; }
+.pt-drops { display:flex; gap:3px; margin-top:5px; position:relative; z-index:1; }
+.pt-drop { width:4px; height:7px; border-radius:50% 50% 50% 50%/60% 60% 40% 40%; background:var(--orange); opacity:0.5; }
+
+.pt-info { }
+.pt-label { font-size:10px; font-weight:600; color:var(--orange); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px; }
+.pt-title { font-family:var(--font-display); font-size:clamp(24px,3vw,36px); color:var(--white); letter-spacing:0.04em; margin-bottom:6px; }
+.pt-tagline { font-size:11px; color:rgba(251,251,251,0.35); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px; }
+.pt-via-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+.pt-via {
+  background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.3);
+  padding:4px 12px; font-size:10px; font-weight:700;
+  color:var(--orange); letter-spacing:0.12em; text-transform:uppercase;
+}
+.pt-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-bottom:20px; }
+.pt-stat { background:rgba(249,115,22,0.06); border:1px solid rgba(249,115,22,0.12); padding:12px 8px; text-align:center; }
+.pt-stat-num { font-family:var(--font-display); font-size:24px; color:var(--orange); line-height:1; display:block; }
+.pt-stat-lbl { font-size:9px; color:rgba(251,251,251,0.3); text-transform:uppercase; letter-spacing:0.06em; margin-top:3px; display:block; line-height:1.3; }
+.btn-pt-buy {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--orange); color:var(--white);
+  font-family:var(--font-body); font-weight:700; font-size:14px;
+  padding:14px 28px; border:none; cursor:pointer;
+  letter-spacing:0.05em; text-transform:uppercase;
+  text-decoration:none; transition:background 0.2s;
+}
+.btn-pt-buy:hover { background:var(--orange-deep); }
+
+/* ── FOOTER ── */
+footer {
+  position:relative; z-index:1;
+  background:rgba(0,0,0,0.6); padding:36px 5%;
+  border-top:1px solid rgba(249,115,22,0.1); text-align:center;
+  margin-top:40px;
+}
+.f-logo { font-family:var(--font-display); font-size:20px; color:var(--white); margin-bottom:6px; }
+.f-logo span { color:var(--orange); }
+.f-copy { font-size:11px; color:rgba(251,251,251,0.2); line-height:1.7; }
+.f-copy strong { color:rgba(249,115,22,0.4); }
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .steps-grid { grid-template-columns:1fr; }
+  .step-arrow { display:none!important; }
+  .video-cta-row { grid-template-columns:1fr; }
+  .guide-block { grid-template-columns:1fr; gap:16px; }
+  .product-block { grid-template-columns:1fr; gap:24px; }
+  .pt-stats { grid-template-columns:1fr 1fr; }
+  .email-tag { display:none; }
+  .email-row { grid-template-columns:60px 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="nav-logo">MÉTODO <span>ORYGN</span></div>
+    <div class="nav-tag">triGLP · Salud Natural</div>
+  </div>
+</nav>
+
+<!-- ── CONFIRM HERO ── -->
+<div class="confirm-hero">
+  <div class="check-circle">
+    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+  <div class="confirm-eyebrow">Registro confirmado · Funnel Salud</div>
+  <h1>TU GUÍA<br>ESTÁ EN <span>CAMINO</span></h1>
+  <p class="confirm-sub">Revisa tu bandeja de entrada en los próximos 5 minutos. Mientras tanto, hay un video de 3 minutos que no deberías perderte.</p>
+</div>
+
+<!-- ── 3 PASOS ── -->
+<div class="steps-section">
+  <div class="steps-label">Haz estos 3 pasos ahora mismo</div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-arrow">→</div>
+      <span class="step-icon">📧</span>
+      <div class="step-num">Paso 1</div>
+      <div class="step-title">Revisa tu email</div>
+      <div class="step-desc">La guía «GLP-1 Natural» llega en los próximos 5 minutos. Si no la ves, revisa la carpeta de spam o promociones.</div>
+    </div>
+    <div class="step-card featured">
+      <div class="step-arrow" style="background:var(--near-black);color:var(--white);">→</div>
+      <span class="step-icon">▶</span>
+      <div class="step-num">Paso 2 · Ahora mismo</div>
+      <div class="step-title">Mira el video explicativo</div>
+      <div class="step-desc">3 minutos. Tono educativo, sin presión. Explica qué es triGLP, cómo funcionan las 3 vías y por qué es diferente a cualquier inyectable.</div>
+    </div>
+    <div class="step-card">
+      <span class="step-icon">💬</span>
+      <div class="step-num">Paso 3</div>
+      <div class="step-title">¿Tienes preguntas? Escríbenos</div>
+      <div class="step-desc">Respondemos personalmente por WhatsApp. Sin scripts, sin presión. Solo información para que puedas decidir con todo el conocimiento.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── VIDEO ── -->
+<div class="video-section">
+  <div class="video-label">Video educativo · Ver ahora</div>
+  <h2 class="video-pretitle">¿Qué son las <em>3 vías de triGLP</em><br>y por qué ningún inyectable las activa todas?</h2>
+  <div class="video-wrapper" id="videoWrap">
+    <div class="video-bg-text">triGLP</div>
+    <div class="play-btn">
+      <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    </div>
+    <div class="video-caption">Haz clic para reproducir</div>
+    <div class="video-duration">⏱ Duración: 3 minutos · Solo educativo</div>
+  </div>
+  <div class="video-cta-row">
+    <a href="#comprar" class="btn-video-product">Quiero comprar triGLP directamente →</a>
+    <a href="https://wa.me/TUNUMERO" class="btn-video-wa" target="_blank">
+      Tengo preguntas — WhatsApp →
+    </a>
+  </div>
+</div>
+
+<!-- ── GUÍA TEASER ── -->
+<div class="guide-teaser">
+  <div class="guide-block">
+    <div class="guide-icon">📘</div>
+    <div>
+      <div class="guide-label">Tu guía gratuita · En tu email ahora</div>
+      <h3 class="guide-title">«GLP-1 Natural: La guía completa<br>sobre triGLP y la <em>revolución metabólica</em>»</h3>
+      <p class="guide-desc">PDF de 10 páginas. Todo lo que necesitas saber antes de empezar — sin lenguaje técnico innecesario, sin promesas exageradas.</p>
+      <div class="guide-contents">
+        <div class="guide-item">Qué es el GLP-1 y por qué domina la conversación global de salud</div>
+        <div class="guide-item">Las 3 vías de triGLP: GLP-1 + GIP, GLP-2 y antiinflamatorio en lenguaje simple</div>
+        <div class="guide-item">Diferencias reales entre los inyectables farmacológicos y triGLP</div>
+        <div class="guide-item">Los 4 resultados clínicos de los estudios publicados explicados</div>
+        <div class="guide-item">Protocolo de uso y qué esperar semana a semana</div>
+        <div class="guide-item">FAQ: alérgicos al pescado, menopausia, medicación, deporte</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── LO QUE RECIBIRÁS ── -->
+<div class="expect-section">
+  <div class="expect-label">Tu bandeja de entrada · Próximos 7 días</div>
+  <h2 class="expect-title">Lo que recibirás en<br><em>los próximos días</em></h2>
+  <div class="email-timeline">
+    <div class="email-row">
+      <div class="email-day"><div class="email-day-num">HOY</div><div class="email-day-label">Ahora</div></div>
+      <div class="email-content hl">
+        <div><div class="email-subject">Tu guía GLP-1 está aquí, [Nombre]</div><div class="email-goal">Entrega de la guía + enlace al video educativo</div></div>
+        <div class="email-tag">Inmediato</div>
+      </div>
+    </div>
+    <div class="email-row">
+      <div class="email-day"><div class="email-day-num">DÍA</div><div class="email-day-label">1</div></div>
+      <div class="email-content">
+        <div><div class="email-subject">Lo que los médicos no te dicen sobre los inyectables</div><div class="email-goal">El problema real: pérdida muscular y efectos adversos documentados</div></div>
+        <div class="email-tag dim">El problema</div>
+      </div>
+    </div>
+    <div class="email-row">
+      <div class="email-day"><div class="email-day-num">DÍA</div><div class="email-day-label">3</div></div>
+      <div class="email-content">
+        <div><div class="email-subject">6 semanas. 6–7% de IMC. Los datos reales de triGLP</div><div class="email-goal">Los estudios clínicos de Stanford explicados en lenguaje comprensible</div></div>
+        <div class="email-tag dim">La ciencia</div>
+      </div>
+    </div>
+    <div class="email-row">
+      <div class="email-day"><div class="email-day-num">DÍA</div><div class="email-day-label">5</div></div>
+      <div class="email-content">
+        <div><div class="email-subject">Lo que sintieron en las primeras 2 semanas</div><div class="email-goal">Experiencias reales · Qué esperar en cada etapa del protocolo</div></div>
+        <div class="email-tag dim">Experiencias</div>
+      </div>
+    </div>
+    <div class="email-row">
+      <div class="email-day"><div class="email-day-num">DÍA</div><div class="email-day-label">7</div></div>
+      <div class="email-content hl">
+        <div><div class="email-subject">[Nombre], ¿quieres probarlo?</div><div class="email-goal">Llamada a la acción directa · Sin presión · Tú decides</div></div>
+        <div class="email-tag">Decisión</div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:11px;color:rgba(251,251,251,0.2);margin-top:14px;line-height:1.6;">Si quieres acelerar el proceso, escríbenos directamente por WhatsApp o compra el producto ahora.</p>
+</div>
+
+<!-- ── PRODUCTO TEASER ── -->
+<div class="product-teaser" id="comprar">
+  <div class="product-block">
+    <!-- Frasco CSS -->
+    <div class="pt-bottle-wrap">
+      <div class="pt-cap"></div>
+      <div class="pt-body">
+        <div class="pt-name">triGLP</div>
+        <div class="pt-sub">ORYGN</div>
+        <div class="pt-drops">
+          <div class="pt-drop"></div>
+          <div class="pt-drop"></div>
+          <div class="pt-drop"></div>
+        </div>
+      </div>
+    </div>
+    <div class="pt-info">
+      <div class="pt-label">Disponible ahora · Envío internacional</div>
+      <div class="pt-title">TRIGLP</div>
+      <div class="pt-tagline">Pharma Results · Natural Delivery</div>
+      <div class="pt-via-row">
+        <div class="pt-via">GLP-1 + GIP</div>
+        <div class="pt-via">GLP-2</div>
+        <div class="pt-via">Antiinflamatorio</div>
+      </div>
+      <div class="pt-stats">
+        <div class="pt-stat"><span class="pt-stat-num">6–7%</span><span class="pt-stat-lbl">Reducción IMC 6–8 sem.</span></div>
+        <div class="pt-stat"><span class="pt-stat-num">10%</span><span class="pt-stat-lbl">Grasa sin perder músculo</span></div>
+        <div class="pt-stat"><span class="pt-stat-num">&gt;90%</span><span class="pt-stat-lbl">Absorción sublingual</span></div>
+        <div class="pt-stat"><span class="pt-stat-num">3</span><span class="pt-stat-lbl">Vías simultáneas</span></div>
+      </div>
+      <a href="#" class="btn-pt-buy">Comprar triGLP ahora →</a>
+      <p style="font-size:11px;color:rgba(251,251,251,0.25);margin-top:10px;">🔒 Pedido gestionado en la tienda oficial ORYGN · Pago seguro · +80 países</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">MÉTODO <span>ORYGN</span></div>
+  <p class="f-copy">Sistema Internacional triGLP · <strong>bgmcorporation.com</strong><br>Sin spam. Puedes darte de baja en cualquier momento.</p>
+</footer>
+
+<script>
+document.getElementById('videoWrap').addEventListener('click',function(){
+  this.style.borderColor='rgba(249,115,22,0.6)';
+  setTimeout(()=>{ this.style.borderColor='rgba(249,115,22,0.2)'; },600);
+  // Conecta aquí tu URL de video: window.open('TU_URL_VIDEO','_blank');
+});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
+</script>
+</body>
+</html>

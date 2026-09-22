@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MÉTODO ORYGN — Secuencia de 7 Emails · Funnel 1 "El Negocio"</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #F97316;
+  --orange-deep: #FE5000;
+  --black: #000000;
+  --near-black: #1F2937;
+  --gray: #4B5563;
+  --light-gray: #6B7280;
+  --soft-border: #E5E7EB;
+  --cream: #F2F2EB;
+  --white: #FBFBFB;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-serif: 'DM Serif Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--font-body); background:var(--cream); color:var(--near-black); }
+
+/* ── COVER ── */
+.cover {
+  background: var(--black);
+  padding: 80px 6% 72px;
+  position: relative; overflow: hidden;
+}
+.cover-grid {
+  position:absolute; inset:0;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(249,115,22,0.05) 60px),
+    repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(249,115,22,0.05) 60px);
+}
+.cover-glow {
+  position:absolute; width:500px; height:500px;
+  background:radial-gradient(circle,rgba(249,115,22,0.1) 0%,transparent 70%);
+  top:-100px; right:-100px; pointer-events:none;
+}
+.cover-inner { position:relative; z-index:1; max-width:860px; }
+.cover-eyebrow {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.3);
+  padding:5px 14px; font-size:11px; color:var(--orange);
+  letter-spacing:0.2em; text-transform:uppercase; margin-bottom:24px;
+}
+.cover-eyebrow::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--orange); }
+.cover h1 { font-family:var(--font-display); font-size:clamp(48px,7vw,88px); color:var(--white); line-height:0.95; letter-spacing:0.02em; margin-bottom:8px; }
+.cover h1 span { color:var(--orange); }
+.cover-sub { font-family:var(--font-serif); font-size:clamp(16px,2vw,22px); color:rgba(251,251,251,0.55); font-style:italic; margin-bottom:36px; max-width:580px; line-height:1.45; }
+.cover-meta { display:flex; gap:32px; flex-wrap:wrap; }
+.cover-meta-item { }
+.cover-meta-num { font-family:var(--font-display); font-size:32px; color:var(--orange); display:block; line-height:1; }
+.cover-meta-label { font-size:11px; color:rgba(251,251,251,0.35); text-transform:uppercase; letter-spacing:0.1em; margin-top:3px; display:block; }
+.cover-divider { width:1px; background:rgba(249,115,22,0.2); }
+
+/* ── INSTRUCTIONS ── */
+.instructions {
+  background: var(--white);
+  border-bottom: 2px solid var(--soft-border);
+  padding: 36px 6%;
+}
+.inst-inner { max-width:860px; margin:0 auto; }
+.inst-title { font-size:13px; font-weight:700; color:var(--near-black); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px; }
+.inst-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.inst-card { background:var(--cream); border:1px solid var(--soft-border); padding:16px; }
+.inst-label { font-size:10px; font-weight:600; color:var(--orange); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:6px; }
+.inst-val { font-size:13px; color:var(--near-black); line-height:1.5; font-weight:500; }
+
+/* ── EMAIL CARD ── */
+.email-section { padding: 48px 6%; }
+.email-section:nth-child(odd) { background: var(--cream); }
+.email-section:nth-child(even) { background: var(--white); }
+
+.email-inner { max-width:860px; margin:0 auto; }
+
+.email-header {
+  display:grid; grid-template-columns:auto 1fr auto;
+  gap:20px; align-items:center;
+  padding-bottom:24px;
+  border-bottom:2px solid var(--soft-border);
+  margin-bottom:32px;
+}
+.email-num-badge {
+  width:56px; height:56px; border-radius:50%;
+  background:var(--near-black);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); font-size:24px; color:var(--orange);
+  flex-shrink:0;
+}
+.email-num-badge.featured { background:var(--orange); color:var(--white); }
+.email-meta {}
+.email-send-time {
+  font-size:11px; font-weight:600; color:var(--orange);
+  letter-spacing:0.18em; text-transform:uppercase; margin-bottom:4px;
+}
+.email-asunto-label { font-size:11px; color:var(--light-gray); letter-spacing:0.08em; margin-bottom:3px; }
+.email-asunto { font-size:17px; font-weight:600; color:var(--near-black); line-height:1.3; }
+.email-objetivo-tag {
+  background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.25);
+  padding:6px 14px; font-size:11px; color:var(--orange);
+  letter-spacing:0.1em; text-transform:uppercase;
+  white-space:nowrap; align-self:flex-start;
+}
+
+/* ── EMAIL BODY BOX ── */
+.email-body-box {
+  background:var(--white);
+  border:1px solid var(--soft-border);
+  border-top:3px solid var(--orange);
+  padding:36px 40px;
+  margin-bottom:20px;
+  font-size:15px; color:var(--near-black); line-height:1.8;
+}
+.email-body-box.dark {
+  background:var(--near-black);
+  border-color:rgba(249,115,22,0.25);
+  border-top:3px solid var(--orange);
+  color:rgba(251,251,251,0.8);
+}
+.email-body-box p { margin-bottom:16px; }
+.email-body-box p:last-child { margin-bottom:0; }
+.email-body-box .saludo { font-weight:600; color:var(--near-black); }
+.email-body-box.dark .saludo { color:var(--white); }
+.email-body-box strong { color:var(--near-black); font-weight:600; }
+.email-body-box.dark strong { color:var(--white); }
+.email-body-box .firma { margin-top:28px; padding-top:20px; border-top:1px solid var(--soft-border); font-size:13px; color:var(--light-gray); line-height:1.6; }
+.email-body-box.dark .firma { border-color:rgba(255,255,255,0.08); color:rgba(251,251,251,0.35); }
+.email-body-box .firma strong { color:var(--near-black); font-size:14px; font-weight:600; }
+.email-body-box.dark .firma strong { color:rgba(251,251,251,0.7); }
+.email-body-box .cta-line {
+  background:var(--orange); color:var(--white);
+  display:inline-block; padding:12px 24px;
+  font-weight:700; font-size:14px;
+  letter-spacing:0.05em; text-transform:uppercase;
+  margin:8px 0; text-decoration:none;
+}
+.email-body-box .highlight-block {
+  background:rgba(249,115,22,0.07);
+  border-left:3px solid var(--orange);
+  padding:16px 20px;
+  margin:20px 0;
+  font-size:14px;
+}
+.email-body-box.dark .highlight-block {
+  background:rgba(249,115,22,0.08);
+}
+.email-body-box ul { padding-left:20px; margin:12px 0 16px; }
+.email-body-box ul li { margin-bottom:8px; font-size:14px; color:var(--gray); }
+.email-body-box.dark ul li { color:rgba(251,251,251,0.6); }
+.email-body-box .ps { font-size:13px; color:var(--light-gray); font-style:italic; margin-top:20px; }
+.email-body-box.dark .ps { color:rgba(251,251,251,0.35); }
+
+.email-notes-box {
+  background:rgba(249,115,22,0.06);
+  border:1px solid rgba(249,115,22,0.2);
+  padding:18px 22px;
+  display:flex; gap:12px; align-items:flex-start;
+}
+.email-notes-icon { font-size:16px; flex-shrink:0; margin-top:2px; }
+.email-notes-title { font-size:12px; font-weight:700; color:var(--orange); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px; }
+.email-notes-text { font-size:13px; color:var(--gray); line-height:1.6; }
+
+/* ── SUMMARY TABLE ── */
+.summary-section { background:var(--near-black); padding:56px 6%; }
+.summary-inner { max-width:860px; margin:0 auto; }
+.summary-title { font-family:var(--font-display); font-size:36px; color:var(--white); letter-spacing:0.04em; margin-bottom:28px; }
+.summary-title span { color:var(--orange); }
+table { width:100%; border-collapse:collapse; font-size:14px; }
+th { background:rgba(249,115,22,0.12); color:var(--orange); padding:12px 16px; text-align:left; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; font-weight:600; }
+td { padding:13px 16px; border-bottom:1px solid rgba(255,255,255,0.06); color:rgba(251,251,251,0.7); vertical-align:top; }
+tr:last-child td { border-bottom:none; }
+tr:hover td { background:rgba(249,115,22,0.04); }
+td:first-child { color:var(--orange); font-family:var(--font-display); font-size:20px; padding-top:10px; }
+td:nth-child(2) { color:var(--white); font-weight:500; }
+
+/* ── CONFIG TIPS ── */
+.config-section { background:var(--cream); padding:48px 6%; }
+.config-inner { max-width:860px; margin:0 auto; }
+.config-title { font-family:var(--font-serif); font-size:26px; color:var(--near-black); margin-bottom:24px; }
+.config-title em { color:var(--orange); font-style:normal; }
+.config-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.config-card { background:var(--white); border:1px solid var(--soft-border); border-left:3px solid var(--orange); padding:20px 22px; }
+.config-label { font-size:11px; font-weight:600; color:var(--orange); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:6px; }
+.config-val { font-size:14px; color:var(--near-black); line-height:1.55; font-weight:500; }
+.config-desc { font-size:12px; color:var(--light-gray); margin-top:4px; line-height:1.5; }
+
+@media(max-width:768px){
+  .inst-grid { grid-template-columns:1fr 1fr; }
+  .email-header { grid-template-columns:auto 1fr; }
+  .email-objetivo-tag { grid-column:1/-1; }
+  .config-grid { grid-template-columns:1fr; }
+  .email-body-box { padding:24px 20px; }
+  .cover-meta { gap:20px; }
+  .cover-divider { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<div class="cover">
+  <div class="cover-grid"></div>
+  <div class="cover-glow"></div>
+  <div class="cover-inner">
+    <div class="cover-eyebrow">Método ORYGN · Funnel 1 "El Negocio"</div>
+    <h1>SECUENCIA<br><span>7 EMAILS</span></h1>
+    <p class="cover-sub">Copy completo listo para pegar en tu plataforma de email. Avatar A — Networkers activos y emprendedores.</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <span class="cover-meta-num">7</span>
+        <span class="cover-meta-label">Emails completos</span>
+      </div>
+      <div class="cover-divider"></div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-num">10</span>
+        <span class="cover-meta-label">Días de secuencia</span>
+      </div>
+      <div class="cover-divider"></div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-num">1</span>
+        <span class="cover-meta-label">Objetivo: Conversión</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ INSTRUCCIONES DE CONFIGURACIÓN ══ -->
+<div class="instructions">
+  <div class="inst-inner">
+    <div class="inst-title">⚙️ Configuración en tu plataforma de email</div>
+    <div class="inst-grid">
+      <div class="inst-card">
+        <div class="inst-label">Nombre del remitente</div>
+        <div class="inst-val">[Tu nombre] — Método ORYGN</div>
+        <div style="font-size:11px;color:var(--light-gray);margin-top:4px;">Ej: "Benito — Método ORYGN"</div>
+      </div>
+      <div class="inst-card">
+        <div class="inst-label">Email de respuesta</div>
+        <div class="inst-val">Tu email personal real</div>
+        <div style="font-size:11px;color:var(--light-gray);margin-top:4px;">Habilita respuestas directas al prospecto</div>
+      </div>
+      <div class="inst-card">
+        <div class="inst-label">Activación</div>
+        <div class="inst-val">Inmediata tras registro en el formulario</div>
+        <div style="font-size:11px;color:var(--light-gray);margin-top:4px;">Tag de activación: "funnel1-negocio"</div>
+      </div>
+      <div class="inst-card">
+        <div class="inst-label">Variable dinámica</div>
+        <div class="inst-val">[Nombre] = nombre del prospecto</div>
+        <div style="font-size:11px;color:var(--light-gray);margin-top:4px;">Adapta según tu plataforma ({{name}}, %FIRSTNAME%, etc.)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- EMAIL 1 -->
+<!-- ══════════════════════════════════════ -->
+<div class="email-section">
+  <div class="email-inner">
+    <div class="email-header">
+      <div class="email-num-badge featured">1</div>
+      <div class="email-meta">
+        <div class="email-send-time">⚡ Envío: Inmediato tras el registro</div>
+        <div class="email-asunto-label">Asunto:</div>
+        <div class="email-asunto">Tu acceso está aquí, [Nombre] — léeme antes de hacer nada más</div>
+      </div>
+      <div class="email-objetivo-tag">Bienvenida</div>
+    </div>
+
+    <div class="email-body-box">
+      <p class="saludo">Hola [Nombre],</p>
+      <p>Bienvenido al Método ORYGN.</p>
+      <p>Me alegra que estés aquí. Y quiero que sepas que lo que acabas de hacer — dar ese primer paso — ya te diferencia de la mayoría que lo piensa pero no lo hace.</p>
+      <p>En los próximos días te voy a compartir información que te va a ayudar a entender exactamente por qué considero que este es uno de los momentos más importantes de los últimos años para construir una red seria en el sector del bienestar natural.</p>
+      <p>Pero antes de cualquier otra cosa, hay una sola cosa que necesito pedirte:</p>
+      <div class="highlight-block">
+        <strong>Mira el video de presentación completo.</strong> Son menos de 20 minutos. Y te prometo que cuando termines vas a entender exactamente de qué te estoy hablando.
+      </div>
+      <p>Aquí lo tienes: <span class="cta-line">[ENLACE AL VIDEO →]</span></p>
+      <p>Cuando lo hayas visto, responde a este email con una sola palabra: <strong>"listo"</strong>. Me sirve para saber que llegaste bien y para priorizar tu seguimiento personal.</p>
+      <div class="firma">
+        <strong>[Tu nombre]</strong><br>
+        Método ORYGN · Sistema Internacional triGLP<br>
+        WhatsApp: [TU NÚMERO]
+      </div>
+    </div>
+
+    <div class="email-notes-box">
+      <div class="email-notes-icon">💡</div>
+      <div>
+        <div class="email-notes-title">Nota estratégica</div>
+        <div class="email-notes-text">El "responde con una sola palabra" tiene un objetivo preciso: activar la conversación y marcar al prospecto como engaged en tu plataforma. Los que responden en este email tienen una tasa de conversión 3x mayor en el email 7.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- EMAIL 2 -->
+<!-- ══════════════════════════════════════ -->
+<div class="email-section">
+  <div class="email-inner">
+    <div class="email-header">
+      <div class="email-num-badge">2</div>
+      <div class="email-meta">
+        <div class="email-send-time">⏱ Envío: 4 horas después del Email 1</div>
+        <div class="email-asunto-label">Asunto:</div>
+        <div class="email-asunto">Lo que hacen los inyectables, triGLP lo hace con tres gotas</div>
+      </div>
+      <div class="email-objetivo-tag">Producto</div>
+    </div>
+
+    <div class="email-body-box dark">
+      <p class="saludo" style="color:var(--white);">Hola [Nombre],</p>
+      <p>Antes de hablar del negocio necesito que entiendas por qué el producto es la base de todo.</p>
+      <p>En los últimos años el mundo de la salud metabólica ha sido dominado por una sola conversación: los inyectables para perder peso. Millones de personas los buscan. Los medios hablan de ellos cada semana.</p>
+      <p>El problema es conocido: son inyecciones farmacológicas, cuestan entre mil y mil quinientos dólares al mes, tienen efectos secundarios documentados —incluyendo una pérdida de masa muscular de hasta el 40%— y generan dependencia.</p>
+      <p>La pregunta que millones de personas se están haciendo ahora mismo es: <strong>¿existe una alternativa natural?</strong></p>
+      <p>La respuesta es <strong>triGLP</strong>.</p>
+      <div class="highlight-block">
+        triGLP es un péptido bioactivo patentado, derivado de salmón atlántico noruego de grado sashimi, que activa las mismas vías metabólicas de forma completamente natural. Sin agujas. Sin efectos secundarios reportados. A una fracción del coste.
+      </div>
+      <p>Los estudios clínicos publicados en revistas peer-reviewed muestran resultados consistentes:</p>
+      <ul>
+        <li>Reducción del 6–7% del IMC en 6–8 semanas</li>
+        <li>Disminución del 10% de grasa corporal sin pérdida de masa muscular</li>
+        <li>Mejora del 100% en la captación de glucosa muscular</li>
+        <li>Reducción del 15% en marcadores inflamatorios</li>
+      </ul>
+      <p>Y lo más importante para ti como distribuidor: <strong>estos estudios están publicados</strong>. Hay evidencia real detrás del producto. No es marketing — es ciencia verificable.</p>
+      <p>Cuando alguien te pregunte si funciona, no tienes que convencerle. Le muestras la evidencia.</p>
+      <p>En el próximo email te explico cómo se traduce esto en un negocio concreto.</p>
+      <div class="firma">
+        <strong>[Tu nombre]</strong><br>
+        Método ORYGN<br>
+        WhatsApp: [TU NÚMERO]
+      </div>
+    </div>
+
+    <div class="email-notes-box">
+      <div class="email-notes-icon">💡</div>
+      <div>
+        <div class="email-notes-title">Nota estratégica</div>
+        <div class="email-notes-text">Este email llega 4 horas después del primero, cuando el prospecto todavía tiene el sistema fresco en la mente. El objetivo es transferir credibilidad al producto antes de hablar de dinero. Nunca menciones el plan de compensación antes de haber plantado la semilla científica.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- EMAIL 3 -->
+<!-- ══════════════════════════════════════ -->
+<div class="email-section">
+  <div class="email-inner">
+    <div class="email-header">
+      <div class="email-num-badge">3</div>
+      <div class="email-meta">
+        <div class="email-send-time">📅 Envío: Día 2</div>
+        <div class="email-asunto-label">Asunto:</div>
+        <div class="email-asunto">Por qué ahora es el momento exacto (y no dentro de seis meses)</div>
+      </div>
+      <div class="email-objetivo-tag">Timing · Urgencia</div>
+    </div>
+
+    <div class="email-body-box">
+      <p class="saludo">Hola [Nombre],</p>
+      <p>He aprendido a distinguir entre una oportunidad real y una oportunidad que llegó tarde.</p>
+      <p>Las oportunidades reales tienen una característica específica: existe una conversación masiva en el mercado que tú puedes interceptar con una solución que la gente ya está buscando activamente.</p>
+      <p><strong>Ahora mismo esa conversación se llama GLP-1.</strong></p>
+      <p>El mercado global de inyectables metabólicos está proyectado para superar los 120,000 millones de dólares en los próximos años. La demanda de alternativas naturales crece en paralelo porque millones de personas quieren los beneficios sin los efectos secundarios ni el coste farmacéutico.</p>
+      <div class="highlight-block">
+        triGLP llega justo en ese momento. No después, cuando el mercado ya está saturado. Ahora, cuando la conversación está en su punto más alto y la competencia natural todavía no existe.
+      </div>
+      <p>En network marketing el timing lo es todo. Los que entran cuando la oportunidad está "probada" ya están compitiendo con miles de personas. Los que entran cuando el producto tiene ciencia pero el mercado todavía no está saturado... son los que construyen las organizaciones más grandes.</p>
+      <p>Ese es el momento en el que estamos hoy.</p>
+      <p>La pregunta que te invito a hacerte no es <em>si</em> esto funciona. La pregunta es <strong>si este es tu momento para aprovecharlo</strong>.</p>
+      <p>Mañana te hablo del plan de compensación en detalle.</p>
+      <div class="firma">
+        <strong>[Tu nombre]</strong><br>
+        Método ORYGN<br>
+        WhatsApp: [TU NÚMERO]
+      </div>
+    </div>
+
+    <div class="email-notes-box">
+      <div class="email-notes-icon">💡</div>
+      <div>
+        <div class="email-notes-title">Nota estratégica</div>
+        <div class="email-notes-text">Este email activa la urgencia sin crear presión artificial. El argumento del timing es real — úsalo con convicción. El cierre con la pregunta reflexiva ("¿es tu momento?") prepara psicológicamente al prospecto para la conversación del email 4 sobre dinero.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- EMAIL 4 -->
+<!-- ══════════════════════════════════════ -->
+<div class="email-section">
+  <div class="email-inner">
+    <div class="email-header">
+      <div class="email-num-badge featured">4</div>
+      <div class="email-meta">
+        <div class="email-send-time">📅 Envío: Día 4</div>
+        <div class="email-asunto-label">Asunto:</div>
+        <div class="email-asunto">¿Cuánto puedes ganar realmente? Te lo explico sin humo</div>
+      </div>
+      <div class="email-objetivo-tag">Compensación</div>
+    </div>
+
+    <div class="email-body-box dark">
+      <p class="saludo" style="color:var(--white);">Hola [Nombre],</p>
+      <p>Hoy toca hablar de dinero. Y lo voy a hacer como me gusta: con claridad y sin inflar números.</p>
+      <p>El plan de compensación de ORYGN tiene 9 formas de generar ingresos. Voy a explicarte las tres que importan de verdad para empezar.</p>
+      <div class="highlight-block">
+        <strong>La primera es inmediata.</strong> Cada vez que un cliente compra a través de tu enlace personal, recibes el 50% del valor de la compra. En tiempo real. Sin esperas. Si un cliente compra un producto de $130, recibes $65 ese mismo momento.
+      </div>
+      <div class="highlight-block">
+        <strong>La segunda activa desde tu primer distribuidor.</strong> Cuando alguien entra en tu red y hace su primer pedido, recibes el 50% del valor de ese pedido como bono de inicio rápido. Esto es lo que te permite generar ingresos desde el día uno.
+      </div>
+      <div class="highlight-block">
+        <strong>La tercera es la que construye libertad financiera real.</strong> El sistema binario te paga entre el 8% y el 20% del volumen semanal de tu equipo más débil. Sin límite de generaciones. Sin ciclos artificiales. El máximo semanal es de $20,000.
+      </div>
+      <p>Y adicionalmente existe el <strong>Bono de Estilo de Vida mensual</strong>: entre $100 y $700 al mes simplemente por mantener tu equipo activo. Es el ancla de la retención — un distribuidor que gana $300 fijos al mes nunca abandona.</p>
+      <p>No te voy a decir lo que vas a ganar porque eso depende de ti y de tu trabajo. Lo que sí te digo es esto: el plan está diseñado para que una persona seria, con un sistema y un equipo activo, pueda generar ingresos que superen su trabajo actual en menos de doce meses.</p>
+      <p>¿Quieres que hablemos de números concretos aplicados a tu situación? Responde a este email o escríbeme directamente por WhatsApp.</p>
+      <div class="firma">
+        <strong>[Tu nombre]</strong><br>
+        Método ORYGN<br>
+        WhatsApp: <span style="color:var(--orange);">[TU NÚMERO]</span>
+      </div>
+    </div>
+
+    <div class="email-notes-box">
+      <div class="email-notes-icon">💡</div>
+      <div>
+        <div class="email-notes-title">Nota estratégica</div>
+        <div class="email-notes-text">Este es el email con mayor tasa de respuesta de toda la secuencia. La gente quiere hablar de dinero pero nadie se lo explica bien. La clave es el equilibrio entre aspiración y honestidad: muestra el potencial real sin prometer nada. El CTA de WhatsApp al final es deliberado — mueve la conversación a un canal más personal.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- EMAIL 5 -->
+<!-- ══════════════════════════════════════ -->
+<div class="email-section">
+  <div class="email-inner">
+    <div class="email-header">
+      <div class="email-num-badge">5</div>
+      <div class="email-meta">
+        <div class="email-send-time">📅 Envío: Día 6</div>
+        <div class="email-asunto-label">Asunto:</div>
+        <div class="email-asunto">Lo que me dijo [Nombre de miembro] después de sus primeras semanas</div>
+      </div>
+      <div class="email-objetivo-tag">Prueba Social</div>
+    </div>
+
+    <div class="email-body-box">
+      <p class="saludo">Hola [Nombre],</p>
+      <p>Los números son importantes. Pero a veces lo que más convence es escuchar la experiencia de alguien que ya lo está viviendo.</p>
+      <p>Hace unas semanas recibí un mensaje de uno de los miembros de la organización. Me decía algo que me quedó grabado:</p>
+      <div class="highlight-block" style="font-style:italic; font-size:15px;">
+        "Lo diferente no es solo el producto. Es que por primera vez tengo un sistema que mi equipo puede usar sin que yo tenga que estar presente en cada conversación."
+      </div>
+      <p>Eso es exactamente lo que hemos construido.</p>
+      <p>Un sistema donde tú no eres el cuello de botella. Donde tu organización puede crecer mientras duermes, mientras viajas, mientras vives.</p>
+      <p>Eso solo ocurre cuando tienes tres cosas alineadas al mismo tiempo: <strong>un producto que se vende solo por sus resultados</strong>, <strong>un plan de compensación justo</strong> y <strong>un sistema que cualquier persona puede replicar</strong>.</p>
+      <p>Las tres están aquí.</p>
+      <p>En el próximo email te cuento exactamente qué pasa cuando te unes y cómo funciona el sistema desde el primer día.</p>
+      <div class="firma">
+        <strong>[Tu nombre]</strong><br>
+        Método ORYGN<br>
+        WhatsApp: [TU NÚMERO]
+      </div>
+    </div>
+
+    <div class="email-notes-box">
+      <div class="email-notes-icon">💡</div>
+      <div>
+        <div class="email-notes-title">Nota estratégica</div>
+        <div class="email-notes-text">Sustituye el testimonio genérico por uno real en cuanto lo tengas. Un testimonio con nombre, apellido y ciudad de alguien de tu red real multiplica la conversión. Si tienes resultado de producto (pérdida de peso, energía) úsalo también — el Avatar C que está leyendo estos emails necesita ver que el producto funciona, no solo el negocio.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- EMAIL 6 -->
+<!-- ══════════════════════════════════════ -->
+<div class="email-section">
+  <div class="email-inner">
+    <div class="email-header">
+      <div class="email-num-badge">6</div>
+      <div class="email-meta">
+        <div class="email-send-time">📅 Envío: Día 8</div>
+        <div class="email-asunto-label">Asunto:</div>
+        <div class="email-asunto">Lo que recibe cada persona que entra en la organización desde el día 1</div>
+      </div>
+      <div class="email-objetivo-tag">Sistema · Duplicación</div>
+    </div>
+
+    <div class="email-body-box dark">
+      <p class="saludo" style="color:var(--white);">Hola [Nombre],</p>
+      <p>Una de las preguntas que más recibo es esta: <strong>"¿Y si la gente de mi equipo no sabe de marketing digital?"</strong></p>
+      <p>Es una pregunta legítima. Y la respuesta es exactamente la razón por la que el Método ORYGN funciona donde otros sistemas fallan.</p>
+      <p>Cuando alguien entra en la organización, recibe en las primeras 24 horas un kit completo que incluye todo lo que necesita para arrancar sin saber nada de tecnología:</p>
+      <ul>
+        <li><strong>Los sistemas de captación ya construidos y listos.</strong> Solo personaliza su nombre, enlace de ORYGN y WhatsApp. En menos de 30 minutos tiene su propio sistema funcionando.</li>
+        <li><strong>La secuencia de emails automatizada.</strong> Los emails que estás recibiendo tú ahora mismo son exactamente los que recibirán los prospectos de tu equipo. Están escritos, probados y configurados.</li>
+        <li><strong>El pack de contenido para redes sociales.</strong> Publicaciones listas para usar en Instagram, Facebook y WhatsApp. Solo las publican con su información.</li>
+        <li><strong>Acceso al área de formación.</strong> Todo lo que necesitan saber para construir su red de forma profesional, en módulos cortos y accionables.</li>
+      </ul>
+      <div class="highlight-block">
+        Tu equipo no empieza desde cero. Empieza desde donde tú has llegado. Eso es lo que significa duplicación real.
+      </div>
+      <p>Mañana te hablo de cómo dar el siguiente paso.</p>
+      <div class="firma">
+        <strong>[Tu nombre]</strong><br>
+        Método ORYGN<br>
+        WhatsApp: [TU NÚMERO]
+      </div>
+    </div>
+
+    <div class="email-notes-box">
+      <div class="email-notes-icon">💡</div>
+      <div>
+        <div class="email-notes-title">Nota estratégica</div>
+        <div class="email-notes-text">Este email elimina la objeción técnica más común: "no sé usar esto". Es deliberadamente el penúltimo email — prepara al prospecto para el cierre del día 10 demostrando que el sistema resuelve sus miedos más concretos. El tono práctico y específico es intencional.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- EMAIL 7 -->
+<!-- ══════════════════════════════════════ -->
+<div class="email-section">
+  <div class="email-inner">
+    <div class="email-header">
+      <div class="email-num-badge featured">7</div>
+      <div class="email-meta">
+        <div class="email-send-time">📅 Envío: Día 10</div>
+        <div class="email-asunto-label">Asunto:</div>
+        <div class="email-asunto">[Nombre], es el momento de tomar una decisión</div>
+      </div>
+      <div class="email-objetivo-tag">Conversión Final</div>
+    </div>
+
+    <div class="email-body-box">
+      <p class="saludo">Hola [Nombre],</p>
+      <p>Llevamos varios días compartiendo información. Has visto el producto, el plan de compensación, el sistema y el momento de mercado.</p>
+      <p>Hoy quiero ser directo contigo porque creo que lo mereces.</p>
+      <p>He aprendido que las decisiones importantes no se toman por presión. Se toman cuando la información es clara y la persona está lista.</p>
+      <p>Así que te voy a hacer tres preguntas simples:</p>
+      <ul>
+        <li><strong>¿El producto te convence?</strong> Si la respuesta es sí, ya tienes la base más importante.</li>
+        <li><strong>¿El sistema tiene sentido para tu situación actual?</strong> Si ves cómo encajaría en tu realidad, ya tienes el segundo elemento.</li>
+        <li><strong>¿Estás en un momento en el que quieres construir algo diferente?</strong> Si la respuesta es sí, ya tienes los tres.</li>
+      </ul>
+      <p>Si respondiste sí a las tres, hay dos caminos ahora mismo:</p>
+      <div class="highlight-block">
+        <strong>Opción 1:</strong> Regístrate directamente a través de este enlace y comienza hoy: <span style="color:var(--orange); font-weight:600;">[ENLACE DE REGISTRO ORYGN]</span><br><br>
+        <strong>Opción 2:</strong> Agenda una llamada de 30 minutos conmigo antes de decidir. Sin compromiso. Solo una conversación entre profesionales. <span style="color:var(--orange); font-weight:600;">[ENLACE DE CALENDARIO]</span>
+      </div>
+      <p>Y si todavía no es tu momento, también está bien. Quédate en el canal de la comunidad, sigue recibiendo información y cuando sea tu momento, sabrás dónde encontrarme.</p>
+      <p><strong>Lo que sí te pido es que tomes una decisión consciente. En un sentido o en el otro.</strong></p>
+      <p>Ha sido un placer compartir esta semana contigo.</p>
+      <div class="firma">
+        <strong>[Tu nombre]</strong><br>
+        Método ORYGN · Sistema Internacional triGLP<br>
+        WhatsApp directo: [TU NÚMERO]
+      </div>
+      <p class="ps">P.D. — Si tienes alguna pregunta específica que no quedó resuelta en estos emails, responde directamente a este mensaje. Leo y respondo personalmente.</p>
+    </div>
+
+    <div class="email-notes-box">
+      <div class="email-notes-icon">💡</div>
+      <div>
+        <div class="email-notes-title">Nota estratégica · El email más importante de la secuencia</div>
+        <div class="email-notes-text">Las tres preguntas no son retórica — son el mecanismo de cierre. Quien las responda mentalmente con tres "sí" ya se ha convencido solo. La doble opción (registro directo vs. llamada) captura dos tipos de prospecto: el que decide solo y el que necesita hablar. Nunca dejes una sola opción en el cierre. El P.D. es deliberado — los P.D. tienen tasas de lectura más altas que el cuerpo del email.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ TABLA RESUMEN ══ -->
+<div class="summary-section">
+  <div class="summary-inner">
+    <h2 class="summary-title">RESUMEN <span>DE LA SECUENCIA</span></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Asunto</th>
+          <th>Envío</th>
+          <th>Objetivo principal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Tu acceso está aquí — léeme antes de hacer nada más</td>
+          <td>Inmediato</td>
+          <td>Bienvenida + llevar al video</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Lo que hacen los inyectables, triGLP lo hace con tres gotas</td>
+          <td>+4 horas</td>
+          <td>Credibilidad del producto</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Por qué ahora es el momento exacto (y no dentro de seis meses)</td>
+          <td>Día 2</td>
+          <td>Urgencia de timing</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>¿Cuánto puedes ganar realmente? Te lo explico sin humo</td>
+          <td>Día 4</td>
+          <td>Claridad del plan de compensación</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Lo que me dijo [nombre] después de sus primeras semanas</td>
+          <td>Día 6</td>
+          <td>Prueba social · Confianza</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Lo que recibe cada persona que entra en la organización</td>
+          <td>Día 8</td>
+          <td>Eliminar objeción técnica</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>[Nombre], es el momento de tomar una decisión</td>
+          <td>Día 10</td>
+          <td>Conversión final</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- ══ CONFIGURACIÓN TÉCNICA ══ -->
+<div class="config-section">
+  <div class="config-inner">
+    <h2 class="config-title">Configuración técnica <em>antes de activar</em></h2>
+    <div class="config-grid">
+      <div class="config-card">
+        <div class="config-label">Reemplazar antes de activar</div>
+        <div class="config-val">[Tu nombre] · [TU NÚMERO] · [ENLACE AL VIDEO] · [ENLACE DE REGISTRO ORYGN] · [ENLACE DE CALENDARIO]</div>
+        <div class="config-desc">Busca y reemplaza cada uno de estos marcadores en los 7 emails antes de publicar la secuencia.</div>
+      </div>
+      <div class="config-card">
+        <div class="config-label">Variable dinámica del nombre</div>
+        <div class="config-val">Cambia [Nombre] por la variable de tu plataforma</div>
+        <div class="config-desc">En la mayoría de plataformas es {{contact.first_name}} o similar. Verifica en tu documentación.</div>
+      </div>
+      <div class="config-card">
+        <div class="config-label">Email 5 — Testimonio real</div>
+        <div class="config-val">Sustituye el testimonio genérico por uno real de tu organización en cuanto lo tengas</div>
+        <div class="config-desc">Un testimonio con nombre completo, ciudad y resultado específico puede duplicar la conversión de este email.</div>
+      </div>
+      <div class="config-card">
+        <div class="config-label">Seguimiento post-secuencia</div>
+        <div class="config-val">Para quienes no responden al Email 7: un seguimiento mensual con novedades del sistema</div>
+        <div class="config-desc">El 80% de los cierres MLM ocurren entre el contacto 7 y el 20. No elimines de la lista a quien no respondió.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

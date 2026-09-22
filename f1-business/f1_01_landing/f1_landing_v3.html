@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MÉTODO ORYGN — triGLP | Sistema Replicable Internacional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #F97316;
+  --orange-deep: #FE5000;
+  --black: #000000;
+  --near-black: #1F2937;
+  --dark: #262626;
+  --mid: #374151;
+  --gray: #4B5563;
+  --light-gray: #6B7280;
+  --border-gray: #D1D5DB;
+  --soft-border: #E5E7EB;
+  --cream: #F2F2EB;
+  --white: #FBFBFB;
+  --pure-white: #FFFFFF;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-serif: 'DM Serif Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--near-black);
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(0,0,0,0.96);
+  padding: 0 5%;
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid rgba(249,115,22,0.25);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--white);
+  letter-spacing: 0.06em;
+}
+.nav-logo span { color: var(--orange); }
+.nav-tagline {
+  font-size: 10px;
+  color: rgba(249,115,22,0.7);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding-left: 10px;
+  border-left: 1px solid rgba(249,115,22,0.3);
+}
+.nav-cta {
+  background: var(--orange);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 8px 20px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--orange-deep); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  background: var(--black);
+  position: relative;
+  display: flex; align-items: center;
+  padding: 100px 5% 80px;
+  overflow: hidden;
+}
+.hero-bg-pattern {
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(249,115,22,0.06) 60px),
+    repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(249,115,22,0.06) 60px);
+  pointer-events: none;
+}
+.hero-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%);
+  top: -100px; right: -100px;
+  pointer-events: none;
+}
+.hero-content {
+  position: relative; z-index: 1;
+  max-width: 780px;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(249,115,22,0.1);
+  border: 1px solid rgba(249,115,22,0.35);
+  padding: 5px 14px;
+  font-size: 11px;
+  color: var(--orange);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 8vw, 96px);
+  color: var(--white);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+}
+.hero h1 .accent { color: var(--orange); }
+.hero-subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(18px, 2.5vw, 26px);
+  color: rgba(251,251,251,0.65);
+  font-style: italic;
+  line-height: 1.4;
+  margin-bottom: 36px;
+  max-width: 600px;
+}
+.hero-cta-row {
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+.btn-primary {
+  background: var(--orange);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 16px 36px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--orange-deep); transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent;
+  color: rgba(251,251,251,0.65);
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  letter-spacing: 0.02em;
+}
+.hero-stats {
+  display: flex; gap: 40px; flex-wrap: wrap;
+}
+.hero-stat {}
+.hero-stat-num {
+  font-family: var(--font-display);
+  font-size: 42px;
+  color: var(--orange);
+  letter-spacing: 0.02em;
+  display: block;
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 12px;
+  color: rgba(251,251,251,0.4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 4px;
+  display: block;
+}
+.hero-divider {
+  width: 1px;
+  background: rgba(249,115,22,0.2);
+  align-self: stretch;
+}
+
+/* ─── TRUST BAR ─── */
+.trust-bar {
+  background: var(--cream);
+  padding: 20px 5%;
+  display: flex; align-items: center; justify-content: center;
+  gap: 40px; flex-wrap: wrap;
+  border-bottom: 1px solid var(--soft-border);
+}
+.trust-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px;
+  color: var(--gray);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.trust-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--orange);
+  flex-shrink: 0;
+}
+
+/* ─── SECTION BASE ─── */
+section { padding: 96px 5%; }
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--orange);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 44px);
+  color: var(--near-black);
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+.section-title em { color: var(--orange); font-style: normal; }
+.section-desc {
+  font-size: 17px;
+  color: var(--gray);
+  line-height: 1.75;
+  max-width: 640px;
+}
+
+/* ─── PRODUCT SECTION ─── */
+.product-section { background: var(--near-black); }
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.product-section .section-title { color: var(--white); }
+.product-section .section-label { color: var(--orange); }
+.product-section .section-desc { color: rgba(251,251,251,0.6); }
+.product-vias { display: flex; flex-direction: column; gap: 20px; margin-top: 40px; }
+.via-card {
+  background: rgba(249,115,22,0.06);
+  border: 1px solid rgba(249,115,22,0.2);
+  padding: 20px 24px;
+  display: flex; gap: 20px;
+}
+.via-num {
+  font-family: var(--font-display);
+  font-size: 36px;
+  color: var(--orange);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 44px;
+}
+.via-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--orange);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.via-desc { font-size: 14px; color: rgba(251,251,251,0.6); line-height: 1.6; }
+.via-title { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+
+.product-stats-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+}
+.stat-block {
+  background: rgba(249,115,22,0.08);
+  border: 1px solid rgba(249,115,22,0.15);
+  padding: 32px 24px;
+  text-align: center;
+}
+.stat-block-num {
+  font-family: var(--font-display);
+  font-size: 52px;
+  color: var(--orange);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  display: block;
+}
+.stat-block-label {
+  font-size: 12px;
+  color: rgba(251,251,251,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 8px;
+  display: block;
+  line-height: 1.4;
+}
+.product-badges {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px;
+}
+.badge {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 5px 12px;
+  font-size: 11px;
+  color: rgba(251,251,251,0.55);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─── COMPARISON ─── */
+.comparison-section { background: var(--cream); }
+.compare-table {
+  width: 100%;
+  max-width: 900px;
+  margin: 48px auto 0;
+  border-collapse: collapse;
+}
+.compare-table th {
+  padding: 14px 20px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: left;
+}
+.compare-table th.col-orygn {
+  background: var(--orange);
+  color: var(--white);
+}
+.compare-table th.col-inject {
+  background: var(--mid);
+  color: rgba(251,251,251,0.7);
+}
+.compare-table th.col-feature { color: var(--gray); }
+.compare-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--soft-border);
+  font-size: 14px;
+  color: var(--near-black);
+}
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td.col-orygn {
+  background: rgba(249,115,22,0.06);
+  color: var(--near-black);
+  font-weight: 500;
+}
+.compare-table td.col-inject { color: var(--gray); }
+.compare-table td.col-feature { color: var(--gray); font-size: 13px; }
+.check { color: var(--orange); font-weight: 700; }
+.cross { color: var(--light-gray); }
+
+/* ─── COMPENSATION ─── */
+.comp-section { background: var(--white); }
+.comp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.comp-card {
+  background: var(--cream);
+  border: 1px solid var(--soft-border);
+  padding: 32px 24px;
+  position: relative;
+}
+.comp-card.featured {
+  background: var(--near-black);
+  border-color: var(--orange);
+  border-width: 2px;
+}
+.comp-card.featured .comp-label { color: var(--orange); }
+.comp-card.featured .comp-title { color: var(--white); }
+.comp-card.featured .comp-desc { color: rgba(251,251,251,0.55); }
+.comp-card.featured .comp-amount { color: var(--orange); }
+.comp-featured-tag {
+  position: absolute;
+  top: -13px; left: 50%; transform: translateX(-50%);
+  background: var(--orange);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+}
+.comp-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--orange);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.comp-amount {
+  font-family: var(--font-display);
+  font-size: 44px;
+  color: var(--near-black);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.comp-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--near-black);
+  margin-bottom: 8px;
+}
+.comp-desc {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.65;
+}
+
+/* ─── SYSTEM SECTION ─── */
+.system-section { background: var(--black); color: var(--white); }
+.system-section .section-title { color: var(--white); }
+.system-section .section-desc { color: rgba(251,251,251,0.6); max-width: 560px; }
+.system-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 52px;
+  max-width: 1100px;
+}
+.system-step {
+  background: rgba(249,115,22,0.04);
+  border: 1px solid rgba(249,115,22,0.15);
+  padding: 28px 20px;
+  position: relative;
+}
+.system-step::after {
+  content: '→';
+  position: absolute;
+  right: -13px;
+  top: 50%; transform: translateY(-50%);
+  color: var(--orange);
+  font-size: 16px;
+  z-index: 2;
+  background: var(--black);
+  padding: 2px 4px;
+}
+.system-step:last-child::after { display: none; }
+.step-num {
+  font-family: var(--font-display);
+  font-size: 48px;
+  color: rgba(249,115,22,0.2);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.step-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+.step-desc {
+  font-size: 12px;
+  color: rgba(251,251,251,0.45);
+  line-height: 1.6;
+}
+
+/* ─── REPLICATION BLOCK ─── */
+.rep-block {
+  background: rgba(249,115,22,0.06);
+  border: 1px solid rgba(249,115,22,0.25);
+  padding: 36px 40px;
+  max-width: 1100px;
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.rep-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.rep-desc {
+  font-size: 14px;
+  color: rgba(251,251,251,0.55);
+  line-height: 1.7;
+}
+.rep-steps { display: flex; flex-direction: column; gap: 14px; }
+.rep-step {
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.rep-step-num {
+  width: 28px; height: 28px;
+  border: 1px solid rgba(249,115,22,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--orange);
+  flex-shrink: 0;
+}
+.rep-step-text {
+  font-size: 13px;
+  color: rgba(251,251,251,0.6);
+  line-height: 1.55;
+  padding-top: 4px;
+}
+
+/* ─── MARKETS ─── */
+.markets-section { background: var(--cream); }
+.markets-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+  max-width: 1100px;
+}
+.market-card {
+  background: var(--white);
+  border: 1px solid var(--soft-border);
+  padding: 24px 20px;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.market-card:hover {
+  border-color: var(--orange);
+  transform: translateY(-2px);
+}
+.market-flag { font-size: 28px; margin-bottom: 12px; display: block; }
+.market-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--near-black);
+  margin-bottom: 4px;
+}
+.market-status {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  margin-bottom: 10px;
+}
+.market-status.active {
+  background: rgba(249,115,22,0.1);
+  color: var(--orange);
+}
+.market-status.soon {
+  background: rgba(55,65,81,0.08);
+  color: var(--gray);
+}
+.market-desc { font-size: 12px; color: var(--light-gray); line-height: 1.55; }
+
+/* ─── TESTIMONIALS ─── */
+.testimonials-section { background: var(--white); }
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+  max-width: 1100px;
+}
+.testimonial-card {
+  background: var(--cream);
+  border: 1px solid var(--soft-border);
+  padding: 28px 24px;
+}
+.test-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--near-black);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+.test-author {
+  display: flex; align-items: center; gap: 12px;
+}
+.test-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--orange);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  flex-shrink: 0;
+}
+.test-name { font-size: 14px; font-weight: 600; color: var(--near-black); }
+.test-role { font-size: 12px; color: var(--light-gray); }
+.test-flag { font-size: 16px; margin-left: auto; }
+
+/* ─── CAPTURE / FORM ─── */
+.capture-section {
+  background: var(--near-black);
+  text-align: center;
+}
+.capture-section .section-title { color: var(--white); margin: 0 auto 16px; }
+.capture-section .section-desc {
+  color: rgba(251,251,251,0.55);
+  margin: 0 auto 40px;
+  max-width: 560px;
+}
+.capture-form {
+  max-width: 520px;
+  margin: 0 auto;
+}
+.form-group {
+  margin-bottom: 14px;
+}
+.form-input {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 14px 18px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-input::placeholder { color: rgba(251,251,251,0.3); }
+.form-input:focus { border-color: var(--orange); }
+.form-select {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(251,251,251,0.5);
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 14px 18px;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+}
+.form-select option { background: var(--near-black); color: var(--white); }
+.btn-submit {
+  width: 100%;
+  background: var(--orange);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+.btn-submit:hover { background: var(--orange-deep); }
+.form-disclaimer {
+  font-size: 11px;
+  color: rgba(251,251,251,0.25);
+  margin-top: 12px;
+  letter-spacing: 0.04em;
+}
+
+/* ─── ABOUT BGM ─── */
+.about-section { background: var(--cream); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 64px;
+  align-items: start;
+  max-width: 1100px;
+  margin: 48px auto 0;
+}
+.about-profile {
+  background: var(--white);
+  border: 1px solid var(--soft-border);
+  padding: 32px 28px;
+  text-align: center;
+}
+.profile-avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--orange);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 30px;
+  color: var(--white);
+  margin: 0 auto 16px;
+}
+.profile-name {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: var(--near-black);
+  margin-bottom: 4px;
+}
+.profile-role {
+  font-size: 12px;
+  color: var(--orange);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.profile-stats {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  margin-bottom: 20px;
+}
+.pstat {
+  background: var(--cream);
+  padding: 14px 10px;
+  text-align: center;
+}
+.pstat-num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--orange);
+  display: block;
+  line-height: 1;
+}
+.pstat-label {
+  font-size: 10px;
+  color: var(--light-gray);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 4px;
+  display: block;
+  line-height: 1.3;
+}
+.profile-langs {
+  display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
+}
+.lang-badge {
+  background: rgba(249,115,22,0.1);
+  border: 1px solid rgba(249,115,22,0.25);
+  padding: 4px 10px;
+  font-size: 11px;
+  color: var(--orange);
+  letter-spacing: 0.08em;
+}
+.about-capabilities { display: flex; flex-direction: column; gap: 16px; }
+.cap-row {
+  background: var(--white);
+  border: 1px solid var(--soft-border);
+  padding: 20px 22px;
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.cap-icon {
+  width: 36px; height: 36px;
+  background: rgba(249,115,22,0.1);
+  border: 1px solid rgba(249,115,22,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.cap-title { font-size: 14px; font-weight: 600; color: var(--near-black); margin-bottom: 3px; }
+.cap-desc { font-size: 13px; color: var(--gray); line-height: 1.55; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--black);
+  padding: 48px 5%;
+  border-top: 1px solid rgba(249,115,22,0.2);
+}
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  flex-wrap: wrap; gap: 24px;
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--white);
+  letter-spacing: 0.04em;
+}
+.footer-brand span { color: var(--orange); }
+.footer-tagline {
+  font-size: 11px;
+  color: rgba(249,115,22,0.6);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.footer-copy {
+  font-size: 12px;
+  color: rgba(251,251,251,0.3);
+  text-align: right;
+  line-height: 1.6;
+}
+.footer-copy strong { color: rgba(249,115,22,0.7); }
+
+/* ─── STICKY CTA ─── */
+.sticky-cta {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  background: var(--orange);
+  color: var(--white);
+  padding: 14px 24px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 50;
+  box-shadow: 0 4px 24px rgba(249,115,22,0.4);
+  display: none;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .product-grid,
+  .rep-block,
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .comp-grid,
+  .system-grid,
+  .markets-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .nav-tagline { display: none; }
+  .product-stats-grid { grid-template-columns: repeat(4, 1fr); }
+  .hero-stats { gap: 20px; }
+  .hero-divider { display: none; }
+  .compare-table { font-size: 13px; }
+}
+@media (max-width: 600px) {
+  section { padding: 64px 5%; }
+  .comp-grid,
+  .system-grid,
+  .markets-grid { grid-template-columns: 1fr; }
+  .product-stats-grid { grid-template-columns: 1fr 1fr; }
+  .profile-stats { grid-template-columns: 1fr 1fr; }
+  .compare-table th, .compare-table td { padding: 10px 12px; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-logo">MÉTODO <span>ORYGN</span></div>
+    <div class="nav-tagline">Sistema Internacional triGLP</div>
+  </div>
+  <a href="#captura" class="nav-cta">Acceder al Sistema →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Sistema Replicable · Red Internacional</div>
+    <h1>MÉTODO<br><span class="accent">ORYGN</span></h1>
+    <p class="hero-subtitle">Lo que hacen los inyectables a nivel metabólico, pero de forma 100% natural, sin agujas y con una oportunidad de negocio que duplica en cualquier parte del mundo.</p>
+    <div class="hero-cta-row">
+      <a href="#captura" class="btn-primary">Quiero ver el sistema →</a>
+      <button class="btn-ghost" onclick="document.getElementById('producto').scrollIntoView({behavior:'smooth'})">Ver la ciencia primero</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">40+</span>
+        <span class="hero-stat-label">Años en el sector</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">5</span>
+        <span class="hero-stat-label">Continentes activos</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">50%</span>
+        <span class="hero-stat-label">Comisión directa</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">$20K</span>
+        <span class="hero-stat-label">Máximo semanal</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><div class="trust-dot"></div>NDI · FDA Certificado</div>
+  <div class="trust-item"><div class="trust-dot"></div>Patente Doble</div>
+  <div class="trust-item"><div class="trust-dot"></div>Kosher · Halal · HACCP</div>
+  <div class="trust-item"><div class="trust-dot"></div>Estudios Peer-Reviewed</div>
+  <div class="trust-item"><div class="trust-dot"></div>+80 Países</div>
+  <div class="trust-item"><div class="trust-dot"></div>B-Epic Infrastructure</div>
+</div>
+
+<!-- PRODUCT SECTION -->
+<section class="product-section" id="producto">
+  <div class="product-grid">
+    <div>
+      <div class="section-label">El Producto · triGLP</div>
+      <h2 class="section-title" style="color:var(--white);">La ciencia<br>detrás de<br><em>la diferencia</em></h2>
+      <p class="section-desc">No es un suplemento genérico. Es un hidrolizado de péptidos bioactivos de salmón atlántico noruego con doble protección de patente. Estudios publicados en el Journal of Obesity &amp; Weight Loss Therapy (2016) y en Biomolecules (2022), con respaldo de investigación universitaria internacional.</p>
+      <div class="product-badges">
+        <div class="badge">Salmón noruego grado sashimi</div>
+        <div class="badge">Hidrólisis enzimática</div>
+        <div class="badge">&lt;1000 Daltons</div>
+        <div class="badge">Absorción &gt;90%</div>
+        <div class="badge">Non-GMO</div>
+      </div>
+    </div>
+    <div>
+      <div class="product-stats-grid" style="margin-bottom: 20px;">
+        <div class="stat-block">
+          <span class="stat-block-num">6–7%</span>
+          <span class="stat-block-label">Reducción IMC en 6–8 semanas</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-block-num">10%</span>
+          <span class="stat-block-label">Reducción grasa sin pérdida muscular</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-block-num">100%</span>
+          <span class="stat-block-label">Mejora captación glucosa muscular</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-block-num">15%</span>
+          <span class="stat-block-label">Reducción marcadores inflamatorios IL-6</span>
+        </div>
+      </div>
+      <div class="product-vias">
+        <div class="via-card">
+          <div class="via-num">1</div>
+          <div>
+            <div class="via-name">GLP-1 + GIP</div>
+            <div class="via-title">El Susurrador del Apetito</div>
+            <div class="via-desc">Regula el hambre a nivel neuronal, optimiza el metabolismo y facilita la quema de grasa. La misma vía de los inyectables farmacológicos, de forma completamente natural.</div>
+          </div>
+        </div>
+        <div class="via-card">
+          <div class="via-num">2</div>
+          <div>
+            <div class="via-name">GLP-2</div>
+            <div class="via-title">El Escudo del Núcleo</div>
+            <div class="via-desc">Repara la barrera intestinal, reduce la inflamación sistémica y preserva la masa muscular. El diferenciador frente a los inyectables farmacológicos.</div>
+          </div>
+        </div>
+        <div class="via-card">
+          <div class="via-num">3</div>
+          <div>
+            <div class="via-name">Antiinflamatorio</div>
+            <div class="via-title">Protección Celular</div>
+            <div class="via-desc">Rutas antioxidantes que protegen el organismo a nivel celular. Reducción del 15% en marcadores inflamatorios IL-6.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="comparison-section">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label">Comparativa · Mercado</div>
+    <h2 class="section-title">triGLP vs. los <em>inyectables farmacológicos</em></h2>
+    <p class="section-desc">El mercado de los inyectables GLP-1 supera los $53,000M y crece hacia los $120,000M. Hay más de 100 millones de personas buscando una alternativa natural. Tú tienes esa alternativa.</p>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th class="col-feature">Característica</th>
+          <th class="col-orygn">triGLP · ORYGN</th>
+          <th class="col-inject">Inyectables Farmacológicos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-feature">Administración</td>
+          <td class="col-orygn"><span class="check">✓</span> Gotas orales sublinguales</td>
+          <td class="col-inject"><span class="cross">✗</span> Inyección semanal</td>
+        </tr>
+        <tr>
+          <td class="col-feature">Coste mensual</td>
+          <td class="col-orygn"><span class="check">✓</span> $130–140 USD</td>
+          <td class="col-inject"><span class="cross">✗</span> $1,000–1,500 USD</td>
+        </tr>
+        <tr>
+          <td class="col-feature">Masa muscular</td>
+          <td class="col-orygn"><span class="check">✓</span> Preservada (GLP-2)</td>
+          <td class="col-inject"><span class="cross">✗</span> 40–60% pérdida muscular</td>
+        </tr>
+        <tr>
+          <td class="col-feature">Efectos secundarios</td>
+          <td class="col-orygn"><span class="check">✓</span> Sin efectos reportados</td>
+          <td class="col-inject"><span class="cross">✗</span> Náuseas, pancreatitis, flacidez</td>
+        </tr>
+        <tr>
+          <td class="col-feature">Origen</td>
+          <td class="col-orygn"><span class="check">✓</span> 100% natural (salmón noruego)</td>
+          <td class="col-inject"><span class="cross">✗</span> 100% sintético</td>
+        </tr>
+        <tr>
+          <td class="col-feature">Vías metabólicas</td>
+          <td class="col-orygn"><span class="check">✓</span> Triple (GLP-1 + GLP-2 + GIP)</td>
+          <td class="col-inject"><span class="cross">✗</span> Una sola vía</td>
+        </tr>
+        <tr>
+          <td class="col-feature">Absorción</td>
+          <td class="col-orygn"><span class="check">✓</span> &gt;90% sublingual</td>
+          <td class="col-inject">35–75% subcutánea</td>
+        </tr>
+        <tr>
+          <td class="col-feature">Requiere receta</td>
+          <td class="col-orygn"><span class="check">✓</span> No</td>
+          <td class="col-inject"><span class="cross">✗</span> Sí</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- COMPENSATION -->
+<section class="comp-section">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label">Plan de Compensación · 9 Formas de Ganar</div>
+    <h2 class="section-title">Un plan diseñado para<br><em>generar ingresos desde el día 1</em></h2>
+    <p class="section-desc">Hasta el 60% de las ventas globales se reparte entre distribuidores. Ingresos inmediatos, residuales mensuales y bonos de rango. Sin ciclos artificiales, sin topes de profundidad.</p>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <div class="comp-label">Inmediato</div>
+        <div class="comp-amount">50%</div>
+        <div class="comp-title">Bono de Cliente</div>
+        <div class="comp-desc">Cada compra de un cliente genera el 50% del PV en efectivo, depositado en tiempo real en tu E-Wallet. Sin esperas, sin ciclos.</div>
+      </div>
+      <div class="comp-card featured">
+        <div class="comp-featured-tag">Más popular</div>
+        <div class="comp-label">Residual semanal</div>
+        <div class="comp-amount">$20K</div>
+        <div class="comp-title">Two Team Pay</div>
+        <div class="comp-desc">8% al 20% del volumen semanal de tu equipo más débil. Profundidad ilimitada, sin ciclos artificiales. Máximo $20,000 por semana.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-label">Mensual fijo</div>
+        <div class="comp-amount">$700</div>
+        <div class="comp-title">Bono Estilo de Vida</div>
+        <div class="comp-desc">$100 con estructura 2x2, hasta $700 con 5x5. Mantén tu equipo activo y recibe un bono fijo cada mes. El ancla de la retención.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-label">Inicio rápido</div>
+        <div class="comp-amount">50%</div>
+        <div class="comp-title">Fast Start Bonus</div>
+        <div class="comp-desc">50% del CV del primer pedido de cada nuevo distribuidor que inscribas. Genera ingresos desde la primera incorporación a tu red.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-label">Liderazgo</div>
+        <div class="comp-amount">20%</div>
+        <div class="comp-title">Matching Bonus</div>
+        <div class="comp-desc">20% semanal sobre los cheques de todos tus distribuidores directos. Cuanto mejor les va a ellos, más ganas tú. Intereses alineados.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-label">Élite · Único</div>
+        <div class="comp-amount">$150K</div>
+        <div class="comp-title">Bonos Diamante</div>
+        <div class="comp-desc">Pagos únicos al alcanzar rangos Diamante: desde $10,000 (Diamante Azul) hasta $150,000 (Diamante Verde). Más el 2% del fondo global.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--cream); border:1px solid var(--soft-border); border-left:4px solid var(--orange); padding:20px 28px; margin-top:16px; display:flex; align-items:center; gap:20px; max-width:1100px;">
+      <div style="font-size:28px; flex-shrink:0;">＋</div>
+      <div>
+        <div style="font-size:14px; font-weight:600; color:var(--near-black); margin-bottom:4px;">Y 3 bonos adicionales para maximizar tus resultados financieros</div>
+        <div style="font-size:13px; color:var(--gray); line-height:1.6;">El plan completo incluye bonos generacionales, un fondo global de liderazgo y beneficios exclusivos de rango que se activan a medida que tu organización crece. El techo de ingresos lo decides tú.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SYSTEM SECTION -->
+<section class="system-section">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label">El Sistema · 100% Replicable</div>
+    <h2 class="section-title">No te invito a vender un producto.<br>Te invito a <em>clonar un sistema.</em></h2>
+    <p class="section-desc">Cada miembro de tu organización recibe una copia exacta del sistema con su código personalizado. Lo que no se replica, no escala.</p>
+    <div class="system-grid">
+      <div class="system-step">
+        <div class="step-num">01</div>
+        <div class="step-title">Tráfico orgánico y pagado</div>
+        <div class="step-desc">Contenido estratégico en Instagram, Facebook, TikTok y LinkedIn. 3 avatares, 3 ángulos, 1 mensaje coherente.</div>
+      </div>
+      <div class="system-step">
+        <div class="step-num">02</div>
+        <div class="step-title">Funnels de captura</div>
+        <div class="step-desc">3 embudos independientes en nuestra plataforma digital, uno por avatar. Landing pages con copy completo, listas para implementar.</div>
+      </div>
+      <div class="system-step">
+        <div class="step-num">03</div>
+        <div class="step-title">Automatización de email</div>
+        <div class="step-desc">Secuencia de 7 emails en 10 días, preconfigurada. El prospecto recibe contenido de valor hasta tomar su decisión.</div>
+      </div>
+      <div class="system-step">
+        <div class="step-num">04</div>
+        <div class="step-title">Duplicación en 48h</div>
+        <div class="step-desc">El nuevo distribuidor clona los 3 funnels con un enlace. Solo cambia 4 elementos. Sistema operativo en menos de 30 minutos.</div>
+      </div>
+    </div>
+
+    <div class="rep-block">
+      <div>
+        <h3 class="rep-title">El nuevo distribuidor clona el sistema completo en 30 minutos</h3>
+        <p class="rep-desc">Nuestra plataforma permite crear sistemas de captación compartidos que se clonan con un enlace. Ya viene configurado con textos, diseño, automatizaciones y secuencias de email.</p>
+      </div>
+      <div class="rep-steps">
+        <div class="rep-step">
+          <div class="rep-step-num">1</div>
+          <div class="rep-step-text">Recibe el enlace de clonación de los 3 funnels completos</div>
+        </div>
+        <div class="rep-step">
+          <div class="rep-step-num">2</div>
+          <div class="rep-step-text">Personaliza solo: nombre/foto, enlace ORYGN, WhatsApp y email</div>
+        </div>
+        <div class="rep-step">
+          <div class="rep-step-num">3</div>
+          <div class="rep-step-text">Activa su dominio personalizado en nuestra plataforma</div>
+        </div>
+        <div class="rep-step">
+          <div class="rep-step-num">4</div>
+          <div class="rep-step-text">Su sistema está operativo. El ciclo se repite con su equipo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS - VISION -->
+<section class="markets-section">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label">Visión Global · Expansión Internacional</div>
+    <h2 class="section-title">Tu red puede crecer en<br><em>cualquier parte del mundo,</em><br>desde el primer día.</h2>
+    <p class="section-desc">Con infraestructura operativa en más de 80 países, el Método ORYGN te permite construir una organización sin fronteras geográficas. No necesitas esperar — puedes comenzar a crear tu red global hoy mismo.</p>
+
+    <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:2px; margin-top:48px; margin-bottom:40px;">
+      <div style="background:var(--near-black); padding:36px 28px;">
+        <div style="font-family:var(--font-display); font-size:64px; color:var(--orange); line-height:1; margin-bottom:10px;">80+</div>
+        <div style="font-size:14px; font-weight:600; color:var(--white); margin-bottom:6px;">Países operativos</div>
+        <div style="font-size:13px; color:rgba(251,251,251,0.45); line-height:1.6;">Infraestructura de envío y logística activa desde el primer día. Sin esperas, sin trámites adicionales.</div>
+      </div>
+      <div style="background:var(--orange); padding:36px 28px;">
+        <div style="font-family:var(--font-display); font-size:64px; color:var(--white); line-height:1; margin-bottom:10px;">$120B</div>
+        <div style="font-size:14px; font-weight:600; color:var(--white); margin-bottom:6px;">Mercado proyectado GLP-1</div>
+        <div style="font-size:13px; color:rgba(255,255,255,0.75); line-height:1.6;">El mercado de alternativas metabólicas naturales está en su punto de mayor crecimiento. La demanda ya existe.</div>
+      </div>
+      <div style="background:var(--near-black); padding:36px 28px;">
+        <div style="font-family:var(--font-display); font-size:64px; color:var(--orange); line-height:1; margin-bottom:10px;">100M+</div>
+        <div style="font-size:14px; font-weight:600; color:var(--white); margin-bottom:6px;">Personas buscando alternativas</div>
+        <div style="font-size:13px; color:rgba(251,251,251,0.45); line-height:1.6;">Personas que quieren los beneficios metabólicos sin agujas ni efectos adversos. Tu cliente ya está buscando esto.</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:16px; font-size:11px; font-weight:600; color:var(--orange); letter-spacing:0.2em; text-transform:uppercase;">Regiones estratégicas activas</div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-bottom:2px;">
+      <div class="market-card" style="padding:28px 24px;">
+        <span class="market-flag">🇺🇸</span>
+        <div class="market-name">Estados Unidos y Canadá</div>
+        <div class="market-status active">Operativo</div>
+        <div style="display:flex; gap:20px; margin:14px 0; flex-wrap:wrap;">
+          <div><div style="font-family:var(--font-display); font-size:28px; color:var(--orange); line-height:1;">335M+</div><div style="font-size:10px; color:var(--light-gray); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px;">Habitantes</div></div>
+          <div><div style="font-family:var(--font-display); font-size:28px; color:var(--orange); line-height:1;">$60M+</div><div style="font-size:10px; color:var(--light-gray); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px;">Hispanos en USA</div></div>
+        </div>
+        <div class="market-desc">El mercado con mayor disposición de gasto en salud del mundo. Alta cultura MLM establecida. Producto disponible sin barreras adicionales.</div>
+      </div>
+      <div class="market-card" style="padding:28px 24px; border-color:var(--orange); border-width:2px;">
+        <span class="market-flag">🌎</span>
+        <div class="market-name">Latinoamérica</div>
+        <div class="market-status active">Mercado principal</div>
+        <div style="display:flex; gap:20px; margin:14px 0; flex-wrap:wrap;">
+          <div><div style="font-family:var(--font-display); font-size:28px; color:var(--orange); line-height:1;">650M+</div><div style="font-size:10px; color:var(--light-gray); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px;">Habitantes</div></div>
+          <div><div style="font-family:var(--font-display); font-size:28px; color:var(--orange); line-height:1;">$20B+</div><div style="font-size:10px; color:var(--light-gray); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px;">Venta directa/año</div></div>
+        </div>
+        <div class="market-desc">La región con mayor cultura MLM del mundo. México, Colombia, Chile, Perú, Ecuador, República Dominicana y todo el corredor caribeño activos desde el primer día.</div>
+      </div>
+      <div class="market-card" style="padding:28px 24px;">
+        <span class="market-flag">🇪🇺</span>
+        <div class="market-name">Europa</div>
+        <div class="market-status soon">En expansión</div>
+        <div style="display:flex; gap:20px; margin:14px 0; flex-wrap:wrap;">
+          <div><div style="font-family:var(--font-display); font-size:28px; color:var(--orange); line-height:1;">450M+</div><div style="font-size:10px; color:var(--light-gray); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px;">Habitantes</div></div>
+          <div><div style="font-family:var(--font-display); font-size:28px; color:var(--orange); line-height:1;">$35B+</div><div style="font-size:10px; color:var(--light-gray); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px;">Venta directa/año</div></div>
+        </div>
+        <div class="market-desc">España, Portugal, Francia e Italia como mercados prioritarios. Mayor capacidad de gasto por distribuidor. El mercado europeo de bienestar crece sin parar.</div>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px;">
+      <div class="market-card" style="padding:28px 24px;">
+        <span class="market-flag">🌍</span>
+        <div class="market-name">África</div>
+        <div class="market-status soon">En desarrollo</div>
+        <div style="display:flex; gap:20px; margin:14px 0; flex-wrap:wrap;">
+          <div><div style="font-family:var(--font-display); font-size:28px; color:var(--orange); line-height:1;">1.4B+</div><div style="font-size:10px; color:var(--light-gray); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px;">Habitantes</div></div>
+          <div><div style="font-family:var(--font-display); font-size:28px; color:var(--orange); line-height:1;">↑↑↑</div><div style="font-size:10px; color:var(--light-gray); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px;">Clase media emergente</div></div>
+        </div>
+        <div class="market-desc">Nigeria y Sudáfrica como mercados activos. Comunidades de network marketing muy motivadas. Mínima competencia en suplementos naturales de calidad.</div>
+      </div>
+      <div class="market-card" style="padding:28px 24px;">
+        <span class="market-flag">🌏</span>
+        <div class="market-name">Asia · Pacífico</div>
+        <div class="market-status" style="background:rgba(55,65,81,0.06); color:var(--gray); display:inline-block; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:3px 8px; margin-bottom:10px;">Próximamente</div>
+        <div style="display:flex; gap:20px; margin:14px 0; flex-wrap:wrap;">
+          <div><div style="font-family:var(--font-display); font-size:28px; color:var(--orange); line-height:1;">4.7B+</div><div style="font-size:10px; color:var(--light-gray); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px;">Habitantes</div></div>
+          <div><div style="font-family:var(--font-display); font-size:28px; color:var(--orange); line-height:1;">#1</div><div style="font-size:10px; color:var(--light-gray); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px;">Mercado MLM mundial</div></div>
+        </div>
+        <div class="market-desc">Asia-Pacífico es el mayor mercado de venta directa del mundo. Australia, Filipinas y mercados angloparlantes incluidos. Expansión en curso.</div>
+      </div>
+      <div class="market-card" style="padding:28px 24px; background:var(--near-black); border-color:rgba(249,115,22,0.3);">
+        <div style="font-size:28px; margin-bottom:12px;">🌐</div>
+        <div style="font-size:15px; font-weight:600; color:var(--white); margin-bottom:8px;">Tu red no tiene fronteras</div>
+        <div style="font-family:var(--font-display); font-size:42px; color:var(--orange); line-height:1; margin:14px 0;">80+</div>
+        <div style="font-size:10px; color:rgba(249,115,22,0.7); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">Países con envío operativo</div>
+        <div style="font-size:13px; color:rgba(251,251,251,0.5); line-height:1.6;">Un distribuidor en Colombia puede tener equipo activo en España, Estados Unidos y Filipinas al mismo tiempo. El sistema funciona en todos.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--near-black); padding:40px; margin-top:2px; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+      <div>
+        <div style="font-size:11px; font-weight:600; color:var(--orange); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:14px;">La ventaja del timing</div>
+        <h3 style="font-family:var(--font-serif); font-size:26px; color:var(--white); line-height:1.25; margin-bottom:12px;">Estás entrando cuando la conversación global ya está educada</h3>
+        <p style="font-size:14px; color:rgba(251,251,251,0.5); line-height:1.7;">Las farmacéuticas han invertido miles de millones en educar al mundo sobre los beneficios del metabolismo GLP-1. Tú llegas con la alternativa natural en el momento exacto en que la demanda es máxima y la competencia natural todavía es mínima.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px; background:rgba(249,115,22,0.07); border:1px solid rgba(249,115,22,0.2);">
+          <div style="width:8px; height:8px; background:var(--orange); border-radius:50%; flex-shrink:0; margin-top:5px;"></div>
+          <div style="font-size:13px; color:rgba(251,251,251,0.7); line-height:1.6;"><strong style="color:var(--white); font-size:14px;">No creas la necesidad.</strong> El mercado ya la tiene. Solo posicionas la solución correcta.</div>
+        </div>
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px; background:rgba(249,115,22,0.07); border:1px solid rgba(249,115,22,0.2);">
+          <div style="width:8px; height:8px; background:var(--orange); border-radius:50%; flex-shrink:0; margin-top:5px;"></div>
+          <div style="font-size:13px; color:rgba(251,251,251,0.7); line-height:1.6;"><strong style="color:var(--white); font-size:14px;">Sistema llave en mano.</strong> Tu red de cualquier país recibe el mismo sistema operativo desde el día uno.</div>
+        </div>
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:16px; background:rgba(249,115,22,0.07); border:1px solid rgba(249,115,22,0.2);">
+          <div style="width:8px; height:8px; background:var(--orange); border-radius:50%; flex-shrink:0; margin-top:5px;"></div>
+          <div style="font-size:13px; color:rgba(251,251,251,0.7); line-height:1.6;"><strong style="color:var(--white); font-size:14px;">Sin fronteras.</strong> Un distribuidor en México puede tener su equipo activo en Colombia, España y Brasil simultáneamente.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label">Experiencias · Red Internacional</div>
+    <h2 class="section-title">Lo que dicen los miembros<br><em>de la organización</em></h2>
+    <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:20px; margin-top:48px;">
+      <div class="testimonial-card">
+        <p class="test-quote">"Lo diferente no es solo el producto. Es que por primera vez tengo un sistema que mi equipo puede usar sin que yo tenga que estar presente en cada conversación."</p>
+        <div class="test-author">
+          <div class="test-avatar">MR</div>
+          <div>
+            <div class="test-name">María R.</div>
+            <div class="test-role">Distribuidora · Medellín, Colombia</div>
+          </div>
+          <div class="test-flag">🇨🇴</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="test-quote">"Llevo 12 años en network marketing y nunca había visto un producto con estudios publicados en revistas científicas internacionales. El argumento de venta se construye solo."</p>
+        <div class="test-author">
+          <div class="test-avatar">JL</div>
+          <div>
+            <div class="test-name">Jorge L.</div>
+            <div class="test-role">Líder de equipo · Ciudad de México</div>
+          </div>
+          <div class="test-flag">🇲🇽</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="test-quote">"El bono de estilo de vida de $300 llegó en el tercer mes. Mi producto sale gratis y tengo beneficio neto. Nunca había logrado eso tan rápido en ninguna otra empresa."</p>
+        <div class="test-author">
+          <div class="test-avatar">AP</div>
+          <div>
+            <div class="test-name">Ana P.</div>
+            <div class="test-role">Brand Partner · Santiago, Chile</div>
+          </div>
+          <div class="test-flag">🇨🇱</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="test-quote">"Empecé sin saber nada de marketing digital. El sistema llegó configurado, solo tuve que personalizarlo. En 48 horas ya tenía mi página funcionando y mis primeros prospectos."</p>
+        <div class="test-author">
+          <div class="test-avatar">RS</div>
+          <div>
+            <div class="test-name">Roberto S.</div>
+            <div class="test-role">Distribuidor · Lima, Perú</div>
+          </div>
+          <div class="test-flag">🇵🇪</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="test-quote">"Lo que me convenció fue la ciencia detrás. Cuando le muestras a alguien los estudios publicados, la conversación cambia completamente. El producto se presenta solo."</p>
+        <div class="test-author">
+          <div class="test-avatar">LC</div>
+          <div>
+            <div class="test-name">Laura C.</div>
+            <div class="test-role">Brand Partner · Madrid, España</div>
+          </div>
+          <div class="test-flag">🇪🇸</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="test-quote">"Tenía miedo de que fuera otra empresa igual. Pero el plan de compensación es real: el 50% directo al cliente llegó en mi primer día. En 30 días recuperé mi inversión inicial."</p>
+        <div class="test-author">
+          <div class="test-avatar">CF</div>
+          <div>
+            <div class="test-name">Carlos F.</div>
+            <div class="test-role">Distribuidor · Bogotá, Colombia</div>
+          </div>
+          <div class="test-flag">🇨🇴</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SYSTEM VALUES -->
+<section class="about-section">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label">El Método · Fundamentos</div>
+    <h2 class="section-title">Un sistema construido sobre<br><em>40 años de experiencia internacional</em></h2>
+    <p class="section-desc" style="margin-bottom:48px;">El Método ORYGN no es teoría. Está construido sobre décadas de trabajo real en redes internacionales, en 5 continentes, con líderes de mercados muy distintos entre sí.</p>
+
+    <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:2px; margin-bottom:2px;">
+      <div style="background:var(--cream); border:1px solid var(--soft-border); padding:32px 26px; text-align:center;">
+        <div style="font-family:var(--font-display); font-size:56px; color:var(--orange); line-height:1; margin-bottom:8px;">40+</div>
+        <div style="font-size:14px; font-weight:600; color:var(--near-black); margin-bottom:6px;">Años de experiencia</div>
+        <div style="font-size:13px; color:var(--gray); line-height:1.55;">En la construcción de redes de network marketing internacionales con resultados reales y medibles.</div>
+      </div>
+      <div style="background:var(--orange); padding:32px 26px; text-align:center;">
+        <div style="font-family:var(--font-display); font-size:56px; color:var(--white); line-height:1; margin-bottom:8px;">5</div>
+        <div style="font-size:14px; font-weight:600; color:var(--white); margin-bottom:6px;">Continentes</div>
+        <div style="font-size:13px; color:rgba(255,255,255,0.75); line-height:1.55;">Redes construidas en América, Europa, África, Asia y Oceanía. El sistema está diseñado para funcionar en cualquier cultura.</div>
+      </div>
+      <div style="background:var(--cream); border:1px solid var(--soft-border); padding:32px 26px; text-align:center;">
+        <div style="font-family:var(--font-display); font-size:56px; color:var(--orange); line-height:1; margin-bottom:8px;">5</div>
+        <div style="font-size:14px; font-weight:600; color:var(--near-black); margin-bottom:6px;">Idiomas</div>
+        <div style="font-size:13px; color:var(--gray); line-height:1.55;">Español, portugués, francés, inglés e italiano. Con estos idiomas se puede trabajar prácticamente en cualquier mercado del mundo.</div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns: repeat(2,1fr); gap:2px;">
+      <div class="cap-row" style="background:var(--white); border:1px solid var(--soft-border); padding:28px 26px; display:flex; gap:18px; align-items:flex-start;">
+        <div style="width:40px; height:40px; background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.25); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0;">🔄</div>
+        <div>
+          <div style="font-size:15px; font-weight:600; color:var(--near-black); margin-bottom:5px;">Sistema 100% replicable</div>
+          <div style="font-size:13px; color:var(--gray); line-height:1.6;">Cada miembro recibe exactamente las mismas herramientas que el líder. El acceso al sistema se clona en minutos. No hay curva de aprendizaje técnica.</div>
+        </div>
+      </div>
+      <div class="cap-row" style="background:var(--white); border:1px solid var(--soft-border); padding:28px 26px; display:flex; gap:18px; align-items:flex-start;">
+        <div style="width:40px; height:40px; background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.25); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0;">🎓</div>
+        <div>
+          <div style="font-size:15px; font-weight:600; color:var(--near-black); margin-bottom:5px;">Formación estructurada</div>
+          <div style="font-size:13px; color:var(--gray); line-height:1.6;">Programas de formación probados para líderes, distribuidores nuevos y networkers con experiencia. Cada persona sabe exactamente qué hacer en cada etapa.</div>
+        </div>
+      </div>
+      <div class="cap-row" style="background:var(--white); border:1px solid var(--soft-border); padding:28px 26px; display:flex; gap:18px; align-items:flex-start;">
+        <div style="width:40px; height:40px; background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.25); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0;">📊</div>
+        <div>
+          <div style="font-size:15px; font-weight:600; color:var(--near-black); margin-bottom:5px;">Producto con ciencia real</div>
+          <div style="font-size:13px; color:var(--gray); line-height:1.6;">triGLP tiene estudios publicados en revistas internacionales peer-reviewed. No vendes promesas — vendes evidencia verificable. Eso cambia la conversación con el cliente.</div>
+        </div>
+      </div>
+      <div class="cap-row" style="background:var(--white); border:1px solid var(--soft-border); padding:28px 26px; display:flex; gap:18px; align-items:flex-start;">
+        <div style="width:40px; height:40px; background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.25); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0;">⏱️</div>
+        <div>
+          <div style="font-size:15px; font-weight:600; color:var(--near-black); margin-bottom:5px;">Timing de mercado excepcional</div>
+          <div style="font-size:13px; color:var(--gray); line-height:1.6;">El universo de los inyectables GLP-1 ha educado al mundo en el concepto. Tú llegas con la alternativa natural en el momento de máxima demanda y mínima saturación.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPTURE / FORM -->
+<section class="capture-section" id="captura">
+  <div class="section-label" style="color: var(--orange);">Acceso Gratuito · Sin Compromiso</div>
+  <h2 class="section-title" style="max-width:600px; margin: 0 auto 16px;">Accede al Método ORYGN ahora</h2>
+  <p class="section-desc">Rellena el formulario y recibirás acceso inmediato al video de presentación completo y los estudios clínicos de triGLP. Sin compromiso, sin spam.</p>
+
+  <div class="capture-form">
+    <div class="form-group">
+      <input type="text" class="form-input" placeholder="Tu nombre completo" />
+    </div>
+    <div class="form-group">
+      <input type="email" class="form-input" placeholder="Tu email principal" />
+    </div>
+    <div class="form-group">
+      <input type="tel" class="form-input" placeholder="WhatsApp (con prefijo internacional)" />
+    </div>
+    <div class="form-group">
+      <select class="form-select">
+        <option value="" disabled selected>Selecciona tu país</option>
+        <option>México</option>
+        <option>Colombia</option>
+        <option>Argentina</option>
+        <option>Chile</option>
+        <option>Perú</option>
+        <option>Ecuador</option>
+        <option>Brasil</option>
+        <option>República Dominicana</option>
+        <option>España</option>
+        <option>Portugal</option>
+        <option>Estados Unidos (hispano)</option>
+        <option>Otro</option>
+      </select>
+    </div>
+    <button class="btn-submit">Quiero ver el sistema completo →</button>
+    <p class="form-disclaimer">Sin spam. Tus datos están seguros. Puedes darte de baja en cualquier momento.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">MÉTODO <span>ORYGN</span></div>
+      <div class="footer-tagline">Sistema Internacional triGLP</div>
+    </div>
+    <div class="footer-copy">
+      Desarrollado por <strong>BGM Corporation | Benito García Míguez</strong><br>
+      CEO · Business of Global Marketing, LLC<br>
+      990 Biscayne Blvd, Ste 501-16 · Miami, FL 33132<br>
+      <strong>bgmcorporation.com</strong> · Mayo 2026
+    </div>
+  </div>
+</footer>
+
+<a href="#captura" class="sticky-cta" id="stickyCta">Acceder al sistema →</a>
+
+<script>
+const stickyCta = document.getElementById('stickyCta');
+window.addEventListener('scroll', () => {
+  stickyCta.style.display = window.scrollY > 600 ? 'block' : 'none';
+});
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
